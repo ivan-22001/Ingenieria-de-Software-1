@@ -1,0 +1,5002 @@
+
+
+----STARTUP---- (29 April 2024 17:15:51) as /home/Estudiante/Documentos/linux64/CuisUniversity-6169.image!
+
+
+----End fileIn of /home/Estudiante/Documentos/linux64/ISW1-2024-1C-Parcial.st----!
+
+!testRun: #FloorTest #test01CannotCreateFloorWithoutRooms stamp: 'i 4/29/2024 17:18:57'!
+PASSED!
+
+!testRun: #FloorTest #test02CannotCreateFloorWithNoIntergerNumberOfRooms stamp: 'i 4/29/2024 17:18:57'!
+PASSED!
+
+!testRun: #FloorTest #test03CannotCreateFloorWithoutPrices stamp: 'i 4/29/2024 17:18:57'!
+PASSED!
+
+!testRun: #FloorTest #test04WhenAFloorIsCreatedAllTheRoomsAreAvailable stamp: 'i 4/29/2024 17:18:57'!
+PASSED!
+
+!testRun: #FloorTest #test05WhenAFloorReceivesAGuestInARoomReducesTheAvailableRoomsByOneAndIncreaseOccupiedByOne stamp: 'i 4/29/2024 17:18:57'!
+PASSED!
+
+!testRun: #FloorTest #test06WhenAFloorReceivesOnReservationAGuestInARoomKeepsTheAvailableRoomsAndOccupiedAndReducesTheReservedByOne stamp: 'i 4/29/2024 17:18:57'!
+PASSED!
+
+!testRun: #FloorTest #test07WhenARoomIsReservedTheFloorAvailableRoomsReducesByOneAndIncreaseReservedAndOccupiedByOne stamp: 'i 4/29/2024 17:18:57'!
+PASSED!
+
+!testRun: #FloorTest #test08TotalProfitShouldBeTheSumOfOccupiedRoomsProfits stamp: 'i 4/29/2024 17:18:57'!
+PASSED!
+
+!testRun: #FloorTest #test09TotalLossesShouldBeTheSumOfAvailableRoomsLosses stamp: 'i 4/29/2024 17:18:57'!
+PASSED!
+
+!testRun: #HotelTest #test01CannotCreateHotelWithoutFloors stamp: 'i 4/29/2024 17:19:10'!
+PASSED!
+
+!testRun: #HotelTest #test02NewHotelsAreEmpty stamp: 'i 4/29/2024 17:19:10'!
+PASSED!
+
+!testRun: #HotelTest #test03HotelCanReceiveATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 17:19:10'!
+PASSED!
+
+!testRun: #HotelTest #test04HotelCanTakeAReservationForARoomAtFloor stamp: 'i 4/29/2024 17:19:10'!
+PASSED!
+
+!testRun: #HotelTest #test05HotelCanReceiveWithReservationATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 17:19:10'!
+PASSED!
+
+!testRun: #HotelTest #test06HotelCannotReceiveWithReservationWithoutPreviousReservation stamp: 'i 4/29/2024 17:19:10'!
+PASSED!
+
+!testRun: #HotelTest #test07HotelProfitsAreTheSumOfEachFloorProfits stamp: 'i 4/29/2024 17:19:10'!
+PASSED!
+
+!testRun: #HotelTest #test08HotelLossesAreTheSumOfEachFloorLosses stamp: 'i 4/29/2024 17:19:10'!
+PASSED!
+
+!testRun: #HotelTest #test09HotelCannotReserveANonexistentRoom stamp: 'i 4/29/2024 17:19:10'!
+PASSED!
+
+!testRun: #HotelTest #test10HotelCannotReserveANonexistentFloor stamp: 'i 4/29/2024 17:19:10'!
+PASSED!
+
+!testRun: #HotelTest #test11HotelCannotReceiveAtNonexistentRoom stamp: 'i 4/29/2024 17:19:10'!
+PASSED!
+
+!testRun: #HotelTest #test12HotelCannotReceiveAtNonexistentFloor stamp: 'i 4/29/2024 17:19:10'!
+PASSED!
+
+!testRun: #HotelTest #test13HotelCannotReceiveWithReservationAtNonexistentRoom stamp: 'i 4/29/2024 17:19:10'!
+PASSED!
+
+Object subclass: #RoomState
+	instanceVariableNames: 'guest'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2024-1C-Parcial'!
+
+!classDefinition: #RoomState category: #'ISW1-2024-1C-Parcial' stamp: 'i 4/29/2024 17:21:43'!
+Object subclass: #RoomState
+	instanceVariableNames: 'guest'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2024-1C-Parcial'!
+
+RoomState subclass: #RoomIsReserved
+	instanceVariableNames: 'guest'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2024-1C-Parcial'!
+
+RoomState subclass: #RoomIsReserved
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2024-1C-Parcial'!
+
+!classDefinition: #RoomIsReserved category: #'ISW1-2024-1C-Parcial' stamp: 'i 4/29/2024 17:22:10'!
+RoomState subclass: #RoomIsReserved
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2024-1C-Parcial'!
+
+RoomState subclass: #RoomIsOcupied
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2024-1C-Parcial'!
+
+!classDefinition: #RoomIsOcupied category: #'ISW1-2024-1C-Parcial' stamp: 'i 4/29/2024 17:22:16'!
+RoomState subclass: #RoomIsOcupied
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2024-1C-Parcial'!
+!Room methodsFor: 'testing' stamp: 'i 4/29/2024 17:22:36' prior: 50527898!
+isReserved
+
+	^ guest = RoomIsReserved new! !
+!Room methodsFor: 'testing' stamp: 'i 4/29/2024 17:22:56' prior: 50527894!
+isOccupied
+
+	^ guest notNil or: [guest = RoomIsOcupied new]
+! !
+!Room methodsFor: 'testing' stamp: 'i 4/29/2024 17:23:21' prior: 50528059!
+isOccupied
+
+	^ guest notNil or: [guest = RoomIsOcupied]
+! !
+!Room methodsFor: 'testing' stamp: 'i 4/29/2024 17:23:39' prior: 50528064!
+isOccupied
+
+	^ guest notNil or: [guest = RoomIsOcupied]
+! !
+!Room methodsFor: 'accounting' stamp: 'i 4/29/2024 17:24:51' prior: 50527902!
+profitUsing: aPriceList ifAbsentGuestType: unknownGuestTypeBlock
+
+	"Room Available"
+	guest profitUsing: aPriceList ifAbsentGuestType: unknownGuestTypeBlock.
+	guest isNil ifTrue: [ ^ 0*peso ].
+
+	"Room Reserved"
+	guest = #reserved ifTrue: [ ^ aPriceList values min / 2 ].
+	
+	"Room Occupied"
+	(guest notNil or: [guest = #reserved]) ifTrue: [ ^ aPriceList at: guest ifAbsent: unknownGuestTypeBlock ].
+	
+	! !
+!RoomState methodsFor: 'nil' stamp: 'i 4/29/2024 17:25:23'!
+profitUsing: aPriceList ifAbsentGuestType: unknownGuestTypeBlock
+	^self subclassResponsibility! !
+!RoomIsOcupied methodsFor: 'nil' stamp: 'i 4/29/2024 17:26:11' overrides: 50528089!
+profitUsing: aPriceList ifAbsentGuestType: unknownGuestTypeBlock
+	aPriceList at: guest ifAbsent: unknownGuestTypeBlock! !
+!RoomIsReserved methodsFor: 'nil' stamp: 'i 4/29/2024 17:27:09' overrides: 50528089!
+profitUsing: aPriceList ifAbsentGuestType: unknownGuestTypeBlock
+	^ aPriceList values min / 2 ! !
+!RoomIsOcupied methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 17:27:17' prior: 50528095 overrides: 50528089!
+profitUsing: aPriceList ifAbsentGuestType: unknownGuestTypeBlock
+	^aPriceList at: guest ifAbsent: unknownGuestTypeBlock! !
+!Room methodsFor: 'testing' stamp: 'FRT 4/25/2024 21:08:13' prior: 50528069!
+isOccupied
+
+	^ guest notNil or: [guest = #reserved]
+! !
+
+!testRun: #HotelTest #test01CannotCreateHotelWithoutFloors stamp: 'i 4/29/2024 17:29:42'!
+PASSED!
+
+!testRun: #HotelTest #test02NewHotelsAreEmpty stamp: 'i 4/29/2024 17:29:42'!
+PASSED!
+
+!testRun: #HotelTest #test03HotelCanReceiveATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 17:29:42'!
+PASSED!
+
+!testRun: #HotelTest #test04HotelCanTakeAReservationForARoomAtFloor stamp: 'i 4/29/2024 17:29:42'!
+FAILURE!
+
+!testRun: #HotelTest #test05HotelCanReceiveWithReservationATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 17:29:42'!
+PASSED!
+
+!testRun: #HotelTest #test06HotelCannotReceiveWithReservationWithoutPreviousReservation stamp: 'i 4/29/2024 17:29:42'!
+PASSED!
+
+!testRun: #HotelTest #test07HotelProfitsAreTheSumOfEachFloorProfits stamp: 'i 4/29/2024 17:29:42'!
+ERROR!
+
+!testRun: #HotelTest #test08HotelLossesAreTheSumOfEachFloorLosses stamp: 'i 4/29/2024 17:29:42'!
+PASSED!
+
+!testRun: #HotelTest #test09HotelCannotReserveANonexistentRoom stamp: 'i 4/29/2024 17:29:42'!
+PASSED!
+
+!testRun: #HotelTest #test10HotelCannotReserveANonexistentFloor stamp: 'i 4/29/2024 17:29:42'!
+PASSED!
+
+!testRun: #HotelTest #test11HotelCannotReceiveAtNonexistentRoom stamp: 'i 4/29/2024 17:29:42'!
+PASSED!
+
+!testRun: #HotelTest #test12HotelCannotReceiveAtNonexistentFloor stamp: 'i 4/29/2024 17:29:42'!
+PASSED!
+
+!testRun: #HotelTest #test13HotelCannotReceiveWithReservationAtNonexistentRoom stamp: 'i 4/29/2024 17:29:42'!
+FAILURE!
+
+RoomState subclass: #RoomIsAvailable
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2024-1C-Parcial'!
+
+!classDefinition: #RoomIsAvailable category: #'ISW1-2024-1C-Parcial' stamp: 'i 4/29/2024 17:30:51'!
+RoomState subclass: #RoomIsAvailable
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2024-1C-Parcial'!
+!RoomIsAvailable methodsFor: 'nil' stamp: 'i 4/29/2024 17:31:42' overrides: 50528089!
+profitUsing: aPriceList ifAbsentGuestType: unknownGuestTypeBlock
+	^0*peso.! !
+
+!testRun: #RoomTest #test03ReservingARoomMakesTheRoomReservedAndOccupied stamp: 'i 4/29/2024 17:32:33'!
+FAILURE!
+
+!testRun: #RoomTest #test03ReservingARoomMakesTheRoomReservedAndOccupied stamp: 'i 4/29/2024 17:32:33'!
+FAILURE!
+
+Object subclass: #RoomState
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2024-1C-Parcial'!
+
+!classDefinition: #RoomState category: #'ISW1-2024-1C-Parcial' stamp: 'i 4/29/2024 17:33:34'!
+Object subclass: #RoomState
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2024-1C-Parcial'!
+!Room methodsFor: 'nil' stamp: 'i 4/29/2024 17:35:41' overrides: 16932297!
+initialize 
+	guest := RoomIsAvailable new.! !
+!Room methodsFor: 'guests' stamp: 'i 4/29/2024 17:37:05' prior: 50527883!
+reserve
+	guest isReserve.
+	"Room Occupied"
+	(guest notNil or: [guest = #reserved]) 
+		ifTrue: [ self error: self class roomIsNotEmptyErrorDescription ]
+		ifFalse: [  	guest := #reserved ]! !
+!Room methodsFor: 'guests' stamp: 'i 4/29/2024 17:37:54' prior: 50528205!
+reserve
+	guest := guest isReserve.
+	"Room Occupied"
+	(guest notNil or: [guest = #reserved]) 
+		ifTrue: [ self error: self class roomIsNotEmptyErrorDescription ]
+		ifFalse: [  	guest := #reserved ]! !
+!RoomIsReserved methodsFor: 'nil' stamp: 'i 4/29/2024 17:38:13'!
+isReserve
+	self error: self class roomIsNotEmptyErrorDescription! !
+!RoomIsAvailable methodsFor: 'nil' stamp: 'i 4/29/2024 17:38:49'!
+isReserve
+	^self! !
+!RoomIsAvailable methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 17:39:35' prior: 50528228!
+isReserve
+	^RoomIsReserved! !
+
+!testRun: #RoomTest #test10ProfitOfReservedRoomIsHalfTheMinPriceInList stamp: 'i 4/29/2024 17:39:44'!
+ERROR!
+
+!testRun: #RoomTest #test10ProfitOfReservedRoomIsHalfTheMinPriceInList stamp: 'i 4/29/2024 17:39:44'!
+ERROR!
+!Room methodsFor: 'guests' stamp: 'i 4/29/2024 17:40:14' prior: 50528214!
+reserve
+	guest := guest isReserve.
+	"Room Occupied
+	(guest notNil or: [guest = #reserved]) 
+		ifTrue: [ self error: self class roomIsNotEmptyErrorDescription ]
+		ifFalse: [  	guest := #reserved ]"! !
+
+!testRun: #RoomTest #test10ProfitOfReservedRoomIsHalfTheMinPriceInList stamp: 'i 4/29/2024 17:40:43'!
+ERROR!
+!RoomIsAvailable methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 17:41:22' prior: 50528232!
+isReserve
+	^RoomIsReserved new! !
+
+!testRun: #RoomTest #test10ProfitOfReservedRoomIsHalfTheMinPriceInList stamp: 'i 4/29/2024 17:41:56'!
+FAILURE!
+
+!testRun: #RoomTest #test10ProfitOfReservedRoomIsHalfTheMinPriceInList stamp: 'i 4/29/2024 17:41:56'!
+FAILURE!
+
+aPriceList values min / 2 !
+!Room methodsFor: 'accounting' stamp: 'i 4/29/2024 17:43:00' prior: 50528074!
+profitUsing: aPriceList ifAbsentGuestType: unknownGuestTypeBlock
+
+	"Room Available"
+	guest profitUsing: aPriceList ifAbsentGuestType: unknownGuestTypeBlock.
+	 "guest isNil ifTrue: [ ^ 0*peso ].
+
+	Room Reserved
+	guest = #reserved ifTrue: [ ^ aPriceList values min / 2 ].
+	
+	Room Occupied
+	(guest notNil or: [guest = #reserved]) ifTrue: [ ^ aPriceList at: guest ifAbsent: unknownGuestTypeBlock ]."
+	
+	! !
+!Room methodsFor: 'accounting' stamp: 'i 4/29/2024 17:43:03' prior: 50528268!
+profitUsing: aPriceList ifAbsentGuestType: unknownGuestTypeBlock
+
+	"Room Available"
+	^guest profitUsing: aPriceList ifAbsentGuestType: unknownGuestTypeBlock.
+	 "guest isNil ifTrue: [ ^ 0*peso ].
+
+	Room Reserved
+	guest = #reserved ifTrue: [ ^ aPriceList values min / 2 ].
+	
+	Room Occupied
+	(guest notNil or: [guest = #reserved]) ifTrue: [ ^ aPriceList at: guest ifAbsent: unknownGuestTypeBlock ]."
+	
+	! !
+
+!testRun: #RoomTest #test10ProfitOfReservedRoomIsHalfTheMinPriceInList stamp: 'i 4/29/2024 17:43:09'!
+PASSED!
+
+!testRun: #RoomTest #test09ProfitOfAvailableRoomIsCeroPesos stamp: 'i 4/29/2024 17:43:11'!
+PASSED!
+
+!testRun: #RoomTest #test08CannotReceiveOnReservationAnOccupiedRoom stamp: 'i 4/29/2024 17:43:13'!
+ERROR!
+
+!testRun: #RoomTest #test08CannotReceiveOnReservationAnOccupiedRoom stamp: 'i 4/29/2024 17:43:13'!
+ERROR!
+!RoomIsReserved methodsFor: 'nil' stamp: 'i 4/29/2024 17:44:35'!
+receiveWithReservation: aGuestType
+	^aGuestType
+	! !
+
+!testRun: #RoomTest #test01NewRoomsAreAvailable stamp: 'i 4/29/2024 17:46:34'!
+FAILURE!
+
+!testRun: #RoomTest #test02ReceivingAGuestMakesTheRoomOccupied stamp: 'i 4/29/2024 17:46:34'!
+ERROR!
+
+!testRun: #RoomTest #test03ReservingARoomMakesTheRoomReservedAndOccupied stamp: 'i 4/29/2024 17:46:34'!
+FAILURE!
+
+!testRun: #RoomTest #test04CannotReceiveAGuestInAOccupiedRoom stamp: 'i 4/29/2024 17:46:34'!
+ERROR!
+
+!testRun: #RoomTest #test05CannotReceiveAGuestInAReservedRoom stamp: 'i 4/29/2024 17:46:34'!
+FAILURE!
+
+!testRun: #RoomTest #test06ReceivingOnReservationMakesTheRoomOccupied stamp: 'i 4/29/2024 17:46:34'!
+ERROR!
+
+!testRun: #RoomTest #test07CannotReceiveOnReservationAnAvailableRoom stamp: 'i 4/29/2024 17:46:34'!
+FAILURE!
+
+!testRun: #RoomTest #test08CannotReceiveOnReservationAnOccupiedRoom stamp: 'i 4/29/2024 17:46:34'!
+ERROR!
+
+!testRun: #RoomTest #test09ProfitOfAvailableRoomIsCeroPesos stamp: 'i 4/29/2024 17:46:34'!
+PASSED!
+
+!testRun: #RoomTest #test10ProfitOfReservedRoomIsHalfTheMinPriceInList stamp: 'i 4/29/2024 17:46:34'!
+PASSED!
+
+!testRun: #RoomTest #test11ProfitOfOccupiedRoomDependsOnGuestType stamp: 'i 4/29/2024 17:46:34'!
+ERROR!
+
+!testRun: #RoomTest #test12NoProfitOnOccupiedRoomByUnknownGuestType stamp: 'i 4/29/2024 17:46:34'!
+ERROR!
+
+!testRun: #RoomTest #test13LossesOfAvailableRoomIsHalfTheMaxPriceInList stamp: 'i 4/29/2024 17:46:34'!
+PASSED!
+
+!testRun: #RoomTest #test14LossesOfReservedRoomIsCeroPesos stamp: 'i 4/29/2024 17:46:34'!
+PASSED!
+
+!testRun: #RoomTest #test15LossesOfOccupiedRoomIsCeroPesos stamp: 'i 4/29/2024 17:46:34'!
+PASSED!
+
+!testRun: #RoomTest #test16CannotReserveWhenReserved stamp: 'i 4/29/2024 17:46:34'!
+ERROR!
+
+!testRun: #RoomTest #test17CannotReserveWhenOccupied stamp: 'i 4/29/2024 17:46:34'!
+ERROR!
+
+!testRun: #RoomTest #test01NewRoomsAreAvailable stamp: 'i 4/29/2024 17:46:50'!
+FAILURE!
+!RoomState methodsFor: 'nil' stamp: 'i 4/29/2024 17:48:42'!
+isAvailable
+	^self subclassResponsibility
+	! !
+!RoomIsReserved methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 17:48:48' overrides: 50528374!
+isAvailable
+	^self subclassResponsibility
+	! !
+!RoomIsOcupied methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 17:48:48' overrides: 50528374!
+isAvailable
+	^self subclassResponsibility
+	! !
+!RoomIsAvailable methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 17:48:48' overrides: 50528374!
+isAvailable
+	^self subclassResponsibility
+	! !
+!RoomState methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 17:48:48' prior: 50528374!
+isAvailable
+
+	self subclassResponsibility! !
+!RoomIsAvailable methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 17:48:53' prior: 50528389 overrides: 50528394!
+isAvailable
+	^true
+	! !
+!RoomIsOcupied methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 17:48:59' prior: 50528384 overrides: 50528394!
+isAvailable
+	^false
+	! !
+!RoomIsReserved methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 17:49:04' prior: 50528379 overrides: 50528394!
+isAvailable
+	^false
+	! !
+
+!testRun: #RoomTest #test01NewRoomsAreAvailable stamp: 'i 4/29/2024 17:49:12'!
+FAILURE!
+
+!testRun: #RoomTest #test01NewRoomsAreAvailable stamp: 'i 4/29/2024 17:49:12'!
+FAILURE!
+!Room methodsFor: 'testing' stamp: 'i 4/29/2024 17:49:27' prior: 50527891!
+isAvailable
+
+	^ guest isAvailable! !
+!Room methodsFor: 'testing' stamp: 'i 4/29/2024 17:49:52' prior: 50528116!
+isOccupied
+
+	^ guest isOccupied
+! !
+!RoomState methodsFor: 'nil' stamp: 'i 4/29/2024 17:49:55'!
+isOccupied! !
+!RoomState methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 17:50:14' prior: 50528426!
+isOccupied
+	^self subclassResponsibility! !
+!RoomState methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 17:50:21'!
+isReserved
+	^self subclassResponsibility! !
+!RoomIsReserved methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 17:50:25' overrides: 50528434!
+isReserved
+	^self subclassResponsibility! !
+!RoomIsOcupied methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 17:50:25' overrides: 50528434!
+isReserved
+	^self subclassResponsibility! !
+!RoomIsAvailable methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 17:50:25' overrides: 50528434!
+isReserved
+	^self subclassResponsibility! !
+!RoomState methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 17:50:25' prior: 50528434!
+isReserved
+
+	self subclassResponsibility! !
+!RoomIsReserved methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 17:50:29' overrides: 50528430!
+isOccupied
+	^self subclassResponsibility! !
+!RoomIsOcupied methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 17:50:29' overrides: 50528430!
+isOccupied
+	^self subclassResponsibility! !
+!RoomIsAvailable methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 17:50:29' overrides: 50528430!
+isOccupied
+	^self subclassResponsibility! !
+!RoomState methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 17:50:29' prior: 50528430!
+isOccupied
+
+	self subclassResponsibility! !
+!RoomIsAvailable methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 17:50:38' prior: 50528449 overrides: 50528454!
+isReserved
+	^false! !
+!RoomIsAvailable methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 17:50:42' prior: 50528469 overrides: 50528474!
+isOccupied
+	^false! !
+!RoomIsOcupied methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 17:50:48' prior: 50528464 overrides: 50528474!
+isOccupied
+	^true! !
+!RoomIsOcupied methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 17:50:53' prior: 50528444 overrides: 50528454!
+isReserved
+	^false! !
+!RoomIsReserved methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 17:51:02' prior: 50528459 overrides: 50528474!
+isOccupied
+	^false! !
+!RoomIsReserved methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 17:51:13' prior: 50528439 overrides: 50528454!
+isReserved
+	^true! !
+
+!testRun: #RoomTest #test01NewRoomsAreAvailable stamp: 'i 4/29/2024 17:51:15'!
+PASSED!
+
+!testRun: #RoomTest #test02ReceivingAGuestMakesTheRoomOccupied stamp: 'i 4/29/2024 17:51:16'!
+ERROR!
+
+!testRun: #RoomTest #test02ReceivingAGuestMakesTheRoomOccupied stamp: 'i 4/29/2024 17:51:16'!
+ERROR!
+
+!testRun: #RoomTest #test02ReceivingAGuestMakesTheRoomOccupied stamp: 'i 4/29/2024 17:51:22'!
+ERROR!
+!Room methodsFor: 'guests' stamp: 'i 4/29/2024 17:53:10' prior: 50527867!
+receive: aGuestType
+
+	"Room Occupied"
+	guest receive: aGuestType inRoom: self.
+	(guest notNil or: [guest = #reserved])
+		ifTrue: [ self error: self class roomIsNotEmptyErrorDescription ]
+		ifFalse: [  guest := aGuestType ] ! !
+!RoomState methodsFor: 'nil' stamp: 'i 4/29/2024 17:54:00'!
+receive: aGuestType inRoom: room
+	^self subclassResponsibility! !
+!RoomIsReserved methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 17:54:18' overrides: 50528530!
+receive: aGuestType inRoom: room
+	^self subclassResponsibility! !
+!RoomIsOcupied methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 17:54:18' overrides: 50528530!
+receive: aGuestType inRoom: room
+	^self subclassResponsibility! !
+!RoomIsAvailable methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 17:54:18' overrides: 50528530!
+receive: aGuestType inRoom: room
+	^self subclassResponsibility! !
+!RoomState methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 17:54:18' prior: 50528530!
+receive: aGuestType inRoom: room
+
+	self subclassResponsibility! !
+!RoomIsReserved methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 17:55:08' prior: 50528500 overrides: 50528474!
+isOccupied
+	^true! !
+!Room methodsFor: 'testing' stamp: 'i 4/29/2024 17:56:51' prior: 50528055!
+isReserved
+
+	^ guest = RoomIsOcupied new! !
+!Room methodsFor: 'testing' stamp: 'i 4/29/2024 17:22:36' prior: 50528562!
+isReserved
+
+	^ guest = RoomIsReserved new! !
+!Room methodsFor: 'guests' stamp: 'i 4/29/2024 17:57:57' prior: 50527875!
+receiveWithReservation: aGuestType
+	
+	"Room Reserved"
+	guest receiveWithReservation: aGuestType inRoom:self.
+	guest = #reserved
+		ifTrue: [  guest := aGuestType ] 
+		ifFalse: [ self error: self class roomIsNotReservedErrorDescription ]
+! !
+!RoomIsReserved methodsFor: 'nil' stamp: 'i 4/29/2024 17:59:23'!
+receiveWithReservation: aGuestType inRoom: room
+	room changeGuestType.! !
+!RoomIsReserved methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 17:59:36' prior: 50528580!
+receiveWithReservation: aGuestType inRoom: room
+	room changeGuestType:  aGuestType.! !
+!Room methodsFor: 'guests' stamp: 'i 4/29/2024 17:59:50'!
+changeGuestType:  aGuestType
+	guest := aGuestType! !
+!Room methodsFor: 'guests' stamp: 'i 4/29/2024 18:00:43' prior: 50528243!
+reserve
+	guest isReserveInRoom: self.
+	"Room Occupied
+	(guest notNil or: [guest = #reserved]) 
+		ifTrue: [ self error: self class roomIsNotEmptyErrorDescription ]
+		ifFalse: [  	guest := #reserved ]"! !
+!RoomIsAvailable methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 18:01:19'!
+isReserveInRoom: room
+	room error: room class roomIsNotEmptyErrorDescription 
+	! !
+!RoomIsAvailable methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 18:03:45' prior: 50528548 overrides: 50528553!
+receive: aGuestType inRoom: room
+	room changeGuestType: aGuestType! !
+!RoomIsOcupied methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 18:04:22' prior: 50528542 overrides: 50528553!
+receive: aGuestType inRoom: room
+	room error: room class roomIsNotEmptyErrorDescription! !
+!RoomIsReserved methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 18:04:27' prior: 50528536 overrides: 50528553!
+receive: aGuestType inRoom: room
+	self error: self class roomIsNotEmptyErrorDescription! !
+
+!testRun: #RoomTest #test01NewRoomsAreAvailable stamp: 'i 4/29/2024 18:04:30'!
+PASSED!
+
+!testRun: #RoomTest #test02ReceivingAGuestMakesTheRoomOccupied stamp: 'i 4/29/2024 18:04:31'!
+ERROR!
+
+!testRun: #RoomTest #test02ReceivingAGuestMakesTheRoomOccupied stamp: 'i 4/29/2024 18:04:31'!
+ERROR!
+
+Object subclass: #Room
+	instanceVariableNames: 'guest guestType'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2024-1C-Parcial'!
+
+!classDefinition: #Room category: #'ISW1-2024-1C-Parcial' stamp: 'i 4/29/2024 18:08:33'!
+Object subclass: #Room
+	instanceVariableNames: 'guest guestType'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2024-1C-Parcial'!
+!Room methodsFor: 'guests' stamp: 'i 4/29/2024 18:08:43' prior: 50528591!
+changeGuestType:  aGuestType
+	guestType := aGuestType! !
+
+!testRun: #RoomTest #test02ReceivingAGuestMakesTheRoomOccupied stamp: 'i 4/29/2024 18:09:34'!
+ERROR!
+!Room methodsFor: 'guests' stamp: 'i 4/29/2024 18:09:54' prior: 50528521!
+receive: aGuestType
+
+	"Room Occupied"
+	guest receive: aGuestType inRoom: self.
+	"(guest notNil or: [guest = #reserved])
+		ifTrue: [ self error: self class roomIsNotEmptyErrorDescription ]
+		ifFalse: [  guest := aGuestType ] "! !
+
+!testRun: #RoomTest #test02ReceivingAGuestMakesTheRoomOccupied stamp: 'i 4/29/2024 18:09:56'!
+FAILURE!
+
+!testRun: #RoomTest #test02ReceivingAGuestMakesTheRoomOccupied stamp: 'i 4/29/2024 18:09:56'!
+FAILURE!
+!RoomIsAvailable methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 18:11:06' prior: 50528611 overrides: 50528553!
+receive: aGuestType inRoom: room
+	room changeStateToReserve: self changeGuestType: aGuestType ! !
+!Room methodsFor: 'guests' stamp: 'i 4/29/2024 18:11:39'!
+changeStateToReserve: roomReserved changeGuestType: aGuestType 
+	guest := roomReserved.
+	guestType := aGuestType! !
+
+!testRun: #RoomTest #test02ReceivingAGuestMakesTheRoomOccupied stamp: 'i 4/29/2024 18:11:42'!
+FAILURE!
+
+!testRun: #RoomTest #test02ReceivingAGuestMakesTheRoomOccupied stamp: 'i 4/29/2024 18:11:42'!
+FAILURE!
+
+!testRun: #RoomTest #test02ReceivingAGuestMakesTheRoomOccupied stamp: 'i 4/29/2024 18:11:50'!
+FAILURE!
+!RoomIsAvailable methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 18:12:17' prior: 50528677 overrides: 50528553!
+receive: aGuestType inRoom: room
+	room changeStateToReserve: RoomIsOcupied new changeGuestType: aGuestType ! !
+
+!testRun: #RoomTest #test02ReceivingAGuestMakesTheRoomOccupied stamp: 'i 4/29/2024 18:12:20'!
+PASSED!
+
+!testRun: #RoomTest #test03ReservingARoomMakesTheRoomReservedAndOccupied stamp: 'i 4/29/2024 18:12:22'!
+ERROR!
+
+!testRun: #RoomTest #test03ReservingARoomMakesTheRoomReservedAndOccupied stamp: 'i 4/29/2024 18:12:22'!
+ERROR!
+!Room methodsFor: 'guests' stamp: 'i 4/29/2024 18:13:17' prior: 50528595!
+reserve
+	guest isReserveInRoom: self inRoom: self.
+	"Room Occupied
+	(guest notNil or: [guest = #reserved]) 
+		ifTrue: [ self error: self class roomIsNotEmptyErrorDescription ]
+		ifFalse: [  	guest := #reserved ]"! !
+!Room methodsFor: 'guests' stamp: 'i 4/29/2024 18:13:41' prior: 50528716!
+reserve
+	guest isReserveInRoom: self.
+	"Room Occupied
+	(guest notNil or: [guest = #reserved]) 
+		ifTrue: [ self error: self class roomIsNotEmptyErrorDescription ]
+		ifFalse: [  	guest := #reserved ]"! !
+!RoomState methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 18:13:56'!
+isReserveInRoom: room
+	self subclassResponsibility! !
+!RoomIsReserved methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 18:14:03' overrides: 50528735!
+isReserveInRoom: room
+	self subclassResponsibility! !
+!RoomIsOcupied methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 18:14:03' overrides: 50528735!
+isReserveInRoom: room
+	self subclassResponsibility! !
+!RoomIsAvailable methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 18:14:03' prior: 50528604 overrides: 50528735!
+isReserveInRoom: room
+	self subclassResponsibility! !
+!RoomState methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 18:14:03' prior: 50528735!
+isReserveInRoom: room
+
+	self subclassResponsibility! !
+!RoomIsAvailable methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 18:15:38' prior: 50528751 overrides: 50528756!
+isReserveInRoom: room
+	room changeGuestType: RoomIsReserved new.! !
+
+!testRun: #RoomTest #test03ReservingARoomMakesTheRoomReservedAndOccupied stamp: 'i 4/29/2024 18:15:49'!
+FAILURE!
+
+!testRun: #RoomTest #test03ReservingARoomMakesTheRoomReservedAndOccupied stamp: 'i 4/29/2024 18:15:49'!
+FAILURE!
+!Room methodsFor: 'guests' stamp: 'i 4/29/2024 18:16:19' prior: 50528651!
+changeGuestType:  aGuestType
+	guest := aGuestType! !
+!Room methodsFor: 'testing' stamp: 'i 4/29/2024 18:18:38' prior: 50528566!
+isReserved
+
+	^ guest isReserved! !
+
+!testRun: #RoomTest #test03ReservingARoomMakesTheRoomReservedAndOccupied stamp: 'i 4/29/2024 18:18:49'!
+PASSED!
+
+!testRun: #RoomTest #test01NewRoomsAreAvailable stamp: 'i 4/29/2024 18:18:49'!
+PASSED!
+
+!testRun: #RoomTest #test02ReceivingAGuestMakesTheRoomOccupied stamp: 'i 4/29/2024 18:18:49'!
+PASSED!
+
+!testRun: #RoomTest #test03ReservingARoomMakesTheRoomReservedAndOccupied stamp: 'i 4/29/2024 18:18:49'!
+PASSED!
+
+!testRun: #RoomTest #test04CannotReceiveAGuestInAOccupiedRoom stamp: 'i 4/29/2024 18:18:49'!
+PASSED!
+
+!testRun: #RoomTest #test05CannotReceiveAGuestInAReservedRoom stamp: 'i 4/29/2024 18:18:49'!
+ERROR!
+
+!testRun: #RoomTest #test06ReceivingOnReservationMakesTheRoomOccupied stamp: 'i 4/29/2024 18:18:49'!
+ERROR!
+
+!testRun: #RoomTest #test07CannotReceiveOnReservationAnAvailableRoom stamp: 'i 4/29/2024 18:18:49'!
+ERROR!
+
+!testRun: #RoomTest #test08CannotReceiveOnReservationAnOccupiedRoom stamp: 'i 4/29/2024 18:18:49'!
+ERROR!
+
+!testRun: #RoomTest #test09ProfitOfAvailableRoomIsCeroPesos stamp: 'i 4/29/2024 18:18:49'!
+PASSED!
+
+!testRun: #RoomTest #test10ProfitOfReservedRoomIsHalfTheMinPriceInList stamp: 'i 4/29/2024 18:18:49'!
+PASSED!
+
+!testRun: #RoomTest #test11ProfitOfOccupiedRoomDependsOnGuestType stamp: 'i 4/29/2024 18:18:49'!
+FAILURE!
+
+!testRun: #RoomTest #test12NoProfitOnOccupiedRoomByUnknownGuestType stamp: 'i 4/29/2024 18:18:49'!
+PASSED!
+
+!testRun: #RoomTest #test13LossesOfAvailableRoomIsHalfTheMaxPriceInList stamp: 'i 4/29/2024 18:18:49'!
+PASSED!
+
+!testRun: #RoomTest #test14LossesOfReservedRoomIsCeroPesos stamp: 'i 4/29/2024 18:18:49'!
+PASSED!
+
+!testRun: #RoomTest #test15LossesOfOccupiedRoomIsCeroPesos stamp: 'i 4/29/2024 18:18:49'!
+PASSED!
+
+!testRun: #RoomTest #test16CannotReserveWhenReserved stamp: 'i 4/29/2024 18:18:49'!
+FAILURE!
+
+!testRun: #RoomTest #test17CannotReserveWhenOccupied stamp: 'i 4/29/2024 18:18:49'!
+FAILURE!
+!RoomIsReserved methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 18:19:47' prior: 50528624 overrides: 50528553!
+receive: aGuestType inRoom: room
+	room error: room class roomIsNotEmptyErrorDescription! !
+
+!testRun: #RoomTest #test05CannotReceiveAGuestInAReservedRoom stamp: 'i 4/29/2024 18:19:49'!
+PASSED!
+
+!testRun: #RoomTest #test06ReceivingOnReservationMakesTheRoomOccupied stamp: 'i 4/29/2024 18:19:51'!
+ERROR!
+
+!testRun: #RoomTest #test06ReceivingOnReservationMakesTheRoomOccupied stamp: 'i 4/29/2024 18:19:51'!
+ERROR!
+
+!testRun: #RoomTest #test07CannotReceiveOnReservationAnAvailableRoom stamp: 'i 4/29/2024 18:19:54'!
+ERROR!
+
+!testRun: #RoomTest #test07CannotReceiveOnReservationAnAvailableRoom stamp: 'i 4/29/2024 18:19:54'!
+ERROR!
+!Room methodsFor: 'guests' stamp: 'i 4/29/2024 18:21:16' prior: 50528570!
+receiveWithReservation: aGuestType
+	
+	"Room Reserved"
+	guest receiveWithReservation: aGuestType inRoom:self.
+	"guest = #reserved
+		ifTrue: [  guest := aGuestType ] 
+		ifFalse: [ self error: self class roomIsNotReservedErrorDescription ]"
+! !
+!RoomState methodsFor: 'nil' stamp: 'i 4/29/2024 18:22:59'!
+receiveWithReservation: aGuestType inRoom: room
+	self subclassResponsibility
+	! !
+!RoomIsReserved methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 18:23:04' prior: 50528586 overrides: 50528874!
+receiveWithReservation: aGuestType inRoom: room
+	self subclassResponsibility
+	! !
+!RoomIsOcupied methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 18:23:04' overrides: 50528874!
+receiveWithReservation: aGuestType inRoom: room
+	self subclassResponsibility
+	! !
+!RoomIsAvailable methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 18:23:04' overrides: 50528874!
+receiveWithReservation: aGuestType inRoom: room
+	self subclassResponsibility
+	! !
+!RoomState methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 18:23:04' prior: 50528874!
+receiveWithReservation: aGuestType inRoom: room
+
+	self subclassResponsibility! !
+!RoomIsAvailable methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 18:23:25' prior: 50528893 overrides: 50528899!
+receiveWithReservation: aGuestType inRoom: room
+	room error: room class roomIsNotReservedErrorDescription
+	! !
+!RoomIsOcupied methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 18:23:37' prior: 50528887 overrides: 50528899!
+receiveWithReservation: aGuestType inRoom: room
+	room error: room class roomIsNotReservedErrorDescription! !
+!RoomIsReserved methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 18:25:07' prior: 50528881 overrides: 50528899!
+receiveWithReservation: aGuestType inRoom: room
+	room changeStateToReserve: self changeGuestType: aGuestType
+	! !
+
+Object subclass: #Room
+	instanceVariableNames: 'guest guestType state'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2024-1C-Parcial'!
+
+!classDefinition: #Room category: #'ISW1-2024-1C-Parcial' stamp: 'i 4/29/2024 18:30:02'!
+Object subclass: #Room
+	instanceVariableNames: 'guest guestType state'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2024-1C-Parcial'!
+!Room methodsFor: 'testing' stamp: 'i 4/29/2024 18:31:10' prior: 50528423!
+isOccupied
+
+	^  guestType notNil or: [state = RoomIsReserved]
+! !
+!Room methodsFor: 'testing' stamp: 'i 4/29/2024 18:31:34' prior: 50528778!
+isReserved
+
+	^ state = RoomIsReserved! !
+!Room methodsFor: 'testing' stamp: 'i 4/29/2024 18:31:50' prior: 50528419!
+isAvailable
+
+	^ guestType isNil! !
+!Room methodsFor: 'guests' stamp: 'i 4/29/2024 18:32:17' prior: 50528726!
+reserve
+	state isReserveInRoom: self.
+	"Room Occupied
+	(guest notNil or: [guest = #reserved]) 
+		ifTrue: [ self error: self class roomIsNotEmptyErrorDescription ]
+		ifFalse: [  	guest := #reserved ]"! !
+!Room methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 18:32:28' prior: 50528201 overrides: 16932297!
+initialize 
+	state := RoomIsAvailable new.! !
+!RoomIsReserved methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 18:33:07' prior: 50528922 overrides: 50528899!
+receiveWithReservation: aGuestType inRoom: room
+	room changeStateToOcupied: RoomIsOcupied new changeGuestType: aGuestType
+	! !
+!RoomState methodsFor: 'nil' stamp: 'i 4/29/2024 18:33:26'!
+changeStateToOcupied: roomOcupied changeGuestType: aGuestType! !
+
+!methodRemoval: RoomState #changeStateToOcupied:changeGuestType: stamp: 'i 4/29/2024 18:33:44'!
+changeStateToOcupied: roomOcupied changeGuestType: aGuestType!
+!Room methodsFor: 'nil' stamp: 'i 4/29/2024 18:34:02'!
+changeStateToOcupied: roomOcupied changeGuestType: aGuestType
+	state := roomOcupied.
+	guestType := aGuestType.! !
+
+!testRun: #RoomTest #test01NewRoomsAreAvailable stamp: 'i 4/29/2024 18:34:15'!
+PASSED!
+
+!testRun: #RoomTest #test02ReceivingAGuestMakesTheRoomOccupied stamp: 'i 4/29/2024 18:34:16'!
+ERROR!
+
+!testRun: #RoomTest #test02ReceivingAGuestMakesTheRoomOccupied stamp: 'i 4/29/2024 18:34:16'!
+ERROR!
+!Room methodsFor: 'guests' stamp: 'i 4/29/2024 18:35:08' prior: 50528659!
+receive: aGuestType
+
+	"Room Occupied"
+	state receive: aGuestType inRoom: self.
+	"(guest notNil or: [guest = #reserved])
+		ifTrue: [ self error: self class roomIsNotEmptyErrorDescription ]
+		ifFalse: [  guest := aGuestType ] "! !
+!RoomState methodsFor: 'nil' stamp: 'i 4/29/2024 18:35:32' prior: 50528553!
+receive: aGuestType inRoom: room
+	self subclassResponsibility! !
+!RoomState methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 18:35:45' prior: 50529010!
+receive: aGuestType inRoom: room
+	self subclassResponsibility
+	! !
+!RoomIsReserved methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 18:35:57' prior: 50528842 overrides: 50529015!
+receive: aGuestType inRoom: room
+	self subclassResponsibility
+	! !
+!RoomIsOcupied methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 18:35:57' prior: 50528617 overrides: 50529015!
+receive: aGuestType inRoom: room
+	self subclassResponsibility
+	! !
+!RoomIsAvailable methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 18:35:57' prior: 50528700 overrides: 50529015!
+receive: aGuestType inRoom: room
+	self subclassResponsibility
+	! !
+!RoomState methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 18:35:57' prior: 50529015!
+receive: aGuestType inRoom: room
+
+	self subclassResponsibility! !
+!RoomIsAvailable methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 18:37:23' prior: 50529033 overrides: 50529038!
+receive: aGuestType inRoom: room
+	room changeStateToOcupied: RoomIsOcupied changeGuestType: aGuestType 
+	! !
+!RoomIsAvailable methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 18:37:24' prior: 50529044 overrides: 50529038!
+receive: aGuestType inRoom: room
+	room changeStateToOcupied: RoomIsOcupied new changeGuestType: aGuestType 
+	! !
+!Room methodsFor: 'guests' stamp: 'i 4/29/2024 18:37:50' prior: 50528985!
+changeStateToOcupied: roomOcupied changeGuestType: aGuestType 
+	guest := roomOcupied.
+	guestType := aGuestType! !
+
+!testRun: #RoomTest #test02ReceivingAGuestMakesTheRoomOccupied stamp: 'i 4/29/2024 18:37:52'!
+PASSED!
+
+!testRun: #RoomTest #test03ReservingARoomMakesTheRoomReservedAndOccupied stamp: 'i 4/29/2024 18:37:54'!
+FAILURE!
+
+!testRun: #RoomTest #test03ReservingARoomMakesTheRoomReservedAndOccupied stamp: 'i 4/29/2024 18:37:54'!
+FAILURE!
+!RoomIsAvailable methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 18:38:58' prior: 50528762 overrides: 50528756!
+isReserveInRoom: room
+	room changeStateTo: RoomIsReserved new.! !
+!Room methodsFor: 'guests' stamp: 'i 4/29/2024 18:39:30'!
+changeStateTo: reservedRoom
+	state := reservedRoom! !
+
+!testRun: #RoomTest #test03ReservingARoomMakesTheRoomReservedAndOccupied stamp: 'i 4/29/2024 18:39:40'!
+FAILURE!
+!Room methodsFor: 'testing' stamp: 'i 4/29/2024 18:39:58' prior: 50528946!
+isReserved
+
+	^ state = RoomIsReserved class! !
+
+!testRun: #RoomTest #test03ReservingARoomMakesTheRoomReservedAndOccupied stamp: 'i 4/29/2024 18:40:16'!
+FAILURE!
+!RoomTest methodsFor: 'testing' stamp: 'i 4/29/2024 18:41:00' prior: 50527294!
+test03ReservingARoomMakesTheRoomReservedAndOccupied
+
+	| room |
+	
+	room := Room new.
+
+	room reserve.
+
+	self assert: room isReserved.
+	self assert: room isOccupied.
+
+	self deny: room isAvailable.
+! !
+!Room methodsFor: 'testing' stamp: 'i 4/29/2024 18:41:09' prior: 50529088!
+isReserved
+
+	^ state = RoomIsReserved ! !
+!RoomIsReserved methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 18:41:44' prior: 50528970 overrides: 50528899!
+receiveWithReservation: aGuestType inRoom: room
+	room changeStateToOcupied: RoomIsOcupied changeGuestType: aGuestType
+	! !
+!RoomIsReserved methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 18:42:19' prior: 50529021 overrides: 50529038!
+receive: aGuestType inRoom: room
+	room error: room class roomIsNotEmptyErrorDescription! !
+!RoomIsOcupied methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 18:42:34' prior: 50529027 overrides: 50529038!
+receive: aGuestType inRoom: room
+	room error: room class roomIsNotEmptyErrorDescription! !
+!RoomIsAvailable methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 18:42:43' prior: 50529052 overrides: 50529038!
+receive: aGuestType inRoom: room
+	room changeStateToOcupied: RoomIsOcupied changeGuestType: aGuestType 
+	! !
+
+!testRun: #RoomTest #test02ReceivingAGuestMakesTheRoomOccupied stamp: 'i 4/29/2024 18:43:21'!
+PASSED!
+
+!testRun: #RoomTest #test03ReservingARoomMakesTheRoomReservedAndOccupied stamp: 'i 4/29/2024 18:43:39'!
+FAILURE!
+!Room methodsFor: 'testing' stamp: 'i 4/29/2024 18:44:51' prior: 50528941!
+isOccupied
+
+	^  guestType notNil or: [state isOcuppied]
+! !
+!Room methodsFor: 'testing' stamp: 'i 4/29/2024 18:45:04' prior: 50529145!
+isOccupied
+
+	^  guestType notNil or: [state isOccupied]
+! !
+!Room methodsFor: 'testing' stamp: 'i 4/29/2024 18:45:12' prior: 50529150!
+isOccupied
+
+	^  guestType notNil or: [state isReserved]
+! !
+!Room methodsFor: 'testing' stamp: 'i 4/29/2024 18:46:06' prior: 50529105!
+isReserved
+
+	^ guestType isNil or: [state isReserved]! !
+
+!testRun: #RoomTest #test03ReservingARoomMakesTheRoomReservedAndOccupied stamp: 'i 4/29/2024 18:46:30'!
+FAILURE!
+
+!testRun: #RoomTest #test03ReservingARoomMakesTheRoomReservedAndOccupied stamp: 'i 4/29/2024 18:46:33'!
+FAILURE!
+
+!testRun: #RoomTest #test03ReservingARoomMakesTheRoomReservedAndOccupied stamp: 'i 4/29/2024 18:46:33'!
+FAILURE!
+!Room methodsFor: 'testing' stamp: 'i 4/29/2024 18:47:03' prior: 50528950!
+isAvailable
+
+	^ state isAvailable! !
+
+!testRun: #RoomTest #test03ReservingARoomMakesTheRoomReservedAndOccupied stamp: 'i 4/29/2024 18:47:05'!
+PASSED!
+
+!testRun: #RoomTest #test01NewRoomsAreAvailable stamp: 'i 4/29/2024 18:47:05'!
+FAILURE!
+
+!testRun: #RoomTest #test02ReceivingAGuestMakesTheRoomOccupied stamp: 'i 4/29/2024 18:47:05'!
+FAILURE!
+
+!testRun: #RoomTest #test03ReservingARoomMakesTheRoomReservedAndOccupied stamp: 'i 4/29/2024 18:47:05'!
+PASSED!
+
+!testRun: #RoomTest #test04CannotReceiveAGuestInAOccupiedRoom stamp: 'i 4/29/2024 18:47:05'!
+FAILURE!
+
+!testRun: #RoomTest #test05CannotReceiveAGuestInAReservedRoom stamp: 'i 4/29/2024 18:47:05'!
+PASSED!
+
+!testRun: #RoomTest #test06ReceivingOnReservationMakesTheRoomOccupied stamp: 'i 4/29/2024 18:47:05'!
+ERROR!
+
+!testRun: #RoomTest #test07CannotReceiveOnReservationAnAvailableRoom stamp: 'i 4/29/2024 18:47:05'!
+ERROR!
+
+!testRun: #RoomTest #test08CannotReceiveOnReservationAnOccupiedRoom stamp: 'i 4/29/2024 18:47:05'!
+ERROR!
+
+!testRun: #RoomTest #test09ProfitOfAvailableRoomIsCeroPesos stamp: 'i 4/29/2024 18:47:05'!
+ERROR!
+
+!testRun: #RoomTest #test10ProfitOfReservedRoomIsHalfTheMinPriceInList stamp: 'i 4/29/2024 18:47:05'!
+ERROR!
+
+!testRun: #RoomTest #test11ProfitOfOccupiedRoomDependsOnGuestType stamp: 'i 4/29/2024 18:47:05'!
+ERROR!
+
+!testRun: #RoomTest #test12NoProfitOnOccupiedRoomByUnknownGuestType stamp: 'i 4/29/2024 18:47:05'!
+ERROR!
+
+!testRun: #RoomTest #test13LossesOfAvailableRoomIsHalfTheMaxPriceInList stamp: 'i 4/29/2024 18:47:05'!
+PASSED!
+
+!testRun: #RoomTest #test14LossesOfReservedRoomIsCeroPesos stamp: 'i 4/29/2024 18:47:05'!
+PASSED!
+
+!testRun: #RoomTest #test15LossesOfOccupiedRoomIsCeroPesos stamp: 'i 4/29/2024 18:47:05'!
+PASSED!
+
+!testRun: #RoomTest #test16CannotReserveWhenReserved stamp: 'i 4/29/2024 18:47:05'!
+FAILURE!
+
+!testRun: #RoomTest #test17CannotReserveWhenOccupied stamp: 'i 4/29/2024 18:47:05'!
+FAILURE!
+!Room methodsFor: 'testing' stamp: 'i 4/29/2024 18:47:52' prior: 50529160!
+isReserved
+
+	^ guestType isNil and: [state isReserved]! !
+
+!testRun: #RoomTest #test01NewRoomsAreAvailable stamp: 'i 4/29/2024 18:47:55'!
+PASSED!
+
+!testRun: #RoomTest #test02ReceivingAGuestMakesTheRoomOccupied stamp: 'i 4/29/2024 18:47:56'!
+FAILURE!
+
+!testRun: #RoomTest #test02ReceivingAGuestMakesTheRoomOccupied stamp: 'i 4/29/2024 18:47:56'!
+FAILURE!
+
+!testRun: #RoomTest #test03ReservingARoomMakesTheRoomReservedAndOccupied stamp: 'i 4/29/2024 18:47:58'!
+PASSED!
+
+!testRun: #RoomTest #test04CannotReceiveAGuestInAOccupiedRoom stamp: 'i 4/29/2024 18:48:00'!
+FAILURE!
+
+!testRun: #RoomTest #test04CannotReceiveAGuestInAOccupiedRoom stamp: 'i 4/29/2024 18:48:00'!
+FAILURE!
+!RoomIsAvailable methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 18:49:20' prior: 50529132 overrides: 50529038!
+receive: aGuestType inRoom: room
+	room changeStateToOcupied: RoomIsOcupied new changeGuestType: aGuestType 
+	! !
+
+!testRun: #RoomTest #test02ReceivingAGuestMakesTheRoomOccupied stamp: 'i 4/29/2024 18:49:22'!
+FAILURE!
+!Room methodsFor: 'guests' stamp: 'i 4/29/2024 18:49:45' prior: 50529058!
+changeStateToOcupied: roomOcupied changeGuestType: aGuestType 
+	state := roomOcupied.
+	guestType := aGuestType! !
+
+!testRun: #RoomTest #test02ReceivingAGuestMakesTheRoomOccupied stamp: 'i 4/29/2024 18:49:49'!
+PASSED!
+
+!testRun: #RoomTest #test01NewRoomsAreAvailable stamp: 'i 4/29/2024 18:49:49'!
+PASSED!
+
+!testRun: #RoomTest #test02ReceivingAGuestMakesTheRoomOccupied stamp: 'i 4/29/2024 18:49:49'!
+PASSED!
+
+!testRun: #RoomTest #test03ReservingARoomMakesTheRoomReservedAndOccupied stamp: 'i 4/29/2024 18:49:49'!
+PASSED!
+
+!testRun: #RoomTest #test04CannotReceiveAGuestInAOccupiedRoom stamp: 'i 4/29/2024 18:49:49'!
+PASSED!
+
+!testRun: #RoomTest #test05CannotReceiveAGuestInAReservedRoom stamp: 'i 4/29/2024 18:49:49'!
+PASSED!
+
+!testRun: #RoomTest #test06ReceivingOnReservationMakesTheRoomOccupied stamp: 'i 4/29/2024 18:49:49'!
+ERROR!
+
+!testRun: #RoomTest #test07CannotReceiveOnReservationAnAvailableRoom stamp: 'i 4/29/2024 18:49:49'!
+ERROR!
+
+!testRun: #RoomTest #test08CannotReceiveOnReservationAnOccupiedRoom stamp: 'i 4/29/2024 18:49:49'!
+ERROR!
+
+!testRun: #RoomTest #test09ProfitOfAvailableRoomIsCeroPesos stamp: 'i 4/29/2024 18:49:49'!
+ERROR!
+
+!testRun: #RoomTest #test10ProfitOfReservedRoomIsHalfTheMinPriceInList stamp: 'i 4/29/2024 18:49:49'!
+ERROR!
+
+!testRun: #RoomTest #test11ProfitOfOccupiedRoomDependsOnGuestType stamp: 'i 4/29/2024 18:49:49'!
+ERROR!
+
+!testRun: #RoomTest #test12NoProfitOnOccupiedRoomByUnknownGuestType stamp: 'i 4/29/2024 18:49:49'!
+ERROR!
+
+!testRun: #RoomTest #test13LossesOfAvailableRoomIsHalfTheMaxPriceInList stamp: 'i 4/29/2024 18:49:49'!
+PASSED!
+
+!testRun: #RoomTest #test14LossesOfReservedRoomIsCeroPesos stamp: 'i 4/29/2024 18:49:49'!
+PASSED!
+
+!testRun: #RoomTest #test15LossesOfOccupiedRoomIsCeroPesos stamp: 'i 4/29/2024 18:49:49'!
+PASSED!
+
+!testRun: #RoomTest #test16CannotReserveWhenReserved stamp: 'i 4/29/2024 18:49:49'!
+FAILURE!
+
+!testRun: #RoomTest #test17CannotReserveWhenOccupied stamp: 'i 4/29/2024 18:49:49'!
+FAILURE!
+!Room methodsFor: 'guests' stamp: 'i 4/29/2024 18:50:44' prior: 50528864!
+receiveWithReservation: aGuestType
+	
+	"Room Reserved"
+	state receiveWithReservation: aGuestType inRoom:self.
+	"guest = #reserved
+		ifTrue: [  guest := aGuestType ] 
+		ifFalse: [ self error: self class roomIsNotReservedErrorDescription ]"
+! !
+
+!testRun: #RoomTest #test06ReceivingOnReservationMakesTheRoomOccupied stamp: 'i 4/29/2024 18:50:48'!
+ERROR!
+
+!testRun: #RoomTest #test06ReceivingOnReservationMakesTheRoomOccupied stamp: 'i 4/29/2024 18:50:51'!
+ERROR!
+
+!testRun: #RoomTest #test06ReceivingOnReservationMakesTheRoomOccupied stamp: 'i 4/29/2024 18:50:51'!
+ERROR!
+!RoomIsOcupied methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 18:52:00' prior: 50528405 overrides: 50528394!
+isAvailable
+	^false
+	! !
+!Room methodsFor: 'testing' stamp: 'i 4/29/2024 18:52:08' prior: 50529175!
+isAvailable
+
+	^state isAvailable! !
+
+!testRun: #RoomTest #test06ReceivingOnReservationMakesTheRoomOccupied stamp: 'i 4/29/2024 18:52:33'!
+ERROR!
+!RoomIsReserved methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 18:52:47' prior: 50529110 overrides: 50528899!
+receiveWithReservation: aGuestType inRoom: room
+	room changeStateToOcupied: RoomIsOcupied new changeGuestType: aGuestType
+	! !
+
+!testRun: #RoomTest #test06ReceivingOnReservationMakesTheRoomOccupied stamp: 'i 4/29/2024 18:52:50'!
+PASSED!
+
+!testRun: #RoomTest #test07CannotReceiveOnReservationAnAvailableRoom stamp: 'i 4/29/2024 18:52:52'!
+PASSED!
+
+!testRun: #RoomTest #test08CannotReceiveOnReservationAnOccupiedRoom stamp: 'i 4/29/2024 18:52:54'!
+PASSED!
+
+!testRun: #RoomTest #test09ProfitOfAvailableRoomIsCeroPesos stamp: 'i 4/29/2024 18:52:55'!
+ERROR!
+
+!testRun: #RoomTest #test09ProfitOfAvailableRoomIsCeroPesos stamp: 'i 4/29/2024 18:52:55'!
+ERROR!
+
+!testRun: #RoomTest #test10ProfitOfReservedRoomIsHalfTheMinPriceInList stamp: 'i 4/29/2024 18:52:58'!
+ERROR!
+
+!testRun: #RoomTest #test10ProfitOfReservedRoomIsHalfTheMinPriceInList stamp: 'i 4/29/2024 18:52:58'!
+ERROR!
+
+!testRun: #RoomTest #test01NewRoomsAreAvailable stamp: 'i 4/29/2024 18:53:00'!
+PASSED!
+
+!testRun: #RoomTest #test02ReceivingAGuestMakesTheRoomOccupied stamp: 'i 4/29/2024 18:53:00'!
+PASSED!
+
+!testRun: #RoomTest #test03ReservingARoomMakesTheRoomReservedAndOccupied stamp: 'i 4/29/2024 18:53:00'!
+PASSED!
+
+!testRun: #RoomTest #test04CannotReceiveAGuestInAOccupiedRoom stamp: 'i 4/29/2024 18:53:00'!
+PASSED!
+
+!testRun: #RoomTest #test05CannotReceiveAGuestInAReservedRoom stamp: 'i 4/29/2024 18:53:00'!
+PASSED!
+
+!testRun: #RoomTest #test06ReceivingOnReservationMakesTheRoomOccupied stamp: 'i 4/29/2024 18:53:00'!
+PASSED!
+
+!testRun: #RoomTest #test07CannotReceiveOnReservationAnAvailableRoom stamp: 'i 4/29/2024 18:53:00'!
+PASSED!
+
+!testRun: #RoomTest #test08CannotReceiveOnReservationAnOccupiedRoom stamp: 'i 4/29/2024 18:53:00'!
+PASSED!
+
+!testRun: #RoomTest #test09ProfitOfAvailableRoomIsCeroPesos stamp: 'i 4/29/2024 18:53:00'!
+ERROR!
+
+!testRun: #RoomTest #test10ProfitOfReservedRoomIsHalfTheMinPriceInList stamp: 'i 4/29/2024 18:53:00'!
+ERROR!
+
+!testRun: #RoomTest #test11ProfitOfOccupiedRoomDependsOnGuestType stamp: 'i 4/29/2024 18:53:00'!
+ERROR!
+
+!testRun: #RoomTest #test12NoProfitOnOccupiedRoomByUnknownGuestType stamp: 'i 4/29/2024 18:53:00'!
+ERROR!
+
+!testRun: #RoomTest #test13LossesOfAvailableRoomIsHalfTheMaxPriceInList stamp: 'i 4/29/2024 18:53:00'!
+PASSED!
+
+!testRun: #RoomTest #test14LossesOfReservedRoomIsCeroPesos stamp: 'i 4/29/2024 18:53:00'!
+PASSED!
+
+!testRun: #RoomTest #test15LossesOfOccupiedRoomIsCeroPesos stamp: 'i 4/29/2024 18:53:00'!
+PASSED!
+
+!testRun: #RoomTest #test16CannotReserveWhenReserved stamp: 'i 4/29/2024 18:53:00'!
+FAILURE!
+
+!testRun: #RoomTest #test17CannotReserveWhenOccupied stamp: 'i 4/29/2024 18:53:00'!
+FAILURE!
+!Room methodsFor: 'accounting' stamp: 'i 4/29/2024 18:53:23' prior: 50528284!
+profitUsing: aPriceList ifAbsentGuestType: unknownGuestTypeBlock
+
+	"Room Available"
+	^state profitUsing: aPriceList ifAbsentGuestType: unknownGuestTypeBlock.
+	 "guest isNil ifTrue: [ ^ 0*peso ].
+
+	Room Reserved
+	guest = #reserved ifTrue: [ ^ aPriceList values min / 2 ].
+	
+	Room Occupied
+	(guest notNil or: [guest = #reserved]) ifTrue: [ ^ aPriceList at: guest ifAbsent: unknownGuestTypeBlock ]."
+	
+	! !
+
+!testRun: #RoomTest #test09ProfitOfAvailableRoomIsCeroPesos stamp: 'i 4/29/2024 18:53:26'!
+PASSED!
+
+!testRun: #RoomTest #test10ProfitOfReservedRoomIsHalfTheMinPriceInList stamp: 'i 4/29/2024 18:53:27'!
+PASSED!
+
+!testRun: #RoomTest #test11ProfitOfOccupiedRoomDependsOnGuestType stamp: 'i 4/29/2024 18:53:28'!
+FAILURE!
+
+!testRun: #RoomTest #test11ProfitOfOccupiedRoomDependsOnGuestType stamp: 'i 4/29/2024 18:53:28'!
+FAILURE!
+
+!testRun: #RoomTest #test11ProfitOfOccupiedRoomDependsOnGuestType stamp: 'i 4/29/2024 18:53:41'!
+FAILURE!
+
+!testRun: #RoomTest #test12NoProfitOnOccupiedRoomByUnknownGuestType stamp: 'i 4/29/2024 18:54:11'!
+PASSED!
+
+!testRun: #RoomTest #test11ProfitOfOccupiedRoomDependsOnGuestType stamp: 'i 4/29/2024 18:54:13'!
+FAILURE!
+
+!testRun: #RoomTest #test11ProfitOfOccupiedRoomDependsOnGuestType stamp: 'i 4/29/2024 18:54:13'!
+FAILURE!
+!RoomIsOcupied methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 18:55:49' prior: 50528109 overrides: 50528089!
+profitUsing: aPriceList ifAbsentGuestType: unknownGuestTypeBlock
+	^aPriceList at: self ifAbsent: unknownGuestTypeBlock! !
+
+!testRun: #RoomTest #test11ProfitOfOccupiedRoomDependsOnGuestType stamp: 'i 4/29/2024 18:55:51'!
+FAILURE!
+
+!testRun: #RoomTest #test01NewRoomsAreAvailable stamp: 'i 4/29/2024 18:55:53'!
+PASSED!
+
+!testRun: #RoomTest #test02ReceivingAGuestMakesTheRoomOccupied stamp: 'i 4/29/2024 18:55:53'!
+PASSED!
+
+!testRun: #RoomTest #test03ReservingARoomMakesTheRoomReservedAndOccupied stamp: 'i 4/29/2024 18:55:53'!
+PASSED!
+
+!testRun: #RoomTest #test04CannotReceiveAGuestInAOccupiedRoom stamp: 'i 4/29/2024 18:55:53'!
+PASSED!
+
+!testRun: #RoomTest #test05CannotReceiveAGuestInAReservedRoom stamp: 'i 4/29/2024 18:55:53'!
+PASSED!
+
+!testRun: #RoomTest #test06ReceivingOnReservationMakesTheRoomOccupied stamp: 'i 4/29/2024 18:55:53'!
+PASSED!
+
+!testRun: #RoomTest #test07CannotReceiveOnReservationAnAvailableRoom stamp: 'i 4/29/2024 18:55:53'!
+PASSED!
+
+!testRun: #RoomTest #test08CannotReceiveOnReservationAnOccupiedRoom stamp: 'i 4/29/2024 18:55:53'!
+PASSED!
+
+!testRun: #RoomTest #test09ProfitOfAvailableRoomIsCeroPesos stamp: 'i 4/29/2024 18:55:53'!
+PASSED!
+
+!testRun: #RoomTest #test10ProfitOfReservedRoomIsHalfTheMinPriceInList stamp: 'i 4/29/2024 18:55:53'!
+PASSED!
+
+!testRun: #RoomTest #test11ProfitOfOccupiedRoomDependsOnGuestType stamp: 'i 4/29/2024 18:55:53'!
+FAILURE!
+
+!testRun: #RoomTest #test12NoProfitOnOccupiedRoomByUnknownGuestType stamp: 'i 4/29/2024 18:55:53'!
+PASSED!
+
+!testRun: #RoomTest #test13LossesOfAvailableRoomIsHalfTheMaxPriceInList stamp: 'i 4/29/2024 18:55:53'!
+PASSED!
+
+!testRun: #RoomTest #test14LossesOfReservedRoomIsCeroPesos stamp: 'i 4/29/2024 18:55:53'!
+PASSED!
+
+!testRun: #RoomTest #test15LossesOfOccupiedRoomIsCeroPesos stamp: 'i 4/29/2024 18:55:53'!
+PASSED!
+
+!testRun: #RoomTest #test16CannotReserveWhenReserved stamp: 'i 4/29/2024 18:55:53'!
+FAILURE!
+
+!testRun: #RoomTest #test17CannotReserveWhenOccupied stamp: 'i 4/29/2024 18:55:53'!
+FAILURE!
+
+!testRun: #RoomTest #test01NewRoomsAreAvailable stamp: 'i 4/29/2024 18:55:57'!
+PASSED!
+
+!testRun: #RoomTest #test02ReceivingAGuestMakesTheRoomOccupied stamp: 'i 4/29/2024 18:55:57'!
+PASSED!
+
+!testRun: #RoomTest #test03ReservingARoomMakesTheRoomReservedAndOccupied stamp: 'i 4/29/2024 18:55:57'!
+PASSED!
+
+!testRun: #RoomTest #test04CannotReceiveAGuestInAOccupiedRoom stamp: 'i 4/29/2024 18:55:57'!
+PASSED!
+
+!testRun: #RoomTest #test05CannotReceiveAGuestInAReservedRoom stamp: 'i 4/29/2024 18:55:57'!
+PASSED!
+
+!testRun: #RoomTest #test06ReceivingOnReservationMakesTheRoomOccupied stamp: 'i 4/29/2024 18:55:57'!
+PASSED!
+
+!testRun: #RoomTest #test07CannotReceiveOnReservationAnAvailableRoom stamp: 'i 4/29/2024 18:55:57'!
+PASSED!
+
+!testRun: #RoomTest #test08CannotReceiveOnReservationAnOccupiedRoom stamp: 'i 4/29/2024 18:55:57'!
+PASSED!
+
+!testRun: #RoomTest #test09ProfitOfAvailableRoomIsCeroPesos stamp: 'i 4/29/2024 18:55:57'!
+PASSED!
+
+!testRun: #RoomTest #test10ProfitOfReservedRoomIsHalfTheMinPriceInList stamp: 'i 4/29/2024 18:55:57'!
+PASSED!
+
+!testRun: #RoomTest #test11ProfitOfOccupiedRoomDependsOnGuestType stamp: 'i 4/29/2024 18:55:57'!
+FAILURE!
+
+!testRun: #RoomTest #test12NoProfitOnOccupiedRoomByUnknownGuestType stamp: 'i 4/29/2024 18:55:57'!
+PASSED!
+
+!testRun: #RoomTest #test13LossesOfAvailableRoomIsHalfTheMaxPriceInList stamp: 'i 4/29/2024 18:55:57'!
+PASSED!
+
+!testRun: #RoomTest #test14LossesOfReservedRoomIsCeroPesos stamp: 'i 4/29/2024 18:55:57'!
+PASSED!
+
+!testRun: #RoomTest #test15LossesOfOccupiedRoomIsCeroPesos stamp: 'i 4/29/2024 18:55:57'!
+PASSED!
+
+!testRun: #RoomTest #test16CannotReserveWhenReserved stamp: 'i 4/29/2024 18:55:57'!
+FAILURE!
+
+!testRun: #RoomTest #test17CannotReserveWhenOccupied stamp: 'i 4/29/2024 18:55:57'!
+FAILURE!
+
+!testRun: #RoomTest #test11ProfitOfOccupiedRoomDependsOnGuestType stamp: 'i 4/29/2024 18:56:07'!
+FAILURE!
+!Room methodsFor: 'guests' stamp: 'i 4/29/2024 18:57:08' prior: 50527864!
+guestType
+	^guestType! !
+
+!testRun: #RoomTest #test11ProfitOfOccupiedRoomDependsOnGuestType stamp: 'i 4/29/2024 18:57:16'!
+FAILURE!
+!Room methodsFor: 'accounting' stamp: 'i 4/29/2024 18:57:45' prior: 50529456!
+profitUsing: aPriceList ifAbsentGuestType: unknownGuestTypeBlock
+
+	"Room Available"
+	^state profitUsing: aPriceList ifAbsentGuestType: unknownGuestTypeBlock inRoom: self.
+	 "guest isNil ifTrue: [ ^ 0*peso ].
+
+	Room Reserved
+	guest = #reserved ifTrue: [ ^ aPriceList values min / 2 ].
+	
+	Room Occupied
+	(guest notNil or: [guest = #reserved]) ifTrue: [ ^ aPriceList at: guest ifAbsent: unknownGuestTypeBlock ]."
+	
+	! !
+!RoomIsAvailable methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 18:58:02'!
+profitUsing: aPriceList ifAbsentGuestType: unknownGuestTypeBlock inRoom: room
+	^0*peso.! !
+!RoomIsOcupied methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 18:58:09'!
+profitUsing: aPriceList ifAbsentGuestType: unknownGuestTypeBlock inRoom: room
+	^aPriceList at: self ifAbsent: unknownGuestTypeBlock! !
+!RoomIsOcupied methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 18:58:14' prior: 50529651!
+profitUsing: aPriceList ifAbsentGuestType: unknownGuestTypeBlock inRoom: room
+	^aPriceList at: room guestType ifAbsent: unknownGuestTypeBlock! !
+!RoomIsReserved methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 18:58:20'!
+profitUsing: aPriceList ifAbsentGuestType: unknownGuestTypeBlock inRoom: room
+	^ aPriceList values min / 2 ! !
+
+!testRun: #RoomTest #test11ProfitOfOccupiedRoomDependsOnGuestType stamp: 'i 4/29/2024 18:58:24'!
+PASSED!
+
+!testRun: #RoomTest #test12NoProfitOnOccupiedRoomByUnknownGuestType stamp: 'i 4/29/2024 18:58:25'!
+PASSED!
+
+!testRun: #RoomTest #test13LossesOfAvailableRoomIsHalfTheMaxPriceInList stamp: 'i 4/29/2024 18:58:27'!
+PASSED!
+
+!testRun: #RoomTest #test14LossesOfReservedRoomIsCeroPesos stamp: 'i 4/29/2024 18:58:28'!
+PASSED!
+
+!testRun: #RoomTest #test15LossesOfOccupiedRoomIsCeroPesos stamp: 'i 4/29/2024 18:58:30'!
+PASSED!
+
+!testRun: #RoomTest #test16CannotReserveWhenReserved stamp: 'i 4/29/2024 18:58:31'!
+FAILURE!
+
+!testRun: #RoomTest #test16CannotReserveWhenReserved stamp: 'i 4/29/2024 18:58:31'!
+FAILURE!
+
+!testRun: #RoomTest #test17CannotReserveWhenOccupied stamp: 'i 4/29/2024 18:58:34'!
+FAILURE!
+
+!testRun: #RoomTest #test17CannotReserveWhenOccupied stamp: 'i 4/29/2024 18:58:34'!
+FAILURE!
+!RoomIsReserved methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 18:59:49' prior: 50528740 overrides: 50528756!
+isReserveInRoom: room
+	room error: room class roomIsNotEmptyErrorDescription! !
+!RoomIsOcupied methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 18:59:57' prior: 50528745 overrides: 50528756!
+isReserveInRoom: room
+	self error: self class roomIsNotEmptyErrorDescription! !
+!RoomIsOcupied methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 19:00:02' prior: 50529710 overrides: 50528756!
+isReserveInRoom: room
+	room error: room class roomIsNotEmptyErrorDescription! !
+
+!testRun: #RoomTest #test16CannotReserveWhenReserved stamp: 'i 4/29/2024 19:00:05'!
+PASSED!
+
+!testRun: #RoomTest #test17CannotReserveWhenOccupied stamp: 'i 4/29/2024 19:00:06'!
+PASSED!
+
+!testRun: #RoomTest #test01NewRoomsAreAvailable stamp: 'i 4/29/2024 19:00:09'!
+PASSED!
+
+!testRun: #RoomTest #test02ReceivingAGuestMakesTheRoomOccupied stamp: 'i 4/29/2024 19:00:09'!
+PASSED!
+
+!testRun: #RoomTest #test03ReservingARoomMakesTheRoomReservedAndOccupied stamp: 'i 4/29/2024 19:00:09'!
+PASSED!
+
+!testRun: #RoomTest #test04CannotReceiveAGuestInAOccupiedRoom stamp: 'i 4/29/2024 19:00:09'!
+PASSED!
+
+!testRun: #RoomTest #test05CannotReceiveAGuestInAReservedRoom stamp: 'i 4/29/2024 19:00:09'!
+PASSED!
+
+!testRun: #RoomTest #test06ReceivingOnReservationMakesTheRoomOccupied stamp: 'i 4/29/2024 19:00:09'!
+PASSED!
+
+!testRun: #RoomTest #test07CannotReceiveOnReservationAnAvailableRoom stamp: 'i 4/29/2024 19:00:09'!
+PASSED!
+
+!testRun: #RoomTest #test08CannotReceiveOnReservationAnOccupiedRoom stamp: 'i 4/29/2024 19:00:09'!
+PASSED!
+
+!testRun: #RoomTest #test09ProfitOfAvailableRoomIsCeroPesos stamp: 'i 4/29/2024 19:00:09'!
+PASSED!
+
+!testRun: #RoomTest #test10ProfitOfReservedRoomIsHalfTheMinPriceInList stamp: 'i 4/29/2024 19:00:09'!
+PASSED!
+
+!testRun: #RoomTest #test11ProfitOfOccupiedRoomDependsOnGuestType stamp: 'i 4/29/2024 19:00:09'!
+PASSED!
+
+!testRun: #RoomTest #test12NoProfitOnOccupiedRoomByUnknownGuestType stamp: 'i 4/29/2024 19:00:09'!
+PASSED!
+
+!testRun: #RoomTest #test13LossesOfAvailableRoomIsHalfTheMaxPriceInList stamp: 'i 4/29/2024 19:00:09'!
+PASSED!
+
+!testRun: #RoomTest #test14LossesOfReservedRoomIsCeroPesos stamp: 'i 4/29/2024 19:00:09'!
+PASSED!
+
+!testRun: #RoomTest #test15LossesOfOccupiedRoomIsCeroPesos stamp: 'i 4/29/2024 19:00:09'!
+PASSED!
+
+!testRun: #RoomTest #test16CannotReserveWhenReserved stamp: 'i 4/29/2024 19:00:09'!
+PASSED!
+
+!testRun: #RoomTest #test17CannotReserveWhenOccupied stamp: 'i 4/29/2024 19:00:09'!
+PASSED!
+!Hotel methodsFor: 'totals' stamp: 'i 4/29/2024 19:07:47' prior: 50527731!
+totalRoomsOccupied
+
+	| ix acc |
+
+	acc := 0.
+
+	ix := 1.	
+	
+	self atCollectionFloors: floors findThoseThatVerifyTheBlock: ['isOccupied']  . 
+	[ ix <= floors size ] whileTrue: [ | floor jx |
+		floor := floors at: ix.
+
+		jx := 1.
+		[ jx <= floor rooms size ] whileTrue: [ | room | 
+			room := floor rooms at: jx.
+			room isOccupied ifTrue: [ 			acc := acc + 1. ].
+			
+			jx := jx + 1.
+		].
+			
+		ix := ix + 1.				
+	].
+
+	^ acc.
+
+! !
+!Hotel methodsFor: 'totals' stamp: 'i 4/29/2024 19:08:05' prior: 50529783!
+totalRoomsOccupied
+
+	| ix acc |
+
+	acc := 0.
+
+	ix := 1.	
+	
+	self atCollectionOfFloors: floors findThoseThatVerifyTheBlock: ['isOccupied']  . 
+	[ ix <= floors size ] whileTrue: [ | floor jx |
+		floor := floors at: ix.
+
+		jx := 1.
+		[ jx <= floor rooms size ] whileTrue: [ | room | 
+			room := floor rooms at: jx.
+			room isOccupied ifTrue: [ 			acc := acc + 1. ].
+			
+			jx := jx + 1.
+		].
+			
+		ix := ix + 1.				
+	].
+
+	^ acc.
+
+! !
+
+self!
+
+self!
+
+!testRun: #HotelTest #test06HotelCannotReceiveWithReservationWithoutPreviousReservation stamp: 'i 4/29/2024 19:12:07'!
+ERROR!
+
+!testRun: #HotelTest #test06HotelCannotReceiveWithReservationWithoutPreviousReservation stamp: 'i 4/29/2024 19:12:07'!
+ERROR!
+!Hotel methodsFor: 'totals' stamp: 'i 4/29/2024 19:12:17' prior: 50529799!
+totalRoomsOccupied
+
+	| ix acc |
+
+	acc := 0.
+
+	ix := 1.	
+	
+	"self atCollectionOfFloors: floors findThoseThatVerifyTheBlock: ['isOccupied']  . "
+	[ ix <= floors size ] whileTrue: [ | floor jx |
+		floor := floors at: ix.
+
+		jx := 1.
+		[ jx <= floor rooms size ] whileTrue: [ | room | 
+			room := floor rooms at: jx.
+			room isOccupied ifTrue: [ 			acc := acc + 1. ].
+			
+			jx := jx + 1.
+		].
+			
+		ix := ix + 1.				
+	].
+
+	^ acc.
+
+! !
+
+!testRun: #HotelTest #test01CannotCreateHotelWithoutFloors stamp: 'i 4/29/2024 19:12:19'!
+PASSED!
+
+!testRun: #HotelTest #test02NewHotelsAreEmpty stamp: 'i 4/29/2024 19:12:19'!
+PASSED!
+
+!testRun: #HotelTest #test03HotelCanReceiveATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 19:12:19'!
+PASSED!
+
+!testRun: #HotelTest #test04HotelCanTakeAReservationForARoomAtFloor stamp: 'i 4/29/2024 19:12:19'!
+PASSED!
+
+!testRun: #HotelTest #test05HotelCanReceiveWithReservationATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 19:12:19'!
+PASSED!
+
+!testRun: #HotelTest #test06HotelCannotReceiveWithReservationWithoutPreviousReservation stamp: 'i 4/29/2024 19:12:19'!
+PASSED!
+
+!testRun: #HotelTest #test07HotelProfitsAreTheSumOfEachFloorProfits stamp: 'i 4/29/2024 19:12:19'!
+PASSED!
+
+!testRun: #HotelTest #test08HotelLossesAreTheSumOfEachFloorLosses stamp: 'i 4/29/2024 19:12:19'!
+PASSED!
+
+!testRun: #HotelTest #test09HotelCannotReserveANonexistentRoom stamp: 'i 4/29/2024 19:12:19'!
+PASSED!
+
+!testRun: #HotelTest #test10HotelCannotReserveANonexistentFloor stamp: 'i 4/29/2024 19:12:19'!
+PASSED!
+
+!testRun: #HotelTest #test11HotelCannotReceiveAtNonexistentRoom stamp: 'i 4/29/2024 19:12:19'!
+PASSED!
+
+!testRun: #HotelTest #test12HotelCannotReceiveAtNonexistentFloor stamp: 'i 4/29/2024 19:12:19'!
+PASSED!
+
+!testRun: #HotelTest #test13HotelCannotReceiveWithReservationAtNonexistentRoom stamp: 'i 4/29/2024 19:12:19'!
+PASSED!
+
+----End fileIn of /home/Estudiante/Documentos/linux64/Packages/TerseGuide.pck.st----!
+!Hotel methodsFor: 'totals' stamp: 'i 4/29/2024 19:16:07' prior: 50529824!
+totalRoomsOccupied
+
+	| ix acc |
+
+	acc := 0.
+
+	ix := 1.	
+	
+	self findThoseThatVerifyTheBlock: ['isOccupied']  . 
+	[ ix <= floors size ] whileTrue: [ | floor jx |
+		floor := floors at: ix.
+
+		jx := 1.
+		[ jx <= floor rooms size ] whileTrue: [ | room | 
+			room := floor rooms at: jx.
+			room isOccupied ifTrue: [ 			acc := acc + 1. ].
+			
+			jx := jx + 1.
+		].
+			
+		ix := ix + 1.				
+	].
+
+	^ acc.
+
+! !
+!Hotel methodsFor: 'totals' stamp: 'i 4/29/2024 19:20:22'!
+findThoseThatVerifyTheBlock: aClosureToVerify
+	|acumulator|
+	acumulator := 0.
+	
+	acumulator := floors inject: 0 into:[:a :rooms| a + rooms select:[:room | room aClosureToVerify value]]
+! !
+!Hotel methodsFor: 'totals' stamp: 'i 4/29/2024 19:20:33' prior: 50532819!
+findThoseThatVerifyTheBlock: aClosureToVerify
+	|acumulator|
+	acumulator := 0.
+	
+	acumulator := floors inject: 0 into:[:a :rooms| a + rooms select:[:room | room aClosureToVerify value] size].
+! !
+!Hotel methodsFor: 'totals' stamp: 'i 4/29/2024 19:20:41' prior: 50532828!
+findThoseThatVerifyTheBlock: aClosureToVerify
+	|acumulator|
+	acumulator := 0.
+	
+	acumulator := floors inject: 0 into:[:a :rooms| a + rooms select:[:room | room aClosureToVerify value] size].
+	^acumulator
+! !
+
+!testRun: #HotelTest #test03HotelCanReceiveATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 19:21:40'!
+ERROR!
+
+!testRun: #RoomTest #test01NewRoomsAreAvailable stamp: 'i 4/29/2024 19:24:21'!
+PASSED!
+
+!testRun: #RoomTest #test02ReceivingAGuestMakesTheRoomOccupied stamp: 'i 4/29/2024 19:24:21'!
+PASSED!
+
+!testRun: #RoomTest #test03ReservingARoomMakesTheRoomReservedAndOccupied stamp: 'i 4/29/2024 19:24:21'!
+PASSED!
+
+!testRun: #RoomTest #test04CannotReceiveAGuestInAOccupiedRoom stamp: 'i 4/29/2024 19:24:21'!
+PASSED!
+
+!testRun: #RoomTest #test05CannotReceiveAGuestInAReservedRoom stamp: 'i 4/29/2024 19:24:21'!
+PASSED!
+
+!testRun: #RoomTest #test06ReceivingOnReservationMakesTheRoomOccupied stamp: 'i 4/29/2024 19:24:21'!
+PASSED!
+
+!testRun: #RoomTest #test07CannotReceiveOnReservationAnAvailableRoom stamp: 'i 4/29/2024 19:24:21'!
+PASSED!
+
+!testRun: #RoomTest #test08CannotReceiveOnReservationAnOccupiedRoom stamp: 'i 4/29/2024 19:24:21'!
+PASSED!
+
+!testRun: #RoomTest #test09ProfitOfAvailableRoomIsCeroPesos stamp: 'i 4/29/2024 19:24:21'!
+PASSED!
+
+!testRun: #RoomTest #test10ProfitOfReservedRoomIsHalfTheMinPriceInList stamp: 'i 4/29/2024 19:24:21'!
+PASSED!
+
+!testRun: #RoomTest #test11ProfitOfOccupiedRoomDependsOnGuestType stamp: 'i 4/29/2024 19:24:21'!
+PASSED!
+
+!testRun: #RoomTest #test12NoProfitOnOccupiedRoomByUnknownGuestType stamp: 'i 4/29/2024 19:24:21'!
+PASSED!
+
+!testRun: #RoomTest #test13LossesOfAvailableRoomIsHalfTheMaxPriceInList stamp: 'i 4/29/2024 19:24:21'!
+PASSED!
+
+!testRun: #RoomTest #test14LossesOfReservedRoomIsCeroPesos stamp: 'i 4/29/2024 19:24:21'!
+PASSED!
+
+!testRun: #RoomTest #test15LossesOfOccupiedRoomIsCeroPesos stamp: 'i 4/29/2024 19:24:21'!
+PASSED!
+
+!testRun: #RoomTest #test16CannotReserveWhenReserved stamp: 'i 4/29/2024 19:24:21'!
+PASSED!
+
+!testRun: #RoomTest #test17CannotReserveWhenOccupied stamp: 'i 4/29/2024 19:24:21'!
+PASSED!
+
+!methodRemoval: RoomIsReserved #profitUsing:ifAbsentGuestType: stamp: 'i 4/29/2024 19:24:32'!
+profitUsing: aPriceList ifAbsentGuestType: unknownGuestTypeBlock
+	^ aPriceList values min / 2 !
+
+!testRun: #RoomTest #test01NewRoomsAreAvailable stamp: 'i 4/29/2024 19:24:34'!
+PASSED!
+
+!testRun: #RoomTest #test02ReceivingAGuestMakesTheRoomOccupied stamp: 'i 4/29/2024 19:24:34'!
+PASSED!
+
+!testRun: #RoomTest #test03ReservingARoomMakesTheRoomReservedAndOccupied stamp: 'i 4/29/2024 19:24:34'!
+PASSED!
+
+!testRun: #RoomTest #test04CannotReceiveAGuestInAOccupiedRoom stamp: 'i 4/29/2024 19:24:34'!
+PASSED!
+
+!testRun: #RoomTest #test05CannotReceiveAGuestInAReservedRoom stamp: 'i 4/29/2024 19:24:34'!
+PASSED!
+
+!testRun: #RoomTest #test06ReceivingOnReservationMakesTheRoomOccupied stamp: 'i 4/29/2024 19:24:34'!
+PASSED!
+
+!testRun: #RoomTest #test07CannotReceiveOnReservationAnAvailableRoom stamp: 'i 4/29/2024 19:24:34'!
+PASSED!
+
+!testRun: #RoomTest #test08CannotReceiveOnReservationAnOccupiedRoom stamp: 'i 4/29/2024 19:24:34'!
+PASSED!
+
+!testRun: #RoomTest #test09ProfitOfAvailableRoomIsCeroPesos stamp: 'i 4/29/2024 19:24:34'!
+PASSED!
+
+!testRun: #RoomTest #test10ProfitOfReservedRoomIsHalfTheMinPriceInList stamp: 'i 4/29/2024 19:24:34'!
+PASSED!
+
+!testRun: #RoomTest #test11ProfitOfOccupiedRoomDependsOnGuestType stamp: 'i 4/29/2024 19:24:34'!
+PASSED!
+
+!testRun: #RoomTest #test12NoProfitOnOccupiedRoomByUnknownGuestType stamp: 'i 4/29/2024 19:24:34'!
+PASSED!
+
+!testRun: #RoomTest #test13LossesOfAvailableRoomIsHalfTheMaxPriceInList stamp: 'i 4/29/2024 19:24:34'!
+PASSED!
+
+!testRun: #RoomTest #test14LossesOfReservedRoomIsCeroPesos stamp: 'i 4/29/2024 19:24:34'!
+PASSED!
+
+!testRun: #RoomTest #test15LossesOfOccupiedRoomIsCeroPesos stamp: 'i 4/29/2024 19:24:34'!
+PASSED!
+
+!testRun: #RoomTest #test16CannotReserveWhenReserved stamp: 'i 4/29/2024 19:24:34'!
+PASSED!
+
+!testRun: #RoomTest #test17CannotReserveWhenOccupied stamp: 'i 4/29/2024 19:24:34'!
+PASSED!
+
+!methodRemoval: RoomIsOcupied #profitUsing:ifAbsentGuestType: stamp: 'i 4/29/2024 19:24:38'!
+profitUsing: aPriceList ifAbsentGuestType: unknownGuestTypeBlock
+	^aPriceList at: self ifAbsent: unknownGuestTypeBlock!
+!RoomState methodsFor: 'nil' stamp: 'i 4/29/2024 19:24:57'!
+profitUsing: aPriceList ifAbsentGuestType: unknownGuestTypeBlock inRoom: room
+	self subclassResponsibility! !
+!RoomState methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 19:25:10' prior: 50532972!
+profitUsing: aPriceList ifAbsentGuestType: unknownGuestTypeBlock inRoom: room
+	^self subclassResponsibility! !
+
+!methodRemoval: RoomState #profitUsing:ifAbsentGuestType: stamp: 'i 4/29/2024 19:25:12'!
+profitUsing: aPriceList ifAbsentGuestType: unknownGuestTypeBlock
+	^self subclassResponsibility!
+
+!testRun: #RoomTest #test01NewRoomsAreAvailable stamp: 'i 4/29/2024 19:25:13'!
+PASSED!
+
+!testRun: #RoomTest #test02ReceivingAGuestMakesTheRoomOccupied stamp: 'i 4/29/2024 19:25:13'!
+PASSED!
+
+!testRun: #RoomTest #test03ReservingARoomMakesTheRoomReservedAndOccupied stamp: 'i 4/29/2024 19:25:13'!
+PASSED!
+
+!testRun: #RoomTest #test04CannotReceiveAGuestInAOccupiedRoom stamp: 'i 4/29/2024 19:25:13'!
+PASSED!
+
+!testRun: #RoomTest #test05CannotReceiveAGuestInAReservedRoom stamp: 'i 4/29/2024 19:25:13'!
+PASSED!
+
+!testRun: #RoomTest #test06ReceivingOnReservationMakesTheRoomOccupied stamp: 'i 4/29/2024 19:25:13'!
+PASSED!
+
+!testRun: #RoomTest #test07CannotReceiveOnReservationAnAvailableRoom stamp: 'i 4/29/2024 19:25:13'!
+PASSED!
+
+!testRun: #RoomTest #test08CannotReceiveOnReservationAnOccupiedRoom stamp: 'i 4/29/2024 19:25:13'!
+PASSED!
+
+!testRun: #RoomTest #test09ProfitOfAvailableRoomIsCeroPesos stamp: 'i 4/29/2024 19:25:13'!
+PASSED!
+
+!testRun: #RoomTest #test10ProfitOfReservedRoomIsHalfTheMinPriceInList stamp: 'i 4/29/2024 19:25:13'!
+PASSED!
+
+!testRun: #RoomTest #test11ProfitOfOccupiedRoomDependsOnGuestType stamp: 'i 4/29/2024 19:25:13'!
+PASSED!
+
+!testRun: #RoomTest #test12NoProfitOnOccupiedRoomByUnknownGuestType stamp: 'i 4/29/2024 19:25:13'!
+PASSED!
+
+!testRun: #RoomTest #test13LossesOfAvailableRoomIsHalfTheMaxPriceInList stamp: 'i 4/29/2024 19:25:13'!
+PASSED!
+
+!testRun: #RoomTest #test14LossesOfReservedRoomIsCeroPesos stamp: 'i 4/29/2024 19:25:13'!
+PASSED!
+
+!testRun: #RoomTest #test15LossesOfOccupiedRoomIsCeroPesos stamp: 'i 4/29/2024 19:25:13'!
+PASSED!
+
+!testRun: #RoomTest #test16CannotReserveWhenReserved stamp: 'i 4/29/2024 19:25:13'!
+PASSED!
+
+!testRun: #RoomTest #test17CannotReserveWhenOccupied stamp: 'i 4/29/2024 19:25:13'!
+PASSED!
+
+!methodRemoval: RoomIsAvailable #profitUsing:ifAbsentGuestType: stamp: 'i 4/29/2024 19:25:19'!
+profitUsing: aPriceList ifAbsentGuestType: unknownGuestTypeBlock
+	^0*peso.!
+
+!methodRemoval: RoomIsReserved #receiveWithReservation: stamp: 'i 4/29/2024 19:25:41'!
+receiveWithReservation: aGuestType
+	^aGuestType
+	!
+
+!testRun: #RoomTest #test01NewRoomsAreAvailable stamp: 'i 4/29/2024 19:25:42'!
+PASSED!
+
+!testRun: #RoomTest #test02ReceivingAGuestMakesTheRoomOccupied stamp: 'i 4/29/2024 19:25:42'!
+PASSED!
+
+!testRun: #RoomTest #test03ReservingARoomMakesTheRoomReservedAndOccupied stamp: 'i 4/29/2024 19:25:42'!
+PASSED!
+
+!testRun: #RoomTest #test04CannotReceiveAGuestInAOccupiedRoom stamp: 'i 4/29/2024 19:25:42'!
+PASSED!
+
+!testRun: #RoomTest #test05CannotReceiveAGuestInAReservedRoom stamp: 'i 4/29/2024 19:25:42'!
+PASSED!
+
+!testRun: #RoomTest #test06ReceivingOnReservationMakesTheRoomOccupied stamp: 'i 4/29/2024 19:25:42'!
+PASSED!
+
+!testRun: #RoomTest #test07CannotReceiveOnReservationAnAvailableRoom stamp: 'i 4/29/2024 19:25:42'!
+PASSED!
+
+!testRun: #RoomTest #test08CannotReceiveOnReservationAnOccupiedRoom stamp: 'i 4/29/2024 19:25:42'!
+PASSED!
+
+!testRun: #RoomTest #test09ProfitOfAvailableRoomIsCeroPesos stamp: 'i 4/29/2024 19:25:42'!
+PASSED!
+
+!testRun: #RoomTest #test10ProfitOfReservedRoomIsHalfTheMinPriceInList stamp: 'i 4/29/2024 19:25:42'!
+PASSED!
+
+!testRun: #RoomTest #test11ProfitOfOccupiedRoomDependsOnGuestType stamp: 'i 4/29/2024 19:25:42'!
+PASSED!
+
+!testRun: #RoomTest #test12NoProfitOnOccupiedRoomByUnknownGuestType stamp: 'i 4/29/2024 19:25:42'!
+PASSED!
+
+!testRun: #RoomTest #test13LossesOfAvailableRoomIsHalfTheMaxPriceInList stamp: 'i 4/29/2024 19:25:42'!
+PASSED!
+
+!testRun: #RoomTest #test14LossesOfReservedRoomIsCeroPesos stamp: 'i 4/29/2024 19:25:42'!
+PASSED!
+
+!testRun: #RoomTest #test15LossesOfOccupiedRoomIsCeroPesos stamp: 'i 4/29/2024 19:25:42'!
+PASSED!
+
+!testRun: #RoomTest #test16CannotReserveWhenReserved stamp: 'i 4/29/2024 19:25:42'!
+PASSED!
+
+!testRun: #RoomTest #test17CannotReserveWhenOccupied stamp: 'i 4/29/2024 19:25:42'!
+PASSED!
+
+RoomState subclass: #RoomIsUnavailable
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2024-1C-Parcial'!
+
+!classDefinition: #RoomIsUnavailable category: #'ISW1-2024-1C-Parcial' stamp: 'i 4/29/2024 19:26:45'!
+RoomState subclass: #RoomIsUnavailable
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2024-1C-Parcial'!
+
+RoomIsUnavailable subclass: #RoomIsReserved
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2024-1C-Parcial'!
+
+!classDefinition: #RoomIsReserved category: #'ISW1-2024-1C-Parcial' stamp: 'i 4/29/2024 19:27:06'!
+RoomIsUnavailable subclass: #RoomIsReserved
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2024-1C-Parcial'!
+
+RoomIsUnavailable subclass: #RoomIsOcupied
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2024-1C-Parcial'!
+
+!classDefinition: #RoomIsOcupied category: #'ISW1-2024-1C-Parcial' stamp: 'i 4/29/2024 19:27:11'!
+RoomIsUnavailable subclass: #RoomIsOcupied
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2024-1C-Parcial'!
+
+!testRun: #RoomTest #test01NewRoomsAreAvailable stamp: 'i 4/29/2024 19:27:13'!
+PASSED!
+
+!testRun: #RoomTest #test02ReceivingAGuestMakesTheRoomOccupied stamp: 'i 4/29/2024 19:27:13'!
+PASSED!
+
+!testRun: #RoomTest #test03ReservingARoomMakesTheRoomReservedAndOccupied stamp: 'i 4/29/2024 19:27:13'!
+PASSED!
+
+!testRun: #RoomTest #test04CannotReceiveAGuestInAOccupiedRoom stamp: 'i 4/29/2024 19:27:13'!
+PASSED!
+
+!testRun: #RoomTest #test05CannotReceiveAGuestInAReservedRoom stamp: 'i 4/29/2024 19:27:13'!
+PASSED!
+
+!testRun: #RoomTest #test06ReceivingOnReservationMakesTheRoomOccupied stamp: 'i 4/29/2024 19:27:13'!
+PASSED!
+
+!testRun: #RoomTest #test07CannotReceiveOnReservationAnAvailableRoom stamp: 'i 4/29/2024 19:27:13'!
+PASSED!
+
+!testRun: #RoomTest #test08CannotReceiveOnReservationAnOccupiedRoom stamp: 'i 4/29/2024 19:27:13'!
+PASSED!
+
+!testRun: #RoomTest #test09ProfitOfAvailableRoomIsCeroPesos stamp: 'i 4/29/2024 19:27:13'!
+PASSED!
+
+!testRun: #RoomTest #test10ProfitOfReservedRoomIsHalfTheMinPriceInList stamp: 'i 4/29/2024 19:27:13'!
+PASSED!
+
+!testRun: #RoomTest #test11ProfitOfOccupiedRoomDependsOnGuestType stamp: 'i 4/29/2024 19:27:13'!
+PASSED!
+
+!testRun: #RoomTest #test12NoProfitOnOccupiedRoomByUnknownGuestType stamp: 'i 4/29/2024 19:27:13'!
+PASSED!
+
+!testRun: #RoomTest #test13LossesOfAvailableRoomIsHalfTheMaxPriceInList stamp: 'i 4/29/2024 19:27:13'!
+PASSED!
+
+!testRun: #RoomTest #test14LossesOfReservedRoomIsCeroPesos stamp: 'i 4/29/2024 19:27:13'!
+PASSED!
+
+!testRun: #RoomTest #test15LossesOfOccupiedRoomIsCeroPesos stamp: 'i 4/29/2024 19:27:13'!
+PASSED!
+
+!testRun: #RoomTest #test16CannotReserveWhenReserved stamp: 'i 4/29/2024 19:27:13'!
+PASSED!
+
+!testRun: #RoomTest #test17CannotReserveWhenOccupied stamp: 'i 4/29/2024 19:27:13'!
+PASSED!
+!RoomIsUnavailable methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 19:27:23' overrides: 50528394!
+isAvailable
+
+	self subclassResponsibility! !
+!RoomState methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 19:27:23' prior: 50528394!
+isAvailable
+
+	self subclassResponsibility! !
+!RoomIsUnavailable methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 19:27:31' overrides: 50528474!
+isOccupied
+
+	self subclassResponsibility! !
+!RoomState methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 19:27:31' prior: 50528474!
+isOccupied
+
+	self subclassResponsibility! !
+!RoomIsUnavailable methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 19:27:39' overrides: 50528756!
+isReserveInRoom: room
+
+	self subclassResponsibility! !
+!RoomState methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 19:27:39' prior: 50528756!
+isReserveInRoom: room
+
+	self subclassResponsibility! !
+!RoomIsUnavailable methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 19:27:44' overrides: 50528454!
+isReserved
+
+	self subclassResponsibility! !
+!RoomState methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 19:27:44' prior: 50528454!
+isReserved
+
+	self subclassResponsibility! !
+!RoomIsUnavailable methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 19:27:48' overrides: 50532979!
+profitUsing: aPriceList ifAbsentGuestType: unknownGuestTypeBlock inRoom: room
+	^self subclassResponsibility! !
+!RoomState methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 19:27:48' prior: 50532979!
+profitUsing: aPriceList ifAbsentGuestType: unknownGuestTypeBlock inRoom: room
+
+	self subclassResponsibility! !
+!RoomIsUnavailable methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 19:27:54' overrides: 50529038!
+receive: aGuestType inRoom: room
+
+	self subclassResponsibility! !
+!RoomState methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 19:27:54' prior: 50529038!
+receive: aGuestType inRoom: room
+
+	self subclassResponsibility! !
+!RoomIsUnavailable methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 19:27:59' overrides: 50528899!
+receiveWithReservation: aGuestType inRoom: room
+
+	self subclassResponsibility! !
+!RoomState methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 19:27:59' prior: 50528899!
+receiveWithReservation: aGuestType inRoom: room
+
+	self subclassResponsibility! !
+
+!testRun: #RoomTest #test01NewRoomsAreAvailable stamp: 'i 4/29/2024 19:28:01'!
+PASSED!
+
+!testRun: #RoomTest #test02ReceivingAGuestMakesTheRoomOccupied stamp: 'i 4/29/2024 19:28:01'!
+PASSED!
+
+!testRun: #RoomTest #test03ReservingARoomMakesTheRoomReservedAndOccupied stamp: 'i 4/29/2024 19:28:01'!
+PASSED!
+
+!testRun: #RoomTest #test04CannotReceiveAGuestInAOccupiedRoom stamp: 'i 4/29/2024 19:28:01'!
+PASSED!
+
+!testRun: #RoomTest #test05CannotReceiveAGuestInAReservedRoom stamp: 'i 4/29/2024 19:28:01'!
+PASSED!
+
+!testRun: #RoomTest #test06ReceivingOnReservationMakesTheRoomOccupied stamp: 'i 4/29/2024 19:28:01'!
+PASSED!
+
+!testRun: #RoomTest #test07CannotReceiveOnReservationAnAvailableRoom stamp: 'i 4/29/2024 19:28:01'!
+PASSED!
+
+!testRun: #RoomTest #test08CannotReceiveOnReservationAnOccupiedRoom stamp: 'i 4/29/2024 19:28:01'!
+PASSED!
+
+!testRun: #RoomTest #test09ProfitOfAvailableRoomIsCeroPesos stamp: 'i 4/29/2024 19:28:01'!
+PASSED!
+
+!testRun: #RoomTest #test10ProfitOfReservedRoomIsHalfTheMinPriceInList stamp: 'i 4/29/2024 19:28:01'!
+PASSED!
+
+!testRun: #RoomTest #test11ProfitOfOccupiedRoomDependsOnGuestType stamp: 'i 4/29/2024 19:28:01'!
+PASSED!
+
+!testRun: #RoomTest #test12NoProfitOnOccupiedRoomByUnknownGuestType stamp: 'i 4/29/2024 19:28:01'!
+PASSED!
+
+!testRun: #RoomTest #test13LossesOfAvailableRoomIsHalfTheMaxPriceInList stamp: 'i 4/29/2024 19:28:01'!
+PASSED!
+
+!testRun: #RoomTest #test14LossesOfReservedRoomIsCeroPesos stamp: 'i 4/29/2024 19:28:01'!
+PASSED!
+
+!testRun: #RoomTest #test15LossesOfOccupiedRoomIsCeroPesos stamp: 'i 4/29/2024 19:28:01'!
+PASSED!
+
+!testRun: #RoomTest #test16CannotReserveWhenReserved stamp: 'i 4/29/2024 19:28:01'!
+PASSED!
+
+!testRun: #RoomTest #test17CannotReserveWhenOccupied stamp: 'i 4/29/2024 19:28:01'!
+PASSED!
+!Hotel methodsFor: 'totals' stamp: 'i 4/29/2024 19:29:20' prior: 50532804!
+totalRoomsOccupied
+
+	| ix acc |
+
+	acc := 0.
+
+	ix := 1.	
+	
+	self findInTheFloor . 
+	[ ix <= floors size ] whileTrue: [ | floor jx |
+		floor := floors at: ix.
+
+		jx := 1.
+		[ jx <= floor rooms size ] whileTrue: [ | room | 
+			room := floor rooms at: jx.
+			room isOccupied ifTrue: [ 			acc := acc + 1. ].
+			
+			jx := jx + 1.
+		].
+			
+		ix := ix + 1.				
+	].
+
+	^ acc.
+
+! !
+!Hotel methodsFor: 'totals' stamp: 'i 4/29/2024 19:30:58'!
+findInTheFloorRoomsThatAteOccupied
+	|acumulator|
+	
+	acumulator := 0.
+	
+	acumulator := floors inject: 0 into:[:a :rooms| a + rooms]
+! !
+!Hotel methodsFor: 'totals' stamp: 'i 4/29/2024 19:31:02' prior: 50533335!
+totalRoomsOccupied
+
+	| ix acc |
+
+	acc := 0.
+
+	ix := 1.	
+	
+	self findInTheFloorRoomsThatAteOccupied . 
+	[ ix <= floors size ] whileTrue: [ | floor jx |
+		floor := floors at: ix.
+
+		jx := 1.
+		[ jx <= floor rooms size ] whileTrue: [ | room | 
+			room := floor rooms at: jx.
+			room isOccupied ifTrue: [ 			acc := acc + 1. ].
+			
+			jx := jx + 1.
+		].
+			
+		ix := ix + 1.				
+	].
+
+	^ acc.
+
+! !
+!Hotel methodsFor: 'totals' stamp: 'i 4/29/2024 19:31:28' prior: 50533349!
+findInTheFloorRoomsThatAteOccupied
+	|acumulator|
+	
+	acumulator := 0.
+	
+	acumulator := floors inject: 0 into:[:a :rooms| a + rooms select:[:room| room isOccupied] size].
+! !
+!Hotel methodsFor: 'totals' stamp: 'i 4/29/2024 19:31:36' prior: 50533371!
+findInTheFloorRoomsThatAteOccupied
+	|acumulator|
+	
+	acumulator := 0.
+	
+	acumulator := floors inject: 0 into:[:a :rooms| a + rooms select:[:room| room isOccupied] size].
+	
+	^acumulator
+! !
+!Hotel methodsFor: 'totals' stamp: 'i 4/29/2024 19:31:42' prior: 50533356!
+totalRoomsOccupied
+
+	| ix acc |
+
+	acc := 0.
+
+	ix := 1.	
+	
+	self findInTheFloorRoomsThatAreOccupied . 
+	[ ix <= floors size ] whileTrue: [ | floor jx |
+		floor := floors at: ix.
+
+		jx := 1.
+		[ jx <= floor rooms size ] whileTrue: [ | room | 
+			room := floor rooms at: jx.
+			room isOccupied ifTrue: [ 			acc := acc + 1. ].
+			
+			jx := jx + 1.
+		].
+			
+		ix := ix + 1.				
+	].
+
+	^ acc.
+
+! !
+!Hotel methodsFor: 'totals' stamp: 'i 4/29/2024 19:31:45'!
+findInTheFloorRoomsThatAreOccupied
+	|acumulator|
+	
+	acumulator := 0.
+	
+	acumulator := floors inject: 0 into:[:a :rooms| a + rooms select:[:room| room isOccupied] size].
+	
+	^acumulator
+! !
+
+!methodRemoval: Hotel #findInTheFloorRoomsThatAteOccupied stamp: 'i 4/29/2024 19:31:47'!
+findInTheFloorRoomsThatAteOccupied
+	|acumulator|
+	
+	acumulator := 0.
+	
+	acumulator := floors inject: 0 into:[:a :rooms| a + rooms select:[:room| room isOccupied] size].
+	
+	^acumulator
+!
+!Hotel methodsFor: 'totals' stamp: 'i 4/29/2024 19:32:05' prior: 50533388!
+totalRoomsOccupied
+
+	| ix acc |
+
+	acc := 0.
+
+	ix := 1.	
+	
+	self findInTheFloorRoomsThatAreOccupied . 
+	"[ ix <= floors size ] whileTrue: [ | floor jx |
+		floor := floors at: ix.
+
+		jx := 1.
+		[ jx <= floor rooms size ] whileTrue: [ | room | 
+			room := floor rooms at: jx.
+			room isOccupied ifTrue: [ 			acc := acc + 1. ].
+			
+			jx := jx + 1.
+		].
+			
+		ix := ix + 1.				
+	].
+
+	^ acc."
+
+! !
+
+!testRun: #HotelTest #test01CannotCreateHotelWithoutFloors stamp: 'i 4/29/2024 19:32:12'!
+PASSED!
+
+!testRun: #HotelTest #test02NewHotelsAreEmpty stamp: 'i 4/29/2024 19:32:12'!
+PASSED!
+
+!testRun: #HotelTest #test03HotelCanReceiveATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 19:32:12'!
+ERROR!
+
+!testRun: #HotelTest #test04HotelCanTakeAReservationForARoomAtFloor stamp: 'i 4/29/2024 19:32:12'!
+ERROR!
+
+!testRun: #HotelTest #test05HotelCanReceiveWithReservationATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 19:32:12'!
+ERROR!
+
+!testRun: #HotelTest #test06HotelCannotReceiveWithReservationWithoutPreviousReservation stamp: 'i 4/29/2024 19:32:12'!
+ERROR!
+
+!testRun: #HotelTest #test07HotelProfitsAreTheSumOfEachFloorProfits stamp: 'i 4/29/2024 19:32:12'!
+PASSED!
+
+!testRun: #HotelTest #test08HotelLossesAreTheSumOfEachFloorLosses stamp: 'i 4/29/2024 19:32:12'!
+PASSED!
+
+!testRun: #HotelTest #test09HotelCannotReserveANonexistentRoom stamp: 'i 4/29/2024 19:32:12'!
+ERROR!
+
+!testRun: #HotelTest #test10HotelCannotReserveANonexistentFloor stamp: 'i 4/29/2024 19:32:12'!
+ERROR!
+
+!testRun: #HotelTest #test11HotelCannotReceiveAtNonexistentRoom stamp: 'i 4/29/2024 19:32:12'!
+ERROR!
+
+!testRun: #HotelTest #test12HotelCannotReceiveAtNonexistentFloor stamp: 'i 4/29/2024 19:32:12'!
+ERROR!
+
+!testRun: #HotelTest #test13HotelCannotReceiveWithReservationAtNonexistentRoom stamp: 'i 4/29/2024 19:32:12'!
+ERROR!
+!Hotel methodsFor: 'totals' stamp: 'i 4/29/2024 19:32:19' prior: 50533420!
+totalRoomsOccupied
+
+	| ix acc |
+
+	acc := 0.
+
+	ix := 1.	
+	
+	"self findInTheFloorRoomsThatAreOccupied . "
+	[ ix <= floors size ] whileTrue: [ | floor jx |
+		floor := floors at: ix.
+
+		jx := 1.
+		[ jx <= floor rooms size ] whileTrue: [ | room | 
+			room := floor rooms at: jx.
+			room isOccupied ifTrue: [ 			acc := acc + 1. ].
+			
+			jx := jx + 1.
+		].
+			
+		ix := ix + 1.				
+	].
+
+	^ acc.
+
+! !
+
+!testRun: #HotelTest #test01CannotCreateHotelWithoutFloors stamp: 'i 4/29/2024 19:32:22'!
+PASSED!
+
+!testRun: #HotelTest #test02NewHotelsAreEmpty stamp: 'i 4/29/2024 19:32:22'!
+PASSED!
+
+!testRun: #HotelTest #test03HotelCanReceiveATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 19:32:22'!
+PASSED!
+
+!testRun: #HotelTest #test04HotelCanTakeAReservationForARoomAtFloor stamp: 'i 4/29/2024 19:32:22'!
+PASSED!
+
+!testRun: #HotelTest #test05HotelCanReceiveWithReservationATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 19:32:22'!
+PASSED!
+
+!testRun: #HotelTest #test06HotelCannotReceiveWithReservationWithoutPreviousReservation stamp: 'i 4/29/2024 19:32:22'!
+PASSED!
+
+!testRun: #HotelTest #test07HotelProfitsAreTheSumOfEachFloorProfits stamp: 'i 4/29/2024 19:32:22'!
+PASSED!
+
+!testRun: #HotelTest #test08HotelLossesAreTheSumOfEachFloorLosses stamp: 'i 4/29/2024 19:32:22'!
+PASSED!
+
+!testRun: #HotelTest #test09HotelCannotReserveANonexistentRoom stamp: 'i 4/29/2024 19:32:22'!
+PASSED!
+
+!testRun: #HotelTest #test10HotelCannotReserveANonexistentFloor stamp: 'i 4/29/2024 19:32:22'!
+PASSED!
+
+!testRun: #HotelTest #test11HotelCannotReceiveAtNonexistentRoom stamp: 'i 4/29/2024 19:32:22'!
+PASSED!
+
+!testRun: #HotelTest #test12HotelCannotReceiveAtNonexistentFloor stamp: 'i 4/29/2024 19:32:22'!
+PASSED!
+
+!testRun: #HotelTest #test13HotelCannotReceiveWithReservationAtNonexistentRoom stamp: 'i 4/29/2024 19:32:22'!
+PASSED!
+!Hotel methodsFor: 'totals' stamp: 'i 4/29/2024 19:32:39' prior: 50533479!
+totalRoomsOccupied
+
+	| ix acc |
+
+	acc := 0.
+
+	ix := 1.	
+	
+	self findInTheFloorRoomsThatAreOccupied . "
+	[ ix <= floors size ] whileTrue: [ | floor jx |
+		floor := floors at: ix.
+
+		jx := 1.
+		[ jx <= floor rooms size ] whileTrue: [ | room | 
+			room := floor rooms at: jx.
+			room isOccupied ifTrue: [ 			acc := acc + 1. ].
+			
+			jx := jx + 1.
+		].
+			
+		ix := ix + 1.				
+	].
+
+	^ acc."
+
+! !
+
+!testRun: #HotelTest #test02NewHotelsAreEmpty stamp: 'i 4/29/2024 19:32:45'!
+PASSED!
+
+!testRun: #HotelTest #test01CannotCreateHotelWithoutFloors stamp: 'i 4/29/2024 19:32:46'!
+PASSED!
+
+!testRun: #HotelTest #test03HotelCanReceiveATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 19:33:58'!
+ERROR!
+
+!testRun: #FloorTest #test01CannotCreateFloorWithoutRooms stamp: 'i 4/29/2024 19:34:47'!
+PASSED!
+
+!testRun: #FloorTest #test02CannotCreateFloorWithNoIntergerNumberOfRooms stamp: 'i 4/29/2024 19:34:47'!
+PASSED!
+
+!testRun: #FloorTest #test03CannotCreateFloorWithoutPrices stamp: 'i 4/29/2024 19:34:47'!
+PASSED!
+
+!testRun: #FloorTest #test04WhenAFloorIsCreatedAllTheRoomsAreAvailable stamp: 'i 4/29/2024 19:34:47'!
+PASSED!
+
+!testRun: #FloorTest #test05WhenAFloorReceivesAGuestInARoomReducesTheAvailableRoomsByOneAndIncreaseOccupiedByOne stamp: 'i 4/29/2024 19:34:47'!
+PASSED!
+
+!testRun: #FloorTest #test06WhenAFloorReceivesOnReservationAGuestInARoomKeepsTheAvailableRoomsAndOccupiedAndReducesTheReservedByOne stamp: 'i 4/29/2024 19:34:47'!
+PASSED!
+
+!testRun: #FloorTest #test07WhenARoomIsReservedTheFloorAvailableRoomsReducesByOneAndIncreaseReservedAndOccupiedByOne stamp: 'i 4/29/2024 19:34:47'!
+PASSED!
+
+!testRun: #FloorTest #test08TotalProfitShouldBeTheSumOfOccupiedRoomsProfits stamp: 'i 4/29/2024 19:34:47'!
+PASSED!
+
+!testRun: #FloorTest #test09TotalLossesShouldBeTheSumOfAvailableRoomsLosses stamp: 'i 4/29/2024 19:34:47'!
+PASSED!
+
+!methodRemoval: Room #changeStateTo: stamp: 'i 4/29/2024 19:43:44'!
+changeStateTo: reservedRoom
+	state := reservedRoom!
+
+!testRun: #RoomTest #test01NewRoomsAreAvailable stamp: 'i 4/29/2024 19:43:45'!
+PASSED!
+
+!testRun: #RoomTest #test02ReceivingAGuestMakesTheRoomOccupied stamp: 'i 4/29/2024 19:43:45'!
+PASSED!
+
+!testRun: #RoomTest #test03ReservingARoomMakesTheRoomReservedAndOccupied stamp: 'i 4/29/2024 19:43:45'!
+ERROR!
+
+!testRun: #RoomTest #test04CannotReceiveAGuestInAOccupiedRoom stamp: 'i 4/29/2024 19:43:45'!
+PASSED!
+
+!testRun: #RoomTest #test05CannotReceiveAGuestInAReservedRoom stamp: 'i 4/29/2024 19:43:45'!
+ERROR!
+
+!testRun: #RoomTest #test06ReceivingOnReservationMakesTheRoomOccupied stamp: 'i 4/29/2024 19:43:45'!
+ERROR!
+
+!testRun: #RoomTest #test07CannotReceiveOnReservationAnAvailableRoom stamp: 'i 4/29/2024 19:43:45'!
+PASSED!
+
+!testRun: #RoomTest #test08CannotReceiveOnReservationAnOccupiedRoom stamp: 'i 4/29/2024 19:43:45'!
+PASSED!
+
+!testRun: #RoomTest #test09ProfitOfAvailableRoomIsCeroPesos stamp: 'i 4/29/2024 19:43:45'!
+PASSED!
+
+!testRun: #RoomTest #test10ProfitOfReservedRoomIsHalfTheMinPriceInList stamp: 'i 4/29/2024 19:43:45'!
+ERROR!
+
+!testRun: #RoomTest #test11ProfitOfOccupiedRoomDependsOnGuestType stamp: 'i 4/29/2024 19:43:45'!
+PASSED!
+
+!testRun: #RoomTest #test12NoProfitOnOccupiedRoomByUnknownGuestType stamp: 'i 4/29/2024 19:43:45'!
+PASSED!
+
+!testRun: #RoomTest #test13LossesOfAvailableRoomIsHalfTheMaxPriceInList stamp: 'i 4/29/2024 19:43:45'!
+PASSED!
+
+!testRun: #RoomTest #test14LossesOfReservedRoomIsCeroPesos stamp: 'i 4/29/2024 19:43:45'!
+PASSED!
+
+!testRun: #RoomTest #test15LossesOfOccupiedRoomIsCeroPesos stamp: 'i 4/29/2024 19:43:45'!
+PASSED!
+
+!testRun: #RoomTest #test16CannotReserveWhenReserved stamp: 'i 4/29/2024 19:43:45'!
+ERROR!
+
+!testRun: #RoomTest #test17CannotReserveWhenOccupied stamp: 'i 4/29/2024 19:43:45'!
+PASSED!
+
+!methodRemoval: RoomIsReserved #isReserve stamp: 'i 4/29/2024 19:44:32'!
+isReserve
+	self error: self class roomIsNotEmptyErrorDescription!
+!Room methodsFor: 'nil' stamp: 'i 4/29/2024 19:45:10'!
+changeStateTo: reservedRoom
+	state := reservedRoom.! !
+
+!testRun: #RoomTest #test01NewRoomsAreAvailable stamp: 'i 4/29/2024 19:45:13'!
+PASSED!
+
+!testRun: #RoomTest #test02ReceivingAGuestMakesTheRoomOccupied stamp: 'i 4/29/2024 19:45:14'!
+PASSED!
+
+!testRun: #RoomTest #test03ReservingARoomMakesTheRoomReservedAndOccupied stamp: 'i 4/29/2024 19:45:14'!
+PASSED!
+
+!testRun: #RoomTest #test04CannotReceiveAGuestInAOccupiedRoom stamp: 'i 4/29/2024 19:45:14'!
+PASSED!
+
+!testRun: #RoomTest #test05CannotReceiveAGuestInAReservedRoom stamp: 'i 4/29/2024 19:45:14'!
+PASSED!
+
+!testRun: #RoomTest #test06ReceivingOnReservationMakesTheRoomOccupied stamp: 'i 4/29/2024 19:45:14'!
+PASSED!
+
+!testRun: #RoomTest #test07CannotReceiveOnReservationAnAvailableRoom stamp: 'i 4/29/2024 19:45:14'!
+PASSED!
+
+!testRun: #RoomTest #test08CannotReceiveOnReservationAnOccupiedRoom stamp: 'i 4/29/2024 19:45:14'!
+PASSED!
+
+!testRun: #RoomTest #test09ProfitOfAvailableRoomIsCeroPesos stamp: 'i 4/29/2024 19:45:14'!
+PASSED!
+
+!testRun: #RoomTest #test10ProfitOfReservedRoomIsHalfTheMinPriceInList stamp: 'i 4/29/2024 19:45:14'!
+PASSED!
+
+!testRun: #RoomTest #test11ProfitOfOccupiedRoomDependsOnGuestType stamp: 'i 4/29/2024 19:45:14'!
+PASSED!
+
+!testRun: #RoomTest #test12NoProfitOnOccupiedRoomByUnknownGuestType stamp: 'i 4/29/2024 19:45:14'!
+PASSED!
+
+!testRun: #RoomTest #test13LossesOfAvailableRoomIsHalfTheMaxPriceInList stamp: 'i 4/29/2024 19:45:14'!
+PASSED!
+
+!testRun: #RoomTest #test14LossesOfReservedRoomIsCeroPesos stamp: 'i 4/29/2024 19:45:14'!
+PASSED!
+
+!testRun: #RoomTest #test15LossesOfOccupiedRoomIsCeroPesos stamp: 'i 4/29/2024 19:45:14'!
+PASSED!
+
+!testRun: #RoomTest #test16CannotReserveWhenReserved stamp: 'i 4/29/2024 19:45:14'!
+PASSED!
+
+!testRun: #RoomTest #test17CannotReserveWhenOccupied stamp: 'i 4/29/2024 19:45:14'!
+PASSED!
+!Floor methodsFor: 'setters' stamp: 'i 4/29/2024 19:46:34' prior: 50527545!
+setNumberOfRooms: aNumberOfRooms
+
+	self class assertIsPositiveAndInteger: aNumberOfRooms ifFalse: [ self class signalNumberOfRoomsMustBePositive ].
+	self class assertIsInteger: aNumberOfRooms ifFalse: [ self class signalNumberOfRoomsMustBeInteger ].
+	
+	self initializeRoomsWith: aNumberOfRooms.
+! !
+!Floor methodsFor: 'setters' stamp: 'i 4/29/2024 19:46:58' prior: 50533719!
+setNumberOfRooms: aNumberOfRooms
+
+	self class assertIsPositive: aNumberOfRooms ifFalse: [ self class signalNumberOfRoomsMustBePositive ].
+	self class assertIsInteger: aNumberOfRooms ifFalse: [ self class signalNumberOfRoomsMustBeInteger ].
+	
+	self initializeRoomsWith: aNumberOfRooms.
+! !
+!Floor class methodsFor: 'assertions' stamp: 'i 4/29/2024 19:49:45'!
+classAssertIsValidInput: aNumberOfRooms
+	 aNumberOfRooms isStrictlyPositive! !
+!Floor class methodsFor: 'assertions' stamp: 'i 4/29/2024 19:51:45' prior: 50533743!
+classAssertIsValidInput: aNumberOfRooms
+	 aNumberOfRooms strictlyPositive ifFalse: [ self class signalNumberOfRoomsMustBePositive ].
+	aNumberOfRooms isInteger ifFalse: [ self class signalNumberOfRoomsMustBeInteger ]! !
+!FloorTest methodsFor: 'create' stamp: 'i 4/29/2024 19:52:37' prior: 50526955!
+createFloorWith: aNumberOfRooms and: aPrice
+
+	| floor |
+
+	floor := Floor new.
+	floor NumberOfRooms: aNumberOfRooms withSetPrices: aPrice.
+	floor setPrices: aPrice.
+	
+	^ floor.! !
+!FloorTest methodsFor: 'create' stamp: 'FRT 4/21/2024 14:35:45' prior: 50533759!
+createFloorWith: aNumberOfRooms and: aPrice
+
+	| floor |
+
+	floor := Floor new.
+	floor setNumberOfRooms: aNumberOfRooms.
+	floor setPrices: aPrice.
+	
+	^ floor.! !
+
+!testRun: #FloorTest #test03CannotCreateFloorWithoutPrices stamp: 'i 4/29/2024 19:58:07'!
+PASSED!
+!Floor class methodsFor: 'assertions' stamp: 'i 4/29/2024 19:59:36'!
+classAssertIsValidInputOfRooms: aNumberOfRooms andSetOfPrices: setOfPrices
+	 aNumberOfRooms strictlyPositive ifFalse: [ self class signalNumberOfRoomsMustBePositive ].
+	aNumberOfRooms isInteger ifFalse: [ self class signalNumberOfRoomsMustBeInteger ]! !
+!Floor class methodsFor: 'assertions' stamp: 'i 4/29/2024 20:00:36' prior: 50533779!
+classAssertIsValidInputOfRooms: aNumberOfRooms andSetOfPrices: aPriceList
+
+	 aNumberOfRooms strictlyPositive ifFalse: [ self class signalNumberOfRoomsMustBePositive ].
+	aNumberOfRooms isInteger ifFalse: [ self class signalNumberOfRoomsMustBeInteger ].
+	aPriceList isEmpty ifTrue:[self class signalNoPrices].
+	aPriceList values do: [ :price | 
+		self class assertIsPositive: price ifFalse: [ self class signalPriceMustBePositive ].
+	].
+! !
+!Floor class methodsFor: 'assertions' stamp: 'i 4/29/2024 20:01:17' prior: 50533790!
+classAssertIsValidInputOfRooms: aNumberOfRooms andSetOfPrices: aPriceList
+
+	 aNumberOfRooms strictlyPositive ifFalse: [ self class signalNumberOfRoomsMustBePositive ].
+	aNumberOfRooms isInteger ifFalse: [ self class signalNumberOfRoomsMustBeInteger ].
+	aPriceList isEmpty ifTrue:[self class signalNoPrices].
+	aPriceList values do: [ :price | 
+		self class assertIsPositive: price ifFalse: [ self class signalPriceMustBePositive ].
+	].
+	self initializeWithRooms: aNumberOfRooms andListOfPrices: aPriceList.
+! !
+!Floor methodsFor: 'initialization' stamp: 'i 4/29/2024 20:01:46'!
+initializeWithRooms: aNumberOfRooms andListOfPrices: aPriceList
+
+	| ix |
+	
+	rooms := OrderedCollection new.
+	
+	ix := 1.
+	[ ix <= aNumberOfRooms ] whileTrue: [ 
+		rooms add: Room new.
+		ix := ix + 1.
+	]
+! !
+!Floor methodsFor: 'initialization' stamp: 'i 4/29/2024 20:02:02' prior: 50533826!
+initializeWithRooms: aNumberOfRooms andListOfPrices: aPriceList
+
+	| ix |
+	
+	rooms := OrderedCollection new.
+	
+	ix := 1.
+	[ ix <= aNumberOfRooms ] whileTrue: [ 
+		rooms add: Room new.
+		ix := ix + 1.
+	].
+ 	prices := aPriceList
+! !
+!Floor methodsFor: 'initialization' stamp: 'i 4/29/2024 20:02:17' prior: 50533836!
+initializeWithRooms: aNumberOfRooms andListOfPrices: aPriceList
+
+	| index |
+	
+	rooms := OrderedCollection new.
+	
+	index := 1.
+	[ index <= aNumberOfRooms ] whileTrue: [ 
+		rooms add: Room new.
+		index := index + 1.
+	].
+ 	prices := aPriceList
+! !
+!Floor class methodsFor: 'assertions' stamp: 'i 4/29/2024 20:02:40'!
+withNumberOfRooms: aNumberOfRooms andSetOfPrices: aPriceList
+
+	 aNumberOfRooms strictlyPositive ifFalse: [ self class signalNumberOfRoomsMustBePositive ].
+	aNumberOfRooms isInteger ifFalse: [ self class signalNumberOfRoomsMustBeInteger ].
+	aPriceList isEmpty ifTrue:[self class signalNoPrices].
+	aPriceList values do: [ :price | 
+		self class assertIsPositive: price ifFalse: [ self class signalPriceMustBePositive ].
+	].
+	self initializeWithRooms: aNumberOfRooms andListOfPrices: aPriceList.
+! !
+!FloorTest methodsFor: 'create' stamp: 'i 4/29/2024 20:02:58' prior: 50533768!
+createFloorWith: aNumberOfRooms and: aPrice
+
+	| floor |
+
+	floor := Floor withNumberOfRooms: aNumberOfRooms andSetOfPrices: aPrice.
+	floor setNumberOfRooms: aNumberOfRooms.
+	floor setPrices: aPrice.
+	
+	^ floor.! !
+
+!testRun: #FloorTest #test04WhenAFloorIsCreatedAllTheRoomsAreAvailable stamp: 'i 4/29/2024 20:03:17'!
+ERROR!
+!Floor class methodsFor: 'assertions' stamp: 'i 4/29/2024 20:06:55' prior: 50533807!
+classAssertIsValidInputOfRooms: aNumberOfRooms andSetOfPrices: aPriceList
+
+	 aNumberOfRooms strictlyPositive ifFalse: [ self class signalNumberOfRoomsMustBePositive ].
+	aNumberOfRooms isInteger ifFalse: [ self class signalNumberOfRoomsMustBeInteger ].
+	aPriceList isEmpty ifTrue:[self class signalNoPrices].
+	aPriceList values do: [ :price | 
+		self assertIsPositive: price ifFalse: [ self class signalPriceMustBePositive ].
+	].
+	self initializeWithRooms: aNumberOfRooms andListOfPrices: aPriceList.
+! !
+
+!testRun: #FloorTest #test04WhenAFloorIsCreatedAllTheRoomsAreAvailable stamp: 'i 4/29/2024 20:07:04'!
+ERROR!
+
+!testRun: #FloorTest #test04WhenAFloorIsCreatedAllTheRoomsAreAvailable stamp: 'i 4/29/2024 20:07:09'!
+ERROR!
+!Floor class methodsFor: 'assertions' stamp: 'i 4/29/2024 20:07:29' prior: 50533856!
+withNumberOfRooms: aNumberOfRooms andSetOfPrices: aPriceList
+
+	 aNumberOfRooms strictlyPositive ifFalse: [ self class signalNumberOfRoomsMustBePositive ].
+	aNumberOfRooms isInteger ifFalse: [ self class signalNumberOfRoomsMustBeInteger ].
+	aPriceList isEmpty ifTrue:[self class signalNoPrices].
+	aPriceList values do: [ :price | 
+		self  assertIsPositive: price ifFalse: [ self class signalPriceMustBePositive ].
+	].
+	self initializeWithRooms: aNumberOfRooms andListOfPrices: aPriceList.
+! !
+
+!testRun: #FloorTest #test04WhenAFloorIsCreatedAllTheRoomsAreAvailable stamp: 'i 4/29/2024 20:07:38'!
+ERROR!
+
+!testRun: #FloorTest #test04WhenAFloorIsCreatedAllTheRoomsAreAvailable stamp: 'i 4/29/2024 20:07:42'!
+ERROR!
+
+!testRun: #FloorTest #test04WhenAFloorIsCreatedAllTheRoomsAreAvailable stamp: 'i 4/29/2024 20:07:49'!
+ERROR!
+!Floor methodsFor: 'initialization' stamp: 'i 4/29/2024 20:08:28' prior: 50533846!
+initializeWithRooms: aNumberOfRooms andListOfPrices: aPriceList
+
+	| index |
+	
+	rooms := OrderedCollection new.
+	
+	index := 1.
+	[ index <= aNumberOfRooms ] whileTrue: [ 
+		rooms add: Room new.
+		index := index + 1.
+	].
+ 	prices := aPriceList
+! !
+!Floor class methodsFor: 'assertions' stamp: 'i 4/29/2024 20:09:29' prior: 50533913!
+withNumberOfRooms: aNumberOfRooms andSetOfPrices: aPriceList
+
+	 aNumberOfRooms strictlyPositive ifFalse: [ self class signalNumberOfRoomsMustBePositive ].
+	aNumberOfRooms isInteger ifFalse: [ self class signalNumberOfRoomsMustBeInteger ].
+	aPriceList isEmpty ifTrue:[self class signalNoPrices].
+	aPriceList values do: [ :price | 
+		self  assertIsPositive: price ifFalse: [ self class signalPriceMustBePositive ].
+	].
+	self new initializeWithRooms: aNumberOfRooms andListOfPrices: aPriceList.
+! !
+!FloorTest methodsFor: 'create' stamp: 'i 4/29/2024 20:09:59' prior: 50533874!
+createFloorWith: aNumberOfRooms and: aPrice
+
+	| floor |
+
+	floor := Floor withNumberOfRooms: aNumberOfRooms andSetOfPrices: aPrice.
+	"floor setNumberOfRooms: aNumberOfRooms.
+	floor setPrices: aPrice."
+	
+	^ floor.! !
+
+!testRun: #FloorTest #test01CannotCreateFloorWithoutRooms stamp: 'i 4/29/2024 20:10:04'!
+ERROR!
+
+!testRun: #FloorTest #test01CannotCreateFloorWithoutRooms stamp: 'i 4/29/2024 20:10:04'!
+ERROR!
+
+!testRun: #FloorTest #test01CannotCreateFloorWithoutRooms stamp: 'i 4/29/2024 20:10:42'!
+ERROR!
+!Floor class methodsFor: 'assertions' stamp: 'i 4/29/2024 20:11:43' prior: 50533953!
+withNumberOfRooms: aNumberOfRooms andSetOfPrices: aPriceList
+
+	 aNumberOfRooms strictlyPositive ifFalse: [ self  signalNumberOfRoomsMustBePositive ].
+	aNumberOfRooms isInteger ifFalse: [ self signalNumberOfRoomsMustBeInteger ].
+	aPriceList isEmpty ifTrue:[self signalNoPrices].
+	aPriceList values do: [ :price | 
+		self  assertIsPositive: price ifFalse: [ self signalPriceMustBePositive ].
+	].
+	self new initializeWithRooms: aNumberOfRooms andListOfPrices: aPriceList.
+! !
+
+!testRun: #FloorTest #test01CannotCreateFloorWithoutRooms stamp: 'i 4/29/2024 20:11:46'!
+PASSED!
+
+!testRun: #FloorTest #test02CannotCreateFloorWithNoIntergerNumberOfRooms stamp: 'i 4/29/2024 20:11:48'!
+PASSED!
+
+!testRun: #FloorTest #test03CannotCreateFloorWithoutPrices stamp: 'i 4/29/2024 20:11:49'!
+PASSED!
+
+!testRun: #FloorTest #test04WhenAFloorIsCreatedAllTheRoomsAreAvailable stamp: 'i 4/29/2024 20:11:51'!
+ERROR!
+
+!testRun: #FloorTest #test04WhenAFloorIsCreatedAllTheRoomsAreAvailable stamp: 'i 4/29/2024 20:11:51'!
+ERROR!
+!FloorTest methodsFor: 'create' stamp: 'i 4/29/2024 20:13:24' prior: 50533971!
+createFloorWith: aNumberOfRooms and: aPrice
+
+	| floor |
+
+	floor := Floor new withNumberOfRooms: aNumberOfRooms andSetOfPrices: aPrice.
+	"floor setNumberOfRooms: aNumberOfRooms.
+	floor setPrices: aPrice."
+	
+	^ floor.! !
+
+!testRun: #FloorTest #test01CannotCreateFloorWithoutRooms stamp: 'i 4/29/2024 20:13:26'!
+ERROR!
+
+!testRun: #FloorTest #test02CannotCreateFloorWithNoIntergerNumberOfRooms stamp: 'i 4/29/2024 20:13:26'!
+ERROR!
+
+!testRun: #FloorTest #test03CannotCreateFloorWithoutPrices stamp: 'i 4/29/2024 20:13:26'!
+ERROR!
+
+!testRun: #FloorTest #test04WhenAFloorIsCreatedAllTheRoomsAreAvailable stamp: 'i 4/29/2024 20:13:26'!
+ERROR!
+
+!testRun: #FloorTest #test05WhenAFloorReceivesAGuestInARoomReducesTheAvailableRoomsByOneAndIncreaseOccupiedByOne stamp: 'i 4/29/2024 20:13:26'!
+ERROR!
+
+!testRun: #FloorTest #test06WhenAFloorReceivesOnReservationAGuestInARoomKeepsTheAvailableRoomsAndOccupiedAndReducesTheReservedByOne stamp: 'i 4/29/2024 20:13:26'!
+ERROR!
+
+!testRun: #FloorTest #test07WhenARoomIsReservedTheFloorAvailableRoomsReducesByOneAndIncreaseReservedAndOccupiedByOne stamp: 'i 4/29/2024 20:13:26'!
+ERROR!
+
+!testRun: #FloorTest #test08TotalProfitShouldBeTheSumOfOccupiedRoomsProfits stamp: 'i 4/29/2024 20:13:26'!
+ERROR!
+
+!testRun: #FloorTest #test09TotalLossesShouldBeTheSumOfAvailableRoomsLosses stamp: 'i 4/29/2024 20:13:26'!
+ERROR!
+!FloorTest methodsFor: 'create' stamp: 'i 4/29/2024 20:13:33' prior: 50534024!
+createFloorWith: aNumberOfRooms and: aPrice
+
+	| floor |
+
+	floor := Floor withNumberOfRooms: aNumberOfRooms andSetOfPrices: aPrice.
+	"floor setNumberOfRooms: aNumberOfRooms.
+	floor setPrices: aPrice."
+	
+	^ floor.! !
+!Floor class methodsFor: 'assertions' stamp: 'i 4/29/2024 20:13:53' prior: 50533990!
+withNumberOfRooms: aNumberOfRooms andSetOfPrices: aPriceList
+
+	 aNumberOfRooms strictlyPositive ifFalse: [ self  signalNumberOfRoomsMustBePositive ].
+	aNumberOfRooms isInteger ifFalse: [ self signalNumberOfRoomsMustBeInteger ].
+	aPriceList isEmpty ifTrue:[self signalNoPrices].
+	aPriceList values do: [ :price | 
+		self  assertIsPositive: price ifFalse: [ self signalPriceMustBePositive ].
+	].
+	^self new initializeWithRooms: aNumberOfRooms andListOfPrices: aPriceList.
+! !
+
+!testRun: #FloorTest #test01CannotCreateFloorWithoutRooms stamp: 'i 4/29/2024 20:13:58'!
+PASSED!
+
+!testRun: #FloorTest #test04WhenAFloorIsCreatedAllTheRoomsAreAvailable stamp: 'i 4/29/2024 20:14:16'!
+PASSED!
+
+!testRun: #FloorTest #test05WhenAFloorReceivesAGuestInARoomReducesTheAvailableRoomsByOneAndIncreaseOccupiedByOne stamp: 'i 4/29/2024 20:14:17'!
+PASSED!
+
+!testRun: #FloorTest #test06WhenAFloorReceivesOnReservationAGuestInARoomKeepsTheAvailableRoomsAndOccupiedAndReducesTheReservedByOne stamp: 'i 4/29/2024 20:14:18'!
+PASSED!
+
+!testRun: #FloorTest #test07WhenARoomIsReservedTheFloorAvailableRoomsReducesByOneAndIncreaseReservedAndOccupiedByOne stamp: 'i 4/29/2024 20:14:19'!
+PASSED!
+
+!testRun: #FloorTest #test08TotalProfitShouldBeTheSumOfOccupiedRoomsProfits stamp: 'i 4/29/2024 20:14:21'!
+PASSED!
+
+!testRun: #FloorTest #test09TotalLossesShouldBeTheSumOfAvailableRoomsLosses stamp: 'i 4/29/2024 20:14:22'!
+PASSED!
+
+!testRun: #FloorTest #test01CannotCreateFloorWithoutRooms stamp: 'i 4/29/2024 20:14:44'!
+PASSED!
+
+!testRun: #FloorTest #test02CannotCreateFloorWithNoIntergerNumberOfRooms stamp: 'i 4/29/2024 20:14:44'!
+PASSED!
+
+!testRun: #FloorTest #test03CannotCreateFloorWithoutPrices stamp: 'i 4/29/2024 20:14:44'!
+PASSED!
+
+!testRun: #FloorTest #test04WhenAFloorIsCreatedAllTheRoomsAreAvailable stamp: 'i 4/29/2024 20:14:44'!
+PASSED!
+
+!testRun: #FloorTest #test05WhenAFloorReceivesAGuestInARoomReducesTheAvailableRoomsByOneAndIncreaseOccupiedByOne stamp: 'i 4/29/2024 20:14:44'!
+PASSED!
+
+!testRun: #FloorTest #test06WhenAFloorReceivesOnReservationAGuestInARoomKeepsTheAvailableRoomsAndOccupiedAndReducesTheReservedByOne stamp: 'i 4/29/2024 20:14:44'!
+PASSED!
+
+!testRun: #FloorTest #test07WhenARoomIsReservedTheFloorAvailableRoomsReducesByOneAndIncreaseReservedAndOccupiedByOne stamp: 'i 4/29/2024 20:14:44'!
+PASSED!
+
+!testRun: #FloorTest #test08TotalProfitShouldBeTheSumOfOccupiedRoomsProfits stamp: 'i 4/29/2024 20:14:44'!
+PASSED!
+
+!testRun: #FloorTest #test09TotalLossesShouldBeTheSumOfAvailableRoomsLosses stamp: 'i 4/29/2024 20:14:44'!
+PASSED!
+
+!methodRemoval: Floor #setNumberOfRooms: stamp: 'i 4/29/2024 20:14:48'!
+setNumberOfRooms: aNumberOfRooms
+
+	self class assertIsPositive: aNumberOfRooms ifFalse: [ self class signalNumberOfRoomsMustBePositive ].
+	self class assertIsInteger: aNumberOfRooms ifFalse: [ self class signalNumberOfRoomsMustBeInteger ].
+	
+	self initializeRoomsWith: aNumberOfRooms.
+!
+
+!methodRemoval: Floor #setPrices: stamp: 'i 4/29/2024 20:14:48'!
+setPrices: aPriceList
+
+	aPriceList isEmpty ifTrue: [ self class signalNoPrices ].
+	
+	aPriceList values do: [ :price | 
+		self class assertIsPositive: price ifFalse: [ self class signalPriceMustBePositive ].
+	].
+	
+	self initializeWith: aPriceList.!
+
+!testRun: #FloorTest #test01CannotCreateFloorWithoutRooms stamp: 'i 4/29/2024 20:14:49'!
+PASSED!
+
+!testRun: #FloorTest #test02CannotCreateFloorWithNoIntergerNumberOfRooms stamp: 'i 4/29/2024 20:14:49'!
+PASSED!
+
+!testRun: #FloorTest #test03CannotCreateFloorWithoutPrices stamp: 'i 4/29/2024 20:14:49'!
+PASSED!
+
+!testRun: #FloorTest #test04WhenAFloorIsCreatedAllTheRoomsAreAvailable stamp: 'i 4/29/2024 20:14:49'!
+PASSED!
+
+!testRun: #FloorTest #test05WhenAFloorReceivesAGuestInARoomReducesTheAvailableRoomsByOneAndIncreaseOccupiedByOne stamp: 'i 4/29/2024 20:14:49'!
+PASSED!
+
+!testRun: #FloorTest #test06WhenAFloorReceivesOnReservationAGuestInARoomKeepsTheAvailableRoomsAndOccupiedAndReducesTheReservedByOne stamp: 'i 4/29/2024 20:14:49'!
+PASSED!
+
+!testRun: #FloorTest #test07WhenARoomIsReservedTheFloorAvailableRoomsReducesByOneAndIncreaseReservedAndOccupiedByOne stamp: 'i 4/29/2024 20:14:49'!
+PASSED!
+
+!testRun: #FloorTest #test08TotalProfitShouldBeTheSumOfOccupiedRoomsProfits stamp: 'i 4/29/2024 20:14:49'!
+PASSED!
+
+!testRun: #FloorTest #test09TotalLossesShouldBeTheSumOfAvailableRoomsLosses stamp: 'i 4/29/2024 20:14:49'!
+PASSED!
+
+!methodRemoval: Floor #initializeRoomsWith: stamp: 'i 4/29/2024 20:16:41'!
+initializeRoomsWith: aNumberOfRooms
+
+	| ix |
+	
+	rooms := OrderedCollection new.
+	
+	ix := 1.
+	[ ix <= aNumberOfRooms ] whileTrue: [ 
+		rooms add: Room new.
+		ix := ix + 1.
+	]
+!
+
+!methodRemoval: Floor #initializeWith: stamp: 'i 4/29/2024 20:16:44'!
+initializeWith: aPriceList
+
+	prices := aPriceList!
+
+!testRun: #FloorTest #test01CannotCreateFloorWithoutRooms stamp: 'i 4/29/2024 20:16:50'!
+PASSED!
+
+!testRun: #FloorTest #test02CannotCreateFloorWithNoIntergerNumberOfRooms stamp: 'i 4/29/2024 20:16:50'!
+PASSED!
+
+!testRun: #FloorTest #test03CannotCreateFloorWithoutPrices stamp: 'i 4/29/2024 20:16:50'!
+PASSED!
+
+!testRun: #FloorTest #test04WhenAFloorIsCreatedAllTheRoomsAreAvailable stamp: 'i 4/29/2024 20:16:50'!
+PASSED!
+
+!testRun: #FloorTest #test05WhenAFloorReceivesAGuestInARoomReducesTheAvailableRoomsByOneAndIncreaseOccupiedByOne stamp: 'i 4/29/2024 20:16:50'!
+PASSED!
+
+!testRun: #FloorTest #test06WhenAFloorReceivesOnReservationAGuestInARoomKeepsTheAvailableRoomsAndOccupiedAndReducesTheReservedByOne stamp: 'i 4/29/2024 20:16:50'!
+PASSED!
+
+!testRun: #FloorTest #test07WhenARoomIsReservedTheFloorAvailableRoomsReducesByOneAndIncreaseReservedAndOccupiedByOne stamp: 'i 4/29/2024 20:16:50'!
+PASSED!
+
+!testRun: #FloorTest #test08TotalProfitShouldBeTheSumOfOccupiedRoomsProfits stamp: 'i 4/29/2024 20:16:50'!
+PASSED!
+
+!testRun: #FloorTest #test09TotalLossesShouldBeTheSumOfAvailableRoomsLosses stamp: 'i 4/29/2024 20:16:50'!
+PASSED!
+!Floor methodsFor: 'accounting' stamp: 'i 4/29/2024 20:18:30' prior: 50527534!
+totalProfits
+
+	| total |
+	
+	total := 0*peso.
+	rooms do: [ :room | | roomTotal | 
+		roomTotal := room profitUsing: prices ifAbsentGuestType: [ self class signalUnknownGuestType ].
+		total := total + roomTotal
+		"room isOccupied ifTrue: [
+			roomTotal := 	room profitUsing: prices ifAbsentGuestType: [ self class signalUnknownGuestType ].
+			total := total + roomTotal.
+		]"
+	].
+
+	^ total
+! !
+
+!testRun: #FloorTest #test01CannotCreateFloorWithoutRooms stamp: 'i 4/29/2024 20:18:32'!
+PASSED!
+
+!testRun: #FloorTest #test02CannotCreateFloorWithNoIntergerNumberOfRooms stamp: 'i 4/29/2024 20:18:32'!
+PASSED!
+
+!testRun: #FloorTest #test03CannotCreateFloorWithoutPrices stamp: 'i 4/29/2024 20:18:32'!
+PASSED!
+
+!testRun: #FloorTest #test04WhenAFloorIsCreatedAllTheRoomsAreAvailable stamp: 'i 4/29/2024 20:18:32'!
+PASSED!
+
+!testRun: #FloorTest #test05WhenAFloorReceivesAGuestInARoomReducesTheAvailableRoomsByOneAndIncreaseOccupiedByOne stamp: 'i 4/29/2024 20:18:32'!
+PASSED!
+
+!testRun: #FloorTest #test06WhenAFloorReceivesOnReservationAGuestInARoomKeepsTheAvailableRoomsAndOccupiedAndReducesTheReservedByOne stamp: 'i 4/29/2024 20:18:32'!
+PASSED!
+
+!testRun: #FloorTest #test07WhenARoomIsReservedTheFloorAvailableRoomsReducesByOneAndIncreaseReservedAndOccupiedByOne stamp: 'i 4/29/2024 20:18:32'!
+PASSED!
+
+!testRun: #FloorTest #test08TotalProfitShouldBeTheSumOfOccupiedRoomsProfits stamp: 'i 4/29/2024 20:18:32'!
+PASSED!
+
+!testRun: #FloorTest #test09TotalLossesShouldBeTheSumOfAvailableRoomsLosses stamp: 'i 4/29/2024 20:18:32'!
+PASSED!
+!Floor methodsFor: 'accounting' stamp: 'i 4/29/2024 20:18:41' prior: 50534265!
+totalProfits
+
+	| total |
+	
+	total := 0*peso.
+	rooms do: [ :room | | roomTotal | 
+		roomTotal := room profitUsing: prices ifAbsentGuestType: [ self class signalUnknownGuestType ].
+		total := total + roomTotal
+	].
+
+	^ total
+! !
+
+!testRun: #FloorTest #test01CannotCreateFloorWithoutRooms stamp: 'i 4/29/2024 20:18:45'!
+PASSED!
+
+!testRun: #FloorTest #test02CannotCreateFloorWithNoIntergerNumberOfRooms stamp: 'i 4/29/2024 20:18:45'!
+PASSED!
+
+!testRun: #FloorTest #test03CannotCreateFloorWithoutPrices stamp: 'i 4/29/2024 20:18:45'!
+PASSED!
+
+!testRun: #FloorTest #test04WhenAFloorIsCreatedAllTheRoomsAreAvailable stamp: 'i 4/29/2024 20:18:45'!
+PASSED!
+
+!testRun: #FloorTest #test05WhenAFloorReceivesAGuestInARoomReducesTheAvailableRoomsByOneAndIncreaseOccupiedByOne stamp: 'i 4/29/2024 20:18:45'!
+PASSED!
+
+!testRun: #FloorTest #test06WhenAFloorReceivesOnReservationAGuestInARoomKeepsTheAvailableRoomsAndOccupiedAndReducesTheReservedByOne stamp: 'i 4/29/2024 20:18:45'!
+PASSED!
+
+!testRun: #FloorTest #test07WhenARoomIsReservedTheFloorAvailableRoomsReducesByOneAndIncreaseReservedAndOccupiedByOne stamp: 'i 4/29/2024 20:18:45'!
+PASSED!
+
+!testRun: #FloorTest #test08TotalProfitShouldBeTheSumOfOccupiedRoomsProfits stamp: 'i 4/29/2024 20:18:45'!
+PASSED!
+
+!testRun: #FloorTest #test09TotalLossesShouldBeTheSumOfAvailableRoomsLosses stamp: 'i 4/29/2024 20:18:45'!
+PASSED!
+!Floor methodsFor: 'initialization' stamp: 'i 4/29/2024 20:21:49' prior: 50533942!
+initializeWithRooms: aNumberOfRooms andListOfPrices: aPriceList
+
+	
+	
+	rooms := OrderedCollection new:aNumberOfRooms.
+	"
+	index := 1.
+	[ index <= aNumberOfRooms ] whileTrue: [ 
+		rooms add: Room new.
+		index := index + 1.
+	]."
+ 	prices := aPriceList
+! !
+
+!testRun: #FloorTest #test01CannotCreateFloorWithoutRooms stamp: 'i 4/29/2024 20:21:56'!
+PASSED!
+
+!testRun: #FloorTest #test02CannotCreateFloorWithNoIntergerNumberOfRooms stamp: 'i 4/29/2024 20:21:56'!
+PASSED!
+
+!testRun: #FloorTest #test03CannotCreateFloorWithoutPrices stamp: 'i 4/29/2024 20:21:56'!
+PASSED!
+
+!testRun: #FloorTest #test04WhenAFloorIsCreatedAllTheRoomsAreAvailable stamp: 'i 4/29/2024 20:21:56'!
+PASSED!
+
+!testRun: #FloorTest #test05WhenAFloorReceivesAGuestInARoomReducesTheAvailableRoomsByOneAndIncreaseOccupiedByOne stamp: 'i 4/29/2024 20:21:56'!
+ERROR!
+
+!testRun: #FloorTest #test06WhenAFloorReceivesOnReservationAGuestInARoomKeepsTheAvailableRoomsAndOccupiedAndReducesTheReservedByOne stamp: 'i 4/29/2024 20:21:56'!
+ERROR!
+
+!testRun: #FloorTest #test07WhenARoomIsReservedTheFloorAvailableRoomsReducesByOneAndIncreaseReservedAndOccupiedByOne stamp: 'i 4/29/2024 20:21:56'!
+ERROR!
+
+!testRun: #FloorTest #test08TotalProfitShouldBeTheSumOfOccupiedRoomsProfits stamp: 'i 4/29/2024 20:21:56'!
+ERROR!
+
+!testRun: #FloorTest #test09TotalLossesShouldBeTheSumOfAvailableRoomsLosses stamp: 'i 4/29/2024 20:21:56'!
+ERROR!
+!Floor methodsFor: 'initialization' stamp: 'i 4/29/2024 20:22:13' prior: 50534362!
+initializeWithRooms: aNumberOfRooms andListOfPrices: aPriceList
+
+	|index|
+	
+	rooms := OrderedCollection new:aNumberOfRooms.
+	
+	index := 1.
+	[ index <= aNumberOfRooms ] whileTrue: [ 
+		rooms add: Room new.
+		index := index + 1.
+	].
+ 	prices := aPriceList
+! !
+
+!testRun: #HotelTest #test01CannotCreateHotelWithoutFloors stamp: 'i 4/29/2024 20:22:22'!
+PASSED!
+
+!testRun: #HotelTest #test02NewHotelsAreEmpty stamp: 'i 4/29/2024 20:22:22'!
+ERROR!
+
+!testRun: #HotelTest #test03HotelCanReceiveATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 20:22:22'!
+ERROR!
+
+!testRun: #HotelTest #test04HotelCanTakeAReservationForARoomAtFloor stamp: 'i 4/29/2024 20:22:22'!
+ERROR!
+
+!testRun: #HotelTest #test05HotelCanReceiveWithReservationATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 20:22:22'!
+ERROR!
+
+!testRun: #HotelTest #test06HotelCannotReceiveWithReservationWithoutPreviousReservation stamp: 'i 4/29/2024 20:22:22'!
+ERROR!
+
+!testRun: #HotelTest #test07HotelProfitsAreTheSumOfEachFloorProfits stamp: 'i 4/29/2024 20:22:22'!
+ERROR!
+
+!testRun: #HotelTest #test08HotelLossesAreTheSumOfEachFloorLosses stamp: 'i 4/29/2024 20:22:22'!
+ERROR!
+
+!testRun: #HotelTest #test09HotelCannotReserveANonexistentRoom stamp: 'i 4/29/2024 20:22:22'!
+ERROR!
+
+!testRun: #HotelTest #test10HotelCannotReserveANonexistentFloor stamp: 'i 4/29/2024 20:22:22'!
+ERROR!
+
+!testRun: #HotelTest #test11HotelCannotReceiveAtNonexistentRoom stamp: 'i 4/29/2024 20:22:22'!
+ERROR!
+
+!testRun: #HotelTest #test12HotelCannotReceiveAtNonexistentFloor stamp: 'i 4/29/2024 20:22:22'!
+ERROR!
+
+!testRun: #HotelTest #test13HotelCannotReceiveWithReservationAtNonexistentRoom stamp: 'i 4/29/2024 20:22:22'!
+ERROR!
+
+!testRun: #RoomTest #test01NewRoomsAreAvailable stamp: 'i 4/29/2024 20:23:31'!
+PASSED!
+
+!testRun: #RoomTest #test02ReceivingAGuestMakesTheRoomOccupied stamp: 'i 4/29/2024 20:23:31'!
+PASSED!
+
+!testRun: #RoomTest #test03ReservingARoomMakesTheRoomReservedAndOccupied stamp: 'i 4/29/2024 20:23:31'!
+PASSED!
+
+!testRun: #RoomTest #test04CannotReceiveAGuestInAOccupiedRoom stamp: 'i 4/29/2024 20:23:31'!
+PASSED!
+
+!testRun: #RoomTest #test05CannotReceiveAGuestInAReservedRoom stamp: 'i 4/29/2024 20:23:31'!
+PASSED!
+
+!testRun: #RoomTest #test06ReceivingOnReservationMakesTheRoomOccupied stamp: 'i 4/29/2024 20:23:31'!
+PASSED!
+
+!testRun: #RoomTest #test07CannotReceiveOnReservationAnAvailableRoom stamp: 'i 4/29/2024 20:23:31'!
+PASSED!
+
+!testRun: #RoomTest #test08CannotReceiveOnReservationAnOccupiedRoom stamp: 'i 4/29/2024 20:23:31'!
+PASSED!
+
+!testRun: #RoomTest #test09ProfitOfAvailableRoomIsCeroPesos stamp: 'i 4/29/2024 20:23:31'!
+PASSED!
+
+!testRun: #RoomTest #test10ProfitOfReservedRoomIsHalfTheMinPriceInList stamp: 'i 4/29/2024 20:23:31'!
+PASSED!
+
+!testRun: #RoomTest #test11ProfitOfOccupiedRoomDependsOnGuestType stamp: 'i 4/29/2024 20:23:31'!
+PASSED!
+
+!testRun: #RoomTest #test12NoProfitOnOccupiedRoomByUnknownGuestType stamp: 'i 4/29/2024 20:23:31'!
+PASSED!
+
+!testRun: #RoomTest #test13LossesOfAvailableRoomIsHalfTheMaxPriceInList stamp: 'i 4/29/2024 20:23:31'!
+PASSED!
+
+!testRun: #RoomTest #test14LossesOfReservedRoomIsCeroPesos stamp: 'i 4/29/2024 20:23:31'!
+PASSED!
+
+!testRun: #RoomTest #test15LossesOfOccupiedRoomIsCeroPesos stamp: 'i 4/29/2024 20:23:31'!
+PASSED!
+
+!testRun: #RoomTest #test16CannotReserveWhenReserved stamp: 'i 4/29/2024 20:23:31'!
+PASSED!
+
+!testRun: #RoomTest #test17CannotReserveWhenOccupied stamp: 'i 4/29/2024 20:23:31'!
+PASSED!
+!Hotel methodsFor: 'totals' stamp: 'i 4/29/2024 20:27:55' prior: 50533538!
+totalRoomsOccupied
+
+	| ix acc |
+
+	acc := 0.
+
+	ix := 1.	
+	
+	self findInTheFloorRoomsThatAreOccupied:[Floor totalRoomsOccupied] . "
+	[ ix <= floors size ] whileTrue: [ | floor jx |
+		floor := floors at: ix.
+
+		jx := 1.
+		[ jx <= floor rooms size ] whileTrue: [ | room | 
+			room := floor rooms at: jx.
+			room isOccupied ifTrue: [ 			acc := acc + 1. ].
+			
+			jx := jx + 1.
+		].
+			
+		ix := ix + 1.				
+	].
+
+	^ acc."
+
+! !
+!Hotel methodsFor: 'totals' stamp: 'i 4/29/2024 20:28:25' prior: 50534517!
+totalRoomsOccupied
+
+	| ix acc |
+
+	acc := 0.
+
+	ix := 1.	
+	
+	self findInTheFloorRoomsThatAreVerify:[Floor totalRoomsOccupied] . "
+	[ ix <= floors size ] whileTrue: [ | floor jx |
+		floor := floors at: ix.
+
+		jx := 1.
+		[ jx <= floor rooms size ] whileTrue: [ | room | 
+			room := floor rooms at: jx.
+			room isOccupied ifTrue: [ 			acc := acc + 1. ].
+			
+			jx := jx + 1.
+		].
+			
+		ix := ix + 1.				
+	].
+
+	^ acc."
+
+! !
+!Hotel methodsFor: 'totals' stamp: 'i 4/29/2024 20:28:36' prior: 50534533!
+totalRoomsOccupied
+
+	| ix acc |
+
+	acc := 0.
+
+	ix := 1.	
+	
+	self findInTheFloorRoomsThatAreVerify:[Floor totalRoomsOccupied] . "
+	[ ix <= floors size ] whileTrue: [ | floor jx |
+		floor := floors at: ix.
+
+		jx := 1.
+		[ jx <= floor rooms size ] whileTrue: [ | room | 
+			room := floor rooms at: jx.
+			room isOccupied ifTrue: [ 			acc := acc + 1. ].
+			
+			jx := jx + 1.
+		].
+			
+		ix := ix + 1.				
+	].
+
+	^ acc."
+
+! !
+!Hotel methodsFor: 'totals' stamp: 'i 4/29/2024 20:28:48' prior: 50534549!
+totalRoomsOccupied
+
+	| ix acc |
+
+	acc := 0.
+
+	ix := 1.	
+	
+	self findThoseThatVerifyTheBlock:[Floor totalRoomsOccupied] . "
+	[ ix <= floors size ] whileTrue: [ | floor jx |
+		floor := floors at: ix.
+
+		jx := 1.
+		[ jx <= floor rooms size ] whileTrue: [ | room | 
+			room := floor rooms at: jx.
+			room isOccupied ifTrue: [ 			acc := acc + 1. ].
+			
+			jx := jx + 1.
+		].
+			
+		ix := ix + 1.				
+	].
+
+	^ acc."
+
+! !
+!Hotel methodsFor: 'initialization' stamp: 'i 4/29/2024 20:29:45' prior: 50532837!
+findThoseThatVerifyTheBlock: aClosureToVerify! !
+
+!methodRemoval: Hotel #findThoseThatVerifyTheBlock: stamp: 'i 4/29/2024 20:29:49'!
+findThoseThatVerifyTheBlock: aClosureToVerify!
+!Hotel methodsFor: 'totals' stamp: 'i 4/29/2024 20:29:51'!
+findThoseThatVerifyTheBlock: aClosureToVerify! !
+!Hotel methodsFor: 'totals' stamp: 'i 4/29/2024 20:32:15' prior: 50534589!
+findThoseThatVerifyTheBlock: aClosureToVerify
+	|total|
+	floors do: [ :floor | | roomTotal | 
+		roomTotal := floor aClosureToVerify value.
+		total := total + roomTotal
+	].
+	^total.! !
+
+'Hola' asSymbol!
+
+('Hola' asSymbol) asText !
+
+x := Set new!
+
+(('with:' asSymbol) asText) !
+!Hotel methodsFor: 'totals' stamp: 'i 4/29/2024 20:42:26' prior: 50534565!
+totalRoomsOccupied
+
+	| ix acc |
+
+	acc := 0.
+
+	ix := 1.	
+	
+	self findThoseThatVerify: RoomIsOcupied new . "
+	[ ix <= floors size ] whileTrue: [ | floor jx |
+		floor := floors at: ix.
+
+		jx := 1.
+		[ jx <= floor rooms size ] whileTrue: [ | room | 
+			room := floor rooms at: jx.
+			room isOccupied ifTrue: [ 			acc := acc + 1. ].
+			
+			jx := jx + 1.
+		].
+			
+		ix := ix + 1.				
+	].
+
+	^ acc."
+
+! !
+!Floor methodsFor: 'totals' stamp: 'i 4/29/2024 20:46:18'!
+totalRoomsThatAre: roomToVerify
+	
+	^ rooms size
+		
+! !
+!Floor methodsFor: 'totals' stamp: 'i 4/29/2024 20:46:39' prior: 50534619!
+totalRoomsThatAre: roomToVerify
+	
+	^rooms count: [ :room | room = roomToVerify ]
+		
+! !
+!Hotel methodsFor: 'totals' stamp: 'i 4/29/2024 20:47:31'!
+findThoseThatVerify: roomThatVerify
+	|total|
+	total := 0.
+	
+	floors do: [: floor | 
+			floor totalRoomsThatAre: roomThatVerify ].! !
+!Hotel methodsFor: 'totals' stamp: 'i 4/29/2024 20:47:40' prior: 50534629!
+findThoseThatVerify: roomThatVerify
+	|total|
+	total := 0.
+	
+	floors do: [: floor | 
+			floor totalRoomsThatAre: roomThatVerify ].
+	^total.! !
+!Hotel methodsFor: 'totals' stamp: 'i 4/29/2024 20:48:09' prior: 50527744!
+totalRoomsReserved
+
+	| ix acc |
+
+	acc := 0.
+
+	ix := 1.	
+	^self findThoseThatVerify: RoomIsOcupied new"
+	[ ix <= floors size ] whileTrue: [ | floor jx |
+		floor := floors at: ix.
+
+		jx := 1.
+		[jx <= floor rooms size] whileTrue: [ | room | 
+			room := floor rooms at: jx.
+			room isReserved ifTrue: [ 			acc := acc + 1. ].
+			
+			jx := jx + 1.
+		].
+			
+		ix := ix + 1.				
+	].
+
+	^ acc."
+
+! !
+!Hotel methodsFor: 'totals' stamp: 'i 4/29/2024 20:48:20' prior: 50534643!
+totalRoomsReserved
+
+	| ix acc |
+
+	acc := 0.
+
+	ix := 1.	
+	^self findThoseThatVerify: RoomIsReserved new"
+	[ ix <= floors size ] whileTrue: [ | floor jx |
+		floor := floors at: ix.
+
+		jx := 1.
+		[jx <= floor rooms size] whileTrue: [ | room | 
+			room := floor rooms at: jx.
+			room isReserved ifTrue: [ 			acc := acc + 1. ].
+			
+			jx := jx + 1.
+		].
+			
+		ix := ix + 1.				
+	].
+
+	^ acc."
+
+! !
+!Hotel methodsFor: 'totals' stamp: 'i 4/29/2024 20:48:38' prior: 50527716!
+totalRooms
+
+	| ix acc |
+
+	acc := 0.
+
+	ix := 1.	
+	self findThoseThatVerify: Room new.
+	[ ix <= floors size ] whileTrue: [ | floor jx |
+		floor := floors at: ix.
+
+		jx := 1.
+		[ jx <= floor rooms size ] whileTrue: [ 
+			acc := acc + 1.
+			
+			jx := jx + 1.
+		].
+			
+		ix := ix + 1.				
+	].
+
+	^ acc.
+
+! !
+!Hotel methodsFor: 'totals' stamp: 'i 4/29/2024 20:48:48' prior: 50534673!
+totalRooms
+
+	| ix acc |
+
+	acc := 0.
+
+	ix := 1.	
+	self findThoseThatVerify: Room new.
+	"[ ix <= floors size ] whileTrue: [ | floor jx |
+		floor := floors at: ix.
+
+		jx := 1.
+		[ jx <= floor rooms size ] whileTrue: [ 
+			acc := acc + 1.
+			
+			jx := jx + 1.
+		].
+			
+		ix := ix + 1.				
+	].
+
+	^ acc."
+
+! !
+!Hotel methodsFor: 'totals' stamp: 'i 4/29/2024 20:48:52' prior: 50534685!
+totalRooms
+
+	| ix acc |
+
+	acc := 0.
+
+	ix := 1.	
+	^self findThoseThatVerify: Room new.
+	"[ ix <= floors size ] whileTrue: [ | floor jx |
+		floor := floors at: ix.
+
+		jx := 1.
+		[ jx <= floor rooms size ] whileTrue: [ 
+			acc := acc + 1.
+			
+			jx := jx + 1.
+		].
+			
+		ix := ix + 1.				
+	].
+
+	^ acc."
+
+! !
+
+!testRun: #HotelTest #test05HotelCanReceiveWithReservationATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 20:49:01'!
+ERROR!
+
+!testRun: #HotelTest #test05HotelCanReceiveWithReservationATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 20:49:10'!
+ERROR!
+
+!testRun: #HotelTest #test05HotelCanReceiveWithReservationATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 20:49:14'!
+ERROR!
+!HotelTest methodsFor: 'create' stamp: 'i 4/29/2024 20:49:58' prior: 50527226!
+createFloorWith: aNumberOfRooms and: aPrice
+
+	| floor |
+
+	floor := Floor withNumberOfRooms: aNumberOfRooms andSetOfPrices: aPrice
+	
+	^ floor.! !
+
+!testRun: #HotelTest #test05HotelCanReceiveWithReservationATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 20:50:06'!
+ERROR!
+
+!testRun: #HotelTest #test05HotelCanReceiveWithReservationATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 20:50:16'!
+ERROR!
+!HotelTest methodsFor: 'create' stamp: 'i 4/29/2024 20:50:36' prior: 50534721!
+createFloorWith: aNumberOfRooms and: aPrice
+
+	| floor |
+
+	floor := Floor withNumberOfRooms: aNumberOfRooms andSetOfPrices: aPrice.
+	
+	^ floor.! !
+
+!testRun: #HotelTest #test05HotelCanReceiveWithReservationATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 20:51:33'!
+FAILURE!
+!Floor methodsFor: 'totals' stamp: 'i 4/29/2024 20:56:35' prior: 50534624!
+totalRoomsThatAre: roomToVerify
+	
+	^rooms count: [ :room | room state= roomToVerify ]
+		
+! !
+!Floor methodsFor: 'totals' stamp: 'i 4/29/2024 20:56:38' prior: 50534747!
+totalRoomsThatAre: roomToVerify
+	
+	^rooms count: [ :room | room state = roomToVerify ]
+		
+! !
+!Room methodsFor: 'guests' stamp: 'i 4/29/2024 20:56:49'!
+state
+	^state! !
+
+!testRun: #HotelTest #test04HotelCanTakeAReservationForARoomAtFloor stamp: 'i 4/29/2024 20:56:55'!
+FAILURE!
+
+!testRun: #HotelTest #test04HotelCanTakeAReservationForARoomAtFloor stamp: 'i 4/29/2024 20:56:55'!
+FAILURE!
+
+!testRun: #HotelTest #test03HotelCanReceiveATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 20:56:57'!
+FAILURE!
+
+!testRun: #HotelTest #test03HotelCanReceiveATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 20:56:57'!
+FAILURE!
+
+!testRun: #HotelTest #test02NewHotelsAreEmpty stamp: 'i 4/29/2024 20:56:59'!
+PASSED!
+
+!testRun: #HotelTest #test01CannotCreateHotelWithoutFloors stamp: 'i 4/29/2024 20:57:02'!
+PASSED!
+
+!testRun: #HotelTest #test04HotelCanTakeAReservationForARoomAtFloor stamp: 'i 4/29/2024 20:57:12'!
+FAILURE!
+!HotelTest methodsFor: 'create' stamp: 'i 4/29/2024 21:00:40' prior: 50527234!
+createHotel
+
+	^ Hotel 
+		      setFloors: (OrderedCollection with: (self createFloorWith: 10 and: self defaultPriceList)
+								      	 with: (self createFloorWith: 1 and: self defaultPriceList)).
+								! !
+!HotelTest methodsFor: 'create' stamp: 'i 4/29/2024 21:00:48' prior: 50534784!
+createHotel
+
+	^ Hotel 
+		      withFloors: (OrderedCollection with: (self createFloorWith: 10 and: self defaultPriceList)
+								      	 with: (self createFloorWith: 1 and: self defaultPriceList)).
+								! !
+!Hotel class methodsFor: 'nil' stamp: 'i 4/29/2024 21:01:32'!
+withFloors: aFloorsCollection
+	! !
+!Hotel class methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 21:02:29' prior: 50534803!
+withFloors: aFloorsCollection
+	aFloorsCollection isEmpty ifTrue: [ self signalNoFloors ].
+	^self new initializeWithCollectionOfFloors: aFloorsCollection! !
+!Hotel methodsFor: 'initialization' stamp: 'i 4/29/2024 21:02:51'!
+initializeWithCollectionOfFloors: aFloorsCollection! !
+!Hotel methodsFor: 'initialization' stamp: 'i 4/29/2024 21:03:11' prior: 50534815!
+initializeWithCollectionOfFloors: aFloorsCollection
+	floors := aFloorsCollection.
+	
+	availableRoomsCount := self totalRooms.! !
+
+!testRun: #HotelTest #test01CannotCreateHotelWithoutFloors stamp: 'i 4/29/2024 21:03:30'!
+PASSED!
+
+!testRun: #HotelTest #test02NewHotelsAreEmpty stamp: 'i 4/29/2024 21:03:32'!
+PASSED!
+
+self == anObject!
+
+self = anObject!
+
+self  class == anObject class.!
+!Floor methodsFor: 'totals' stamp: 'i 4/29/2024 21:06:52' prior: 50534753!
+totalRoomsThatAre: roomToVerify
+	
+	^rooms count: [ :room | room state class = roomToVerify class]
+		
+! !
+
+!testRun: #HotelTest #test03HotelCanReceiveATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 21:06:56'!
+FAILURE!
+
+!testRun: #HotelTest #test03HotelCanReceiveATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 21:06:56'!
+FAILURE!
+
+room state class !
+
+roomToVerify class!
+
+self == anObject!
+
+self == anObject!
+!Hotel methodsFor: 'totals' stamp: 'i 4/29/2024 21:09:23' prior: 50534636!
+findThoseThatVerify: roomThatVerify
+	|total|
+	total := 0.
+	
+	floors do: [: floor | 
+			total := total +floor totalRoomsThatAre: roomThatVerify ].
+	^total.! !
+
+!testRun: #HotelTest #test03HotelCanReceiveATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 21:09:27'!
+ERROR!
+
+!testRun: #HotelTest #test03HotelCanReceiveATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 21:09:27'!
+ERROR!
+
+!methodRemoval: Hotel #findInTheFloorRoomsThatAreOccupied stamp: 'i 4/29/2024 21:09:59'!
+findInTheFloorRoomsThatAreOccupied
+	|acumulator|
+	
+	acumulator := 0.
+	
+	acumulator := floors inject: 0 into:[:a :rooms| a + rooms select:[:room| room isOccupied] size].
+	
+	^acumulator
+!
+!Hotel methodsFor: 'totals' stamp: 'i 4/29/2024 21:11:02' prior: 50534850!
+findThoseThatVerify: roomThatVerify
+	|total|
+	total := 0.
+	
+	floors do: [: floor | |roomTotal|
+			roomTotal := floor totalRoomsThatAre: roomThatVerify.
+			total := total + roomTotal.].
+			
+	^total.! !
+
+!testRun: #HotelTest #test03HotelCanReceiveATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 21:11:26'!
+FAILURE!
+!Hotel methodsFor: 'totals' stamp: 'i 4/29/2024 21:11:51' prior: 50534604!
+totalRoomsOccupied
+
+	| ix acc |
+
+	acc := 0.
+
+	ix := 1.	
+	
+	^self findThoseThatVerify: RoomIsOcupied new . "
+	[ ix <= floors size ] whileTrue: [ | floor jx |
+		floor := floors at: ix.
+
+		jx := 1.
+		[ jx <= floor rooms size ] whileTrue: [ | room | 
+			room := floor rooms at: jx.
+			room isOccupied ifTrue: [ 			acc := acc + 1. ].
+			
+			jx := jx + 1.
+		].
+			
+		ix := ix + 1.				
+	].
+
+	^ acc."
+
+! !
+
+!testRun: #HotelTest #test03HotelCanReceiveATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 21:12:14'!
+PASSED!
+
+!testRun: #HotelTest #test01CannotCreateHotelWithoutFloors stamp: 'i 4/29/2024 21:12:14'!
+PASSED!
+
+!testRun: #HotelTest #test02NewHotelsAreEmpty stamp: 'i 4/29/2024 21:12:14'!
+PASSED!
+
+!testRun: #HotelTest #test03HotelCanReceiveATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 21:12:14'!
+PASSED!
+
+!testRun: #HotelTest #test04HotelCanTakeAReservationForARoomAtFloor stamp: 'i 4/29/2024 21:12:14'!
+FAILURE!
+
+!testRun: #HotelTest #test05HotelCanReceiveWithReservationATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 21:12:14'!
+PASSED!
+
+!testRun: #HotelTest #test06HotelCannotReceiveWithReservationWithoutPreviousReservation stamp: 'i 4/29/2024 21:12:14'!
+PASSED!
+
+!testRun: #HotelTest #test07HotelProfitsAreTheSumOfEachFloorProfits stamp: 'i 4/29/2024 21:12:14'!
+PASSED!
+
+!testRun: #HotelTest #test08HotelLossesAreTheSumOfEachFloorLosses stamp: 'i 4/29/2024 21:12:14'!
+PASSED!
+
+!testRun: #HotelTest #test09HotelCannotReserveANonexistentRoom stamp: 'i 4/29/2024 21:12:14'!
+PASSED!
+
+!testRun: #HotelTest #test10HotelCannotReserveANonexistentFloor stamp: 'i 4/29/2024 21:12:14'!
+PASSED!
+
+!testRun: #HotelTest #test11HotelCannotReceiveAtNonexistentRoom stamp: 'i 4/29/2024 21:12:14'!
+PASSED!
+
+!testRun: #HotelTest #test12HotelCannotReceiveAtNonexistentFloor stamp: 'i 4/29/2024 21:12:14'!
+PASSED!
+
+!testRun: #HotelTest #test13HotelCannotReceiveWithReservationAtNonexistentRoom stamp: 'i 4/29/2024 21:12:14'!
+FAILURE!
+
+Integer isMemberOf: Number!
+
+Number isMemberOf: Integer!
+
+Integer isMemberOf: Number!
+
+Integer isMemberOf: SmallInteger!
+
+Integer class!
+!Floor methodsFor: 'totals' stamp: 'i 4/29/2024 21:19:44' prior: 50534835!
+totalRoomsThatAre: roomToVerify
+	
+	^rooms count: [ :room | room state class = roomToVerify class]
+		
+! !
+
+Integer isChildOf: Number!
+
+Integer parent!
+
+!methodRemoval: Hotel #setFloors: stamp: 'i 4/29/2024 21:21:49'!
+setFloors: aFloorsCollection
+
+	self class assertHaveFloors: aFloorsCollection.
+
+	floors := aFloorsCollection.
+	
+	availableRoomsCount := self totalRooms.!
+
+!testRun: #HotelTest #test02NewHotelsAreEmpty stamp: 'i 4/29/2024 21:21:52'!
+PASSED!
+
+!testRun: #HotelTest #test01CannotCreateHotelWithoutFloors stamp: 'i 4/29/2024 21:21:53'!
+ERROR!
+
+!testRun: #HotelTest #test02NewHotelsAreEmpty stamp: 'i 4/29/2024 21:21:53'!
+PASSED!
+
+!testRun: #HotelTest #test03HotelCanReceiveATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 21:21:53'!
+PASSED!
+
+!testRun: #HotelTest #test04HotelCanTakeAReservationForARoomAtFloor stamp: 'i 4/29/2024 21:21:53'!
+FAILURE!
+
+!testRun: #HotelTest #test05HotelCanReceiveWithReservationATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 21:21:53'!
+PASSED!
+
+!testRun: #HotelTest #test06HotelCannotReceiveWithReservationWithoutPreviousReservation stamp: 'i 4/29/2024 21:21:53'!
+PASSED!
+
+!testRun: #HotelTest #test07HotelProfitsAreTheSumOfEachFloorProfits stamp: 'i 4/29/2024 21:21:53'!
+ERROR!
+
+!testRun: #HotelTest #test08HotelLossesAreTheSumOfEachFloorLosses stamp: 'i 4/29/2024 21:21:53'!
+ERROR!
+
+!testRun: #HotelTest #test09HotelCannotReserveANonexistentRoom stamp: 'i 4/29/2024 21:21:53'!
+ERROR!
+
+!testRun: #HotelTest #test10HotelCannotReserveANonexistentFloor stamp: 'i 4/29/2024 21:21:53'!
+ERROR!
+
+!testRun: #HotelTest #test11HotelCannotReceiveAtNonexistentRoom stamp: 'i 4/29/2024 21:21:53'!
+ERROR!
+
+!testRun: #HotelTest #test12HotelCannotReceiveAtNonexistentFloor stamp: 'i 4/29/2024 21:21:53'!
+ERROR!
+
+!testRun: #HotelTest #test13HotelCannotReceiveWithReservationAtNonexistentRoom stamp: 'i 4/29/2024 21:21:53'!
+ERROR!
+!Hotel methodsFor: 'setters' stamp: 'i 4/29/2024 21:22:03'!
+setFloors: aFloorsCollection
+
+	self class assertHaveFloors: aFloorsCollection.
+
+	floors := aFloorsCollection.
+	
+	availableRoomsCount := self totalRooms.! !
+
+!testRun: #HotelTest #test01CannotCreateHotelWithoutFloors stamp: 'i 4/29/2024 21:23:03'!
+PASSED!
+
+!testRun: #HotelTest #test02NewHotelsAreEmpty stamp: 'i 4/29/2024 21:23:03'!
+PASSED!
+
+!testRun: #HotelTest #test03HotelCanReceiveATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 21:23:03'!
+PASSED!
+
+!testRun: #HotelTest #test04HotelCanTakeAReservationForARoomAtFloor stamp: 'i 4/29/2024 21:23:03'!
+FAILURE!
+
+!testRun: #HotelTest #test05HotelCanReceiveWithReservationATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 21:23:03'!
+PASSED!
+
+!testRun: #HotelTest #test06HotelCannotReceiveWithReservationWithoutPreviousReservation stamp: 'i 4/29/2024 21:23:03'!
+PASSED!
+
+!testRun: #HotelTest #test07HotelProfitsAreTheSumOfEachFloorProfits stamp: 'i 4/29/2024 21:23:03'!
+PASSED!
+
+!testRun: #HotelTest #test08HotelLossesAreTheSumOfEachFloorLosses stamp: 'i 4/29/2024 21:23:03'!
+PASSED!
+
+!testRun: #HotelTest #test09HotelCannotReserveANonexistentRoom stamp: 'i 4/29/2024 21:23:03'!
+PASSED!
+
+!testRun: #HotelTest #test10HotelCannotReserveANonexistentFloor stamp: 'i 4/29/2024 21:23:03'!
+PASSED!
+
+!testRun: #HotelTest #test11HotelCannotReceiveAtNonexistentRoom stamp: 'i 4/29/2024 21:23:03'!
+PASSED!
+
+!testRun: #HotelTest #test12HotelCannotReceiveAtNonexistentFloor stamp: 'i 4/29/2024 21:23:03'!
+PASSED!
+
+!testRun: #HotelTest #test13HotelCannotReceiveWithReservationAtNonexistentRoom stamp: 'i 4/29/2024 21:23:03'!
+FAILURE!
+
+!testRun: #FloorTest #test01CannotCreateFloorWithoutRooms stamp: 'i 4/29/2024 21:25:19'!
+PASSED!
+
+!testRun: #FloorTest #test02CannotCreateFloorWithNoIntergerNumberOfRooms stamp: 'i 4/29/2024 21:25:19'!
+PASSED!
+
+!testRun: #FloorTest #test03CannotCreateFloorWithoutPrices stamp: 'i 4/29/2024 21:25:19'!
+PASSED!
+
+!testRun: #FloorTest #test04WhenAFloorIsCreatedAllTheRoomsAreAvailable stamp: 'i 4/29/2024 21:25:19'!
+PASSED!
+
+!testRun: #FloorTest #test05WhenAFloorReceivesAGuestInARoomReducesTheAvailableRoomsByOneAndIncreaseOccupiedByOne stamp: 'i 4/29/2024 21:25:19'!
+PASSED!
+
+!testRun: #FloorTest #test06WhenAFloorReceivesOnReservationAGuestInARoomKeepsTheAvailableRoomsAndOccupiedAndReducesTheReservedByOne stamp: 'i 4/29/2024 21:25:19'!
+PASSED!
+
+!testRun: #FloorTest #test07WhenARoomIsReservedTheFloorAvailableRoomsReducesByOneAndIncreaseReservedAndOccupiedByOne stamp: 'i 4/29/2024 21:25:19'!
+PASSED!
+
+!testRun: #FloorTest #test08TotalProfitShouldBeTheSumOfOccupiedRoomsProfits stamp: 'i 4/29/2024 21:25:19'!
+PASSED!
+
+!testRun: #FloorTest #test09TotalLossesShouldBeTheSumOfAvailableRoomsLosses stamp: 'i 4/29/2024 21:25:19'!
+PASSED!
+!Hotel methodsFor: 'testing' stamp: 'i 4/29/2024 21:26:08' prior: 50527757!
+isEmpty
+
+	| ix acc |
+	
+	acc := true.
+
+	ix := 1.	
+	^self findThoseThatVerify: RoomIsAvailable new
+	"[ ix <= floors size ] whileTrue: [ | floor jx |
+		floor := floors at: ix.
+
+		jx := 1.
+		[ jx <= floor rooms size ] whileTrue: [ | room |
+			room := floor rooms at: jx.
+			acc := acc and: room isAvailable.
+			
+			jx := jx + 1.
+		].
+			
+		ix := ix + 1.				
+	].
+
+	^ acc."
+! !
+
+Number children!
+
+Integer children!
+
+!testRun: #HotelTest #test01CannotCreateHotelWithoutFloors stamp: 'i 4/29/2024 21:26:46'!
+PASSED!
+
+!testRun: #HotelTest #test02NewHotelsAreEmpty stamp: 'i 4/29/2024 21:26:46'!
+ERROR!
+
+!testRun: #HotelTest #test03HotelCanReceiveATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 21:26:46'!
+PASSED!
+
+!testRun: #HotelTest #test04HotelCanTakeAReservationForARoomAtFloor stamp: 'i 4/29/2024 21:26:46'!
+FAILURE!
+
+!testRun: #HotelTest #test05HotelCanReceiveWithReservationATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 21:26:46'!
+PASSED!
+
+!testRun: #HotelTest #test06HotelCannotReceiveWithReservationWithoutPreviousReservation stamp: 'i 4/29/2024 21:26:46'!
+PASSED!
+
+!testRun: #HotelTest #test07HotelProfitsAreTheSumOfEachFloorProfits stamp: 'i 4/29/2024 21:26:46'!
+PASSED!
+
+!testRun: #HotelTest #test08HotelLossesAreTheSumOfEachFloorLosses stamp: 'i 4/29/2024 21:26:46'!
+PASSED!
+
+!testRun: #HotelTest #test09HotelCannotReserveANonexistentRoom stamp: 'i 4/29/2024 21:26:46'!
+PASSED!
+
+!testRun: #HotelTest #test10HotelCannotReserveANonexistentFloor stamp: 'i 4/29/2024 21:26:46'!
+PASSED!
+
+!testRun: #HotelTest #test11HotelCannotReceiveAtNonexistentRoom stamp: 'i 4/29/2024 21:26:46'!
+PASSED!
+
+!testRun: #HotelTest #test12HotelCannotReceiveAtNonexistentFloor stamp: 'i 4/29/2024 21:26:46'!
+PASSED!
+
+!testRun: #HotelTest #test13HotelCannotReceiveWithReservationAtNonexistentRoom stamp: 'i 4/29/2024 21:26:46'!
+FAILURE!
+
+!methodRemoval: Hotel #setFloors: stamp: 'i 4/29/2024 21:27:21'!
+setFloors: aFloorsCollection
+
+	self class assertHaveFloors: aFloorsCollection.
+
+	floors := aFloorsCollection.
+	
+	availableRoomsCount := self totalRooms.!
+
+!testRun: #FloorTest #test01CannotCreateFloorWithoutRooms stamp: 'i 4/29/2024 21:27:55'!
+PASSED!
+
+!testRun: #FloorTest #test01CannotCreateFloorWithoutRooms stamp: 'i 4/29/2024 21:27:55'!
+PASSED!
+
+!testRun: #FloorTest #test02CannotCreateFloorWithNoIntergerNumberOfRooms stamp: 'i 4/29/2024 21:27:55'!
+PASSED!
+
+!testRun: #FloorTest #test03CannotCreateFloorWithoutPrices stamp: 'i 4/29/2024 21:27:55'!
+PASSED!
+
+!testRun: #FloorTest #test04WhenAFloorIsCreatedAllTheRoomsAreAvailable stamp: 'i 4/29/2024 21:27:55'!
+PASSED!
+
+!testRun: #FloorTest #test05WhenAFloorReceivesAGuestInARoomReducesTheAvailableRoomsByOneAndIncreaseOccupiedByOne stamp: 'i 4/29/2024 21:27:55'!
+PASSED!
+
+!testRun: #FloorTest #test06WhenAFloorReceivesOnReservationAGuestInARoomKeepsTheAvailableRoomsAndOccupiedAndReducesTheReservedByOne stamp: 'i 4/29/2024 21:27:55'!
+PASSED!
+
+!testRun: #FloorTest #test07WhenARoomIsReservedTheFloorAvailableRoomsReducesByOneAndIncreaseReservedAndOccupiedByOne stamp: 'i 4/29/2024 21:27:55'!
+PASSED!
+
+!testRun: #FloorTest #test08TotalProfitShouldBeTheSumOfOccupiedRoomsProfits stamp: 'i 4/29/2024 21:27:55'!
+PASSED!
+
+!testRun: #FloorTest #test09TotalLossesShouldBeTheSumOfAvailableRoomsLosses stamp: 'i 4/29/2024 21:27:55'!
+PASSED!
+
+!testRun: #FloorTest #test02CannotCreateFloorWithNoIntergerNumberOfRooms stamp: 'i 4/29/2024 21:27:57'!
+PASSED!
+
+!testRun: #HotelTest #test01CannotCreateHotelWithoutFloors stamp: 'i 4/29/2024 21:28:04'!
+ERROR!
+
+!testRun: #HotelTest #test02NewHotelsAreEmpty stamp: 'i 4/29/2024 21:28:04'!
+ERROR!
+
+!testRun: #HotelTest #test03HotelCanReceiveATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 21:28:04'!
+PASSED!
+
+!testRun: #HotelTest #test04HotelCanTakeAReservationForARoomAtFloor stamp: 'i 4/29/2024 21:28:04'!
+FAILURE!
+
+!testRun: #HotelTest #test05HotelCanReceiveWithReservationATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 21:28:04'!
+PASSED!
+
+!testRun: #HotelTest #test06HotelCannotReceiveWithReservationWithoutPreviousReservation stamp: 'i 4/29/2024 21:28:04'!
+PASSED!
+
+!testRun: #HotelTest #test07HotelProfitsAreTheSumOfEachFloorProfits stamp: 'i 4/29/2024 21:28:04'!
+ERROR!
+
+!testRun: #HotelTest #test08HotelLossesAreTheSumOfEachFloorLosses stamp: 'i 4/29/2024 21:28:04'!
+ERROR!
+
+!testRun: #HotelTest #test09HotelCannotReserveANonexistentRoom stamp: 'i 4/29/2024 21:28:04'!
+ERROR!
+
+!testRun: #HotelTest #test10HotelCannotReserveANonexistentFloor stamp: 'i 4/29/2024 21:28:04'!
+ERROR!
+
+!testRun: #HotelTest #test11HotelCannotReceiveAtNonexistentRoom stamp: 'i 4/29/2024 21:28:04'!
+ERROR!
+
+!testRun: #HotelTest #test12HotelCannotReceiveAtNonexistentFloor stamp: 'i 4/29/2024 21:28:04'!
+ERROR!
+
+!testRun: #HotelTest #test13HotelCannotReceiveWithReservationAtNonexistentRoom stamp: 'i 4/29/2024 21:28:04'!
+ERROR!
+!Hotel methodsFor: 'setters' stamp: 'i 4/29/2024 21:28:44'!
+setFloors: aFloorsCollection
+
+	self class assertHaveFloors: aFloorsCollection.
+
+	floors := aFloorsCollection.
+	
+	availableRoomsCount := self totalRooms.! !
+!Hotel methodsFor: 'setters' stamp: 'i 4/29/2024 21:28:46' prior: 50535252!
+setFloors: aFloorsCollection
+"
+	self class assertHaveFloors: aFloorsCollection.
+
+	floors := aFloorsCollection.
+	
+	availableRoomsCount := self totalRooms."! !
+!HotelTest methodsFor: 'create' stamp: 'FRT 4/22/2024 10:32:32' prior: 50534794!
+createHotel
+
+	^ Hotel new 
+		      setFloors: (OrderedCollection with: (self createFloorWith: 10 and: self defaultPriceList)
+								      	 with: (self createFloorWith: 1 and: self defaultPriceList)).
+								! !
+!HotelTest methodsFor: 'create' stamp: 'i 4/29/2024 21:30:03' prior: 50535268!
+createHotel
+
+	^ Hotel 
+		      setFloors: (OrderedCollection with: (self createFloorWith: 10 and: self defaultPriceList)
+								      	 with: (self createFloorWith: 1 and: self defaultPriceList)).
+								! !
+!Hotel class methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 21:30:18'!
+setFloors: aFloorsCollection
+	aFloorsCollection isEmpty ifTrue: [ self signalNoFloors ].
+	^self new initializeWithCollectionOfFloors: aFloorsCollection! !
+
+!methodRemoval: Hotel #setFloors: stamp: 'i 4/29/2024 21:30:33'!
+setFloors: aFloorsCollection
+"
+	self class assertHaveFloors: aFloorsCollection.
+
+	floors := aFloorsCollection.
+	
+	availableRoomsCount := self totalRooms."!
+
+!testRun: #HotelTest #test01CannotCreateHotelWithoutFloors stamp: 'i 4/29/2024 21:30:36'!
+ERROR!
+
+!testRun: #HotelTest #test02NewHotelsAreEmpty stamp: 'i 4/29/2024 21:30:36'!
+ERROR!
+
+!testRun: #HotelTest #test03HotelCanReceiveATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 21:30:36'!
+PASSED!
+
+!testRun: #HotelTest #test04HotelCanTakeAReservationForARoomAtFloor stamp: 'i 4/29/2024 21:30:36'!
+FAILURE!
+
+!testRun: #HotelTest #test05HotelCanReceiveWithReservationATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 21:30:36'!
+PASSED!
+
+!testRun: #HotelTest #test06HotelCannotReceiveWithReservationWithoutPreviousReservation stamp: 'i 4/29/2024 21:30:36'!
+PASSED!
+
+!testRun: #HotelTest #test07HotelProfitsAreTheSumOfEachFloorProfits stamp: 'i 4/29/2024 21:30:36'!
+ERROR!
+
+!testRun: #HotelTest #test08HotelLossesAreTheSumOfEachFloorLosses stamp: 'i 4/29/2024 21:30:36'!
+ERROR!
+
+!testRun: #HotelTest #test09HotelCannotReserveANonexistentRoom stamp: 'i 4/29/2024 21:30:36'!
+ERROR!
+
+!testRun: #HotelTest #test10HotelCannotReserveANonexistentFloor stamp: 'i 4/29/2024 21:30:36'!
+ERROR!
+
+!testRun: #HotelTest #test11HotelCannotReceiveAtNonexistentRoom stamp: 'i 4/29/2024 21:30:36'!
+ERROR!
+
+!testRun: #HotelTest #test12HotelCannotReceiveAtNonexistentFloor stamp: 'i 4/29/2024 21:30:36'!
+ERROR!
+
+!testRun: #HotelTest #test13HotelCannotReceiveWithReservationAtNonexistentRoom stamp: 'i 4/29/2024 21:30:36'!
+ERROR!
+!Hotel methodsFor: 'setters' stamp: 'i 4/29/2024 21:31:46'!
+setFloors: aFloorsCollection
+
+	self class assertHaveFloors: aFloorsCollection.
+
+	floors := aFloorsCollection.
+	
+	availableRoomsCount := self totalRooms.! !
+
+!testRun: #HotelTest #test01CannotCreateHotelWithoutFloors stamp: 'i 4/29/2024 21:31:48'!
+PASSED!
+
+!testRun: #HotelTest #test02NewHotelsAreEmpty stamp: 'i 4/29/2024 21:31:48'!
+ERROR!
+
+!testRun: #HotelTest #test03HotelCanReceiveATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 21:31:48'!
+PASSED!
+
+!testRun: #HotelTest #test04HotelCanTakeAReservationForARoomAtFloor stamp: 'i 4/29/2024 21:31:48'!
+FAILURE!
+
+!testRun: #HotelTest #test05HotelCanReceiveWithReservationATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 21:31:48'!
+PASSED!
+
+!testRun: #HotelTest #test06HotelCannotReceiveWithReservationWithoutPreviousReservation stamp: 'i 4/29/2024 21:31:48'!
+PASSED!
+
+!testRun: #HotelTest #test07HotelProfitsAreTheSumOfEachFloorProfits stamp: 'i 4/29/2024 21:31:48'!
+PASSED!
+
+!testRun: #HotelTest #test08HotelLossesAreTheSumOfEachFloorLosses stamp: 'i 4/29/2024 21:31:48'!
+PASSED!
+
+!testRun: #HotelTest #test09HotelCannotReserveANonexistentRoom stamp: 'i 4/29/2024 21:31:48'!
+PASSED!
+
+!testRun: #HotelTest #test10HotelCannotReserveANonexistentFloor stamp: 'i 4/29/2024 21:31:48'!
+PASSED!
+
+!testRun: #HotelTest #test11HotelCannotReceiveAtNonexistentRoom stamp: 'i 4/29/2024 21:31:48'!
+PASSED!
+
+!testRun: #HotelTest #test12HotelCannotReceiveAtNonexistentFloor stamp: 'i 4/29/2024 21:31:48'!
+PASSED!
+
+!testRun: #HotelTest #test13HotelCannotReceiveWithReservationAtNonexistentRoom stamp: 'i 4/29/2024 21:31:48'!
+FAILURE!
+!Hotel methodsFor: 'testing' stamp: 'i 4/29/2024 21:33:44' prior: 50535100!
+isEmpty
+
+	| ix acc |
+	
+	acc := true.
+
+	ix := 1.	
+	^self findThoseThatVerify: RoomIsAvailable new
+	"[ ix <= floors size ] whileTrue: [ | floor jx |
+		floor := floors at: ix.
+
+		jx := 1.
+		[ jx <= floor rooms size ] whileTrue: [ | room |
+			room := floor rooms at: jx.
+			acc := acc and: room isAvailable.
+			
+			jx := jx + 1.
+		].
+			
+		ix := ix + 1.				
+	].
+
+	^ acc."
+! !
+!Hotel methodsFor: 'testing' stamp: 'i 4/29/2024 21:34:58' prior: 50535397!
+isEmpty
+
+	| ix acc |
+	
+	acc := true.
+
+	ix := 1.	
+	^self totalRoomsAvailable = self findThoseThatVerify: RoomIsAvailable new
+	"[ ix <= floors size ] whileTrue: [ | floor jx |
+		floor := floors at: ix.
+
+		jx := 1.
+		[ jx <= floor rooms size ] whileTrue: [ | room |
+			room := floor rooms at: jx.
+			acc := acc and: room isAvailable.
+			
+			jx := jx + 1.
+		].
+			
+		ix := ix + 1.				
+	].
+
+	^ acc."
+! !
+
+!testRun: #HotelTest #test01CannotCreateHotelWithoutFloors stamp: 'i 4/29/2024 21:35:02'!
+PASSED!
+
+!testRun: #HotelTest #test02NewHotelsAreEmpty stamp: 'i 4/29/2024 21:35:02'!
+ERROR!
+
+!testRun: #HotelTest #test03HotelCanReceiveATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 21:35:02'!
+PASSED!
+
+!testRun: #HotelTest #test04HotelCanTakeAReservationForARoomAtFloor stamp: 'i 4/29/2024 21:35:02'!
+FAILURE!
+
+!testRun: #HotelTest #test05HotelCanReceiveWithReservationATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 21:35:02'!
+PASSED!
+
+!testRun: #HotelTest #test06HotelCannotReceiveWithReservationWithoutPreviousReservation stamp: 'i 4/29/2024 21:35:02'!
+PASSED!
+
+!testRun: #HotelTest #test07HotelProfitsAreTheSumOfEachFloorProfits stamp: 'i 4/29/2024 21:35:02'!
+PASSED!
+
+!testRun: #HotelTest #test08HotelLossesAreTheSumOfEachFloorLosses stamp: 'i 4/29/2024 21:35:02'!
+PASSED!
+
+!testRun: #HotelTest #test09HotelCannotReserveANonexistentRoom stamp: 'i 4/29/2024 21:35:02'!
+PASSED!
+
+!testRun: #HotelTest #test10HotelCannotReserveANonexistentFloor stamp: 'i 4/29/2024 21:35:02'!
+PASSED!
+
+!testRun: #HotelTest #test11HotelCannotReceiveAtNonexistentRoom stamp: 'i 4/29/2024 21:35:02'!
+PASSED!
+
+!testRun: #HotelTest #test12HotelCannotReceiveAtNonexistentFloor stamp: 'i 4/29/2024 21:35:02'!
+PASSED!
+
+!testRun: #HotelTest #test13HotelCannotReceiveWithReservationAtNonexistentRoom stamp: 'i 4/29/2024 21:35:02'!
+FAILURE!
+!HotelTest methodsFor: 'testing' stamp: 'i 4/29/2024 21:35:24' prior: 50526998!
+test02NewHotelsAreEmpty
+
+	| hotel |
+	
+	hotel := self createHotel.
+	
+	self assert: hotel isEmpty.! !
+
+!testRun: #HotelTest #test02NewHotelsAreEmpty stamp: 'i 4/29/2024 21:35:29'!
+ERROR!
+!Hotel methodsFor: 'testing' stamp: 'i 4/29/2024 21:35:59' prior: 50535411!
+isEmpty
+
+	| ix acc |
+	
+	acc := true.
+
+	ix := 1.	
+	^self totalRoomsAvailable = (self findThoseThatVerify: RoomIsAvailable new)
+	"[ ix <= floors size ] whileTrue: [ | floor jx |
+		floor := floors at: ix.
+
+		jx := 1.
+		[ jx <= floor rooms size ] whileTrue: [ | room |
+			room := floor rooms at: jx.
+			acc := acc and: room isAvailable.
+			
+			jx := jx + 1.
+		].
+			
+		ix := ix + 1.				
+	].
+
+	^ acc."
+! !
+
+!testRun: #HotelTest #test02NewHotelsAreEmpty stamp: 'i 4/29/2024 21:36:14'!
+FAILURE!
+
+!testRun: #HotelTest #test01CannotCreateHotelWithoutFloors stamp: 'i 4/29/2024 21:36:28'!
+PASSED!
+
+!testRun: #HotelTest #test02NewHotelsAreEmpty stamp: 'i 4/29/2024 21:36:28'!
+FAILURE!
+
+!testRun: #HotelTest #test03HotelCanReceiveATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 21:36:28'!
+PASSED!
+
+!testRun: #HotelTest #test04HotelCanTakeAReservationForARoomAtFloor stamp: 'i 4/29/2024 21:36:28'!
+FAILURE!
+
+!testRun: #HotelTest #test05HotelCanReceiveWithReservationATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 21:36:28'!
+PASSED!
+
+!testRun: #HotelTest #test06HotelCannotReceiveWithReservationWithoutPreviousReservation stamp: 'i 4/29/2024 21:36:28'!
+PASSED!
+
+!testRun: #HotelTest #test07HotelProfitsAreTheSumOfEachFloorProfits stamp: 'i 4/29/2024 21:36:28'!
+PASSED!
+
+!testRun: #HotelTest #test08HotelLossesAreTheSumOfEachFloorLosses stamp: 'i 4/29/2024 21:36:28'!
+PASSED!
+
+!testRun: #HotelTest #test09HotelCannotReserveANonexistentRoom stamp: 'i 4/29/2024 21:36:28'!
+PASSED!
+
+!testRun: #HotelTest #test10HotelCannotReserveANonexistentFloor stamp: 'i 4/29/2024 21:36:28'!
+PASSED!
+
+!testRun: #HotelTest #test11HotelCannotReceiveAtNonexistentRoom stamp: 'i 4/29/2024 21:36:28'!
+PASSED!
+
+!testRun: #HotelTest #test12HotelCannotReceiveAtNonexistentFloor stamp: 'i 4/29/2024 21:36:28'!
+PASSED!
+
+!testRun: #HotelTest #test13HotelCannotReceiveWithReservationAtNonexistentRoom stamp: 'i 4/29/2024 21:36:28'!
+FAILURE!
+
+!methodRemoval: Hotel #findThoseThatVerifyTheBlock: stamp: 'i 4/29/2024 21:37:05'!
+findThoseThatVerifyTheBlock: aClosureToVerify
+	|total|
+	floors do: [ :floor | | roomTotal | 
+		roomTotal := floor aClosureToVerify value.
+		total := total + roomTotal
+	].
+	^total.!
+!HotelTest methodsFor: 'create' stamp: 'i 4/29/2024 21:38:09' prior: 50535278!
+createHotel
+
+	^ Hotel 
+		      withFloors: (OrderedCollection with: (self createFloorWith: 10 and: self defaultPriceList)
+								      	 with: (self createFloorWith: 1 and: self defaultPriceList)).
+								! !
+!Hotel class methodsFor: 'as yet unclassified' stamp: 'i 4/29/2024 21:38:19' prior: 50534808!
+withFloors: aFloorsCollection
+	aFloorsCollection isEmpty ifTrue: [ self signalNoFloors ].
+	^self new initializeWithCollectionOfFloors: aFloorsCollection! !
+
+!testRun: #HotelTest #test01CannotCreateHotelWithoutFloors stamp: 'i 4/29/2024 21:38:21'!
+PASSED!
+
+!testRun: #HotelTest #test02NewHotelsAreEmpty stamp: 'i 4/29/2024 21:38:21'!
+FAILURE!
+
+!testRun: #HotelTest #test03HotelCanReceiveATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 21:38:21'!
+PASSED!
+
+!testRun: #HotelTest #test04HotelCanTakeAReservationForARoomAtFloor stamp: 'i 4/29/2024 21:38:21'!
+FAILURE!
+
+!testRun: #HotelTest #test05HotelCanReceiveWithReservationATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 21:38:21'!
+PASSED!
+
+!testRun: #HotelTest #test06HotelCannotReceiveWithReservationWithoutPreviousReservation stamp: 'i 4/29/2024 21:38:21'!
+PASSED!
+
+!testRun: #HotelTest #test07HotelProfitsAreTheSumOfEachFloorProfits stamp: 'i 4/29/2024 21:38:21'!
+PASSED!
+
+!testRun: #HotelTest #test08HotelLossesAreTheSumOfEachFloorLosses stamp: 'i 4/29/2024 21:38:21'!
+PASSED!
+
+!testRun: #HotelTest #test09HotelCannotReserveANonexistentRoom stamp: 'i 4/29/2024 21:38:21'!
+PASSED!
+
+!testRun: #HotelTest #test10HotelCannotReserveANonexistentFloor stamp: 'i 4/29/2024 21:38:21'!
+PASSED!
+
+!testRun: #HotelTest #test11HotelCannotReceiveAtNonexistentRoom stamp: 'i 4/29/2024 21:38:21'!
+PASSED!
+
+!testRun: #HotelTest #test12HotelCannotReceiveAtNonexistentFloor stamp: 'i 4/29/2024 21:38:21'!
+PASSED!
+
+!testRun: #HotelTest #test13HotelCannotReceiveWithReservationAtNonexistentRoom stamp: 'i 4/29/2024 21:38:21'!
+FAILURE!
+!Hotel methodsFor: 'setters' stamp: 'i 4/29/2024 21:39:02' prior: 50535345!
+setFloors: aFloorsCollection
+
+	self class withFloors: aFloorsCollection.
+	self class assertHaveFloors: aFloorsCollection.
+
+	floors := aFloorsCollection.
+	
+	availableRoomsCount := self totalRooms.! !
+!Hotel methodsFor: 'setters' stamp: 'i 4/29/2024 21:39:05' prior: 50535611!
+setFloors: aFloorsCollection
+
+	self class withFloors: aFloorsCollection."
+	self class assertHaveFloors: aFloorsCollection.
+
+	floors := aFloorsCollection.
+	
+	availableRoomsCount := self totalRooms."! !
+
+!testRun: #HotelTest #test01CannotCreateHotelWithoutFloors stamp: 'i 4/29/2024 21:39:06'!
+PASSED!
+
+!testRun: #HotelTest #test02NewHotelsAreEmpty stamp: 'i 4/29/2024 21:39:06'!
+FAILURE!
+
+!testRun: #HotelTest #test03HotelCanReceiveATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 21:39:06'!
+PASSED!
+
+!testRun: #HotelTest #test04HotelCanTakeAReservationForARoomAtFloor stamp: 'i 4/29/2024 21:39:06'!
+FAILURE!
+
+!testRun: #HotelTest #test05HotelCanReceiveWithReservationATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 21:39:06'!
+PASSED!
+
+!testRun: #HotelTest #test06HotelCannotReceiveWithReservationWithoutPreviousReservation stamp: 'i 4/29/2024 21:39:06'!
+PASSED!
+
+!testRun: #HotelTest #test07HotelProfitsAreTheSumOfEachFloorProfits stamp: 'i 4/29/2024 21:39:06'!
+ERROR!
+
+!testRun: #HotelTest #test08HotelLossesAreTheSumOfEachFloorLosses stamp: 'i 4/29/2024 21:39:06'!
+ERROR!
+
+!testRun: #HotelTest #test09HotelCannotReserveANonexistentRoom stamp: 'i 4/29/2024 21:39:06'!
+ERROR!
+
+!testRun: #HotelTest #test10HotelCannotReserveANonexistentFloor stamp: 'i 4/29/2024 21:39:06'!
+ERROR!
+
+!testRun: #HotelTest #test11HotelCannotReceiveAtNonexistentRoom stamp: 'i 4/29/2024 21:39:06'!
+ERROR!
+
+!testRun: #HotelTest #test12HotelCannotReceiveAtNonexistentFloor stamp: 'i 4/29/2024 21:39:06'!
+ERROR!
+
+!testRun: #HotelTest #test13HotelCannotReceiveWithReservationAtNonexistentRoom stamp: 'i 4/29/2024 21:39:06'!
+ERROR!
+
+!testRun: #HotelTest #test01CannotCreateHotelWithoutFloors stamp: 'i 4/29/2024 21:39:33'!
+PASSED!
+
+!testRun: #HotelTest #test02NewHotelsAreEmpty stamp: 'i 4/29/2024 21:39:33'!
+FAILURE!
+
+!testRun: #HotelTest #test03HotelCanReceiveATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 21:39:33'!
+PASSED!
+
+!testRun: #HotelTest #test04HotelCanTakeAReservationForARoomAtFloor stamp: 'i 4/29/2024 21:39:33'!
+FAILURE!
+
+!testRun: #HotelTest #test05HotelCanReceiveWithReservationATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 21:39:33'!
+PASSED!
+
+!testRun: #HotelTest #test06HotelCannotReceiveWithReservationWithoutPreviousReservation stamp: 'i 4/29/2024 21:39:33'!
+PASSED!
+
+!testRun: #HotelTest #test07HotelProfitsAreTheSumOfEachFloorProfits stamp: 'i 4/29/2024 21:39:33'!
+ERROR!
+
+!testRun: #HotelTest #test08HotelLossesAreTheSumOfEachFloorLosses stamp: 'i 4/29/2024 21:39:33'!
+ERROR!
+
+!testRun: #HotelTest #test09HotelCannotReserveANonexistentRoom stamp: 'i 4/29/2024 21:39:33'!
+ERROR!
+
+!testRun: #HotelTest #test10HotelCannotReserveANonexistentFloor stamp: 'i 4/29/2024 21:39:33'!
+ERROR!
+
+!testRun: #HotelTest #test11HotelCannotReceiveAtNonexistentRoom stamp: 'i 4/29/2024 21:39:33'!
+ERROR!
+
+!testRun: #HotelTest #test12HotelCannotReceiveAtNonexistentFloor stamp: 'i 4/29/2024 21:39:33'!
+ERROR!
+
+!testRun: #HotelTest #test13HotelCannotReceiveWithReservationAtNonexistentRoom stamp: 'i 4/29/2024 21:39:33'!
+ERROR!
+!Hotel methodsFor: 'setters' stamp: 'i 4/29/2024 21:40:09' prior: 50535620!
+setFloors: aFloorsCollection
+
+	^self class withFloors: aFloorsCollection."
+	self class assertHaveFloors: aFloorsCollection.
+
+	floors := aFloorsCollection.
+	
+	availableRoomsCount := self totalRooms."! !
+
+!testRun: #HotelTest #test01CannotCreateHotelWithoutFloors stamp: 'i 4/29/2024 21:40:12'!
+PASSED!
+
+!testRun: #HotelTest #test02NewHotelsAreEmpty stamp: 'i 4/29/2024 21:40:12'!
+FAILURE!
+
+!testRun: #HotelTest #test03HotelCanReceiveATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 21:40:12'!
+PASSED!
+
+!testRun: #HotelTest #test04HotelCanTakeAReservationForARoomAtFloor stamp: 'i 4/29/2024 21:40:12'!
+FAILURE!
+
+!testRun: #HotelTest #test05HotelCanReceiveWithReservationATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 21:40:12'!
+PASSED!
+
+!testRun: #HotelTest #test06HotelCannotReceiveWithReservationWithoutPreviousReservation stamp: 'i 4/29/2024 21:40:12'!
+PASSED!
+
+!testRun: #HotelTest #test07HotelProfitsAreTheSumOfEachFloorProfits stamp: 'i 4/29/2024 21:40:12'!
+PASSED!
+
+!testRun: #HotelTest #test08HotelLossesAreTheSumOfEachFloorLosses stamp: 'i 4/29/2024 21:40:12'!
+PASSED!
+
+!testRun: #HotelTest #test09HotelCannotReserveANonexistentRoom stamp: 'i 4/29/2024 21:40:12'!
+PASSED!
+
+!testRun: #HotelTest #test10HotelCannotReserveANonexistentFloor stamp: 'i 4/29/2024 21:40:12'!
+PASSED!
+
+!testRun: #HotelTest #test11HotelCannotReceiveAtNonexistentRoom stamp: 'i 4/29/2024 21:40:12'!
+PASSED!
+
+!testRun: #HotelTest #test12HotelCannotReceiveAtNonexistentFloor stamp: 'i 4/29/2024 21:40:12'!
+PASSED!
+
+!testRun: #HotelTest #test13HotelCannotReceiveWithReservationAtNonexistentRoom stamp: 'i 4/29/2024 21:40:12'!
+FAILURE!
+
+!testRun: #RoomTest #test01NewRoomsAreAvailable stamp: 'i 4/29/2024 21:41:02'!
+PASSED!
+
+!testRun: #RoomTest #test02ReceivingAGuestMakesTheRoomOccupied stamp: 'i 4/29/2024 21:41:02'!
+PASSED!
+
+!testRun: #RoomTest #test03ReservingARoomMakesTheRoomReservedAndOccupied stamp: 'i 4/29/2024 21:41:02'!
+PASSED!
+
+!testRun: #RoomTest #test04CannotReceiveAGuestInAOccupiedRoom stamp: 'i 4/29/2024 21:41:02'!
+PASSED!
+
+!testRun: #RoomTest #test05CannotReceiveAGuestInAReservedRoom stamp: 'i 4/29/2024 21:41:02'!
+PASSED!
+
+!testRun: #RoomTest #test06ReceivingOnReservationMakesTheRoomOccupied stamp: 'i 4/29/2024 21:41:02'!
+PASSED!
+
+!testRun: #RoomTest #test07CannotReceiveOnReservationAnAvailableRoom stamp: 'i 4/29/2024 21:41:02'!
+PASSED!
+
+!testRun: #RoomTest #test08CannotReceiveOnReservationAnOccupiedRoom stamp: 'i 4/29/2024 21:41:02'!
+PASSED!
+
+!testRun: #RoomTest #test09ProfitOfAvailableRoomIsCeroPesos stamp: 'i 4/29/2024 21:41:02'!
+PASSED!
+
+!testRun: #RoomTest #test10ProfitOfReservedRoomIsHalfTheMinPriceInList stamp: 'i 4/29/2024 21:41:02'!
+PASSED!
+
+!testRun: #RoomTest #test11ProfitOfOccupiedRoomDependsOnGuestType stamp: 'i 4/29/2024 21:41:02'!
+PASSED!
+
+!testRun: #RoomTest #test12NoProfitOnOccupiedRoomByUnknownGuestType stamp: 'i 4/29/2024 21:41:02'!
+PASSED!
+
+!testRun: #RoomTest #test13LossesOfAvailableRoomIsHalfTheMaxPriceInList stamp: 'i 4/29/2024 21:41:02'!
+PASSED!
+
+!testRun: #RoomTest #test14LossesOfReservedRoomIsCeroPesos stamp: 'i 4/29/2024 21:41:02'!
+PASSED!
+
+!testRun: #RoomTest #test15LossesOfOccupiedRoomIsCeroPesos stamp: 'i 4/29/2024 21:41:02'!
+PASSED!
+
+!testRun: #RoomTest #test16CannotReserveWhenReserved stamp: 'i 4/29/2024 21:41:02'!
+PASSED!
+
+!testRun: #RoomTest #test17CannotReserveWhenOccupied stamp: 'i 4/29/2024 21:41:02'!
+PASSED!
+
+!testRun: #FloorTest #test01CannotCreateFloorWithoutRooms stamp: 'i 4/29/2024 21:41:04'!
+PASSED!
+
+!testRun: #FloorTest #test02CannotCreateFloorWithNoIntergerNumberOfRooms stamp: 'i 4/29/2024 21:41:04'!
+PASSED!
+
+!testRun: #FloorTest #test03CannotCreateFloorWithoutPrices stamp: 'i 4/29/2024 21:41:04'!
+PASSED!
+
+!testRun: #FloorTest #test04WhenAFloorIsCreatedAllTheRoomsAreAvailable stamp: 'i 4/29/2024 21:41:04'!
+PASSED!
+
+!testRun: #FloorTest #test05WhenAFloorReceivesAGuestInARoomReducesTheAvailableRoomsByOneAndIncreaseOccupiedByOne stamp: 'i 4/29/2024 21:41:04'!
+PASSED!
+
+!testRun: #FloorTest #test06WhenAFloorReceivesOnReservationAGuestInARoomKeepsTheAvailableRoomsAndOccupiedAndReducesTheReservedByOne stamp: 'i 4/29/2024 21:41:04'!
+PASSED!
+
+!testRun: #FloorTest #test07WhenARoomIsReservedTheFloorAvailableRoomsReducesByOneAndIncreaseReservedAndOccupiedByOne stamp: 'i 4/29/2024 21:41:04'!
+PASSED!
+
+!testRun: #FloorTest #test08TotalProfitShouldBeTheSumOfOccupiedRoomsProfits stamp: 'i 4/29/2024 21:41:04'!
+PASSED!
+
+!testRun: #FloorTest #test09TotalLossesShouldBeTheSumOfAvailableRoomsLosses stamp: 'i 4/29/2024 21:41:04'!
+PASSED!
+
+!testRun: #HotelTest #test01CannotCreateHotelWithoutFloors stamp: 'i 4/29/2024 21:41:25'!
+PASSED!
+
+!testRun: #HotelTest #test02NewHotelsAreEmpty stamp: 'i 4/29/2024 21:41:25'!
+FAILURE!
+
+!testRun: #HotelTest #test03HotelCanReceiveATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 21:41:25'!
+PASSED!
+
+!testRun: #HotelTest #test04HotelCanTakeAReservationForARoomAtFloor stamp: 'i 4/29/2024 21:41:25'!
+FAILURE!
+
+!testRun: #HotelTest #test05HotelCanReceiveWithReservationATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 21:41:25'!
+PASSED!
+
+!testRun: #HotelTest #test06HotelCannotReceiveWithReservationWithoutPreviousReservation stamp: 'i 4/29/2024 21:41:25'!
+PASSED!
+
+!testRun: #HotelTest #test07HotelProfitsAreTheSumOfEachFloorProfits stamp: 'i 4/29/2024 21:41:25'!
+PASSED!
+
+!testRun: #HotelTest #test08HotelLossesAreTheSumOfEachFloorLosses stamp: 'i 4/29/2024 21:41:25'!
+PASSED!
+
+!testRun: #HotelTest #test09HotelCannotReserveANonexistentRoom stamp: 'i 4/29/2024 21:41:25'!
+PASSED!
+
+!testRun: #HotelTest #test10HotelCannotReserveANonexistentFloor stamp: 'i 4/29/2024 21:41:25'!
+PASSED!
+
+!testRun: #HotelTest #test11HotelCannotReceiveAtNonexistentRoom stamp: 'i 4/29/2024 21:41:25'!
+PASSED!
+
+!testRun: #HotelTest #test12HotelCannotReceiveAtNonexistentFloor stamp: 'i 4/29/2024 21:41:25'!
+PASSED!
+
+!testRun: #HotelTest #test13HotelCannotReceiveWithReservationAtNonexistentRoom stamp: 'i 4/29/2024 21:41:25'!
+FAILURE!
+
+----SNAPSHOT----(29 April 2024 21:42:43) CuisUniversity-6169.image priorSource: 6245038!
+
+!testRun: #HotelTest #test01CannotCreateHotelWithoutFloors stamp: 'i 4/29/2024 21:44:57'!
+PASSED!
+
+!testRun: #HotelTest #test02NewHotelsAreEmpty stamp: 'i 4/29/2024 21:44:57'!
+FAILURE!
+
+!testRun: #HotelTest #test03HotelCanReceiveATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 21:44:57'!
+PASSED!
+
+!testRun: #HotelTest #test04HotelCanTakeAReservationForARoomAtFloor stamp: 'i 4/29/2024 21:44:57'!
+FAILURE!
+
+!testRun: #HotelTest #test05HotelCanReceiveWithReservationATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 21:44:57'!
+PASSED!
+
+!testRun: #HotelTest #test06HotelCannotReceiveWithReservationWithoutPreviousReservation stamp: 'i 4/29/2024 21:44:57'!
+PASSED!
+
+!testRun: #HotelTest #test07HotelProfitsAreTheSumOfEachFloorProfits stamp: 'i 4/29/2024 21:44:57'!
+PASSED!
+
+!testRun: #HotelTest #test08HotelLossesAreTheSumOfEachFloorLosses stamp: 'i 4/29/2024 21:44:57'!
+PASSED!
+
+!testRun: #HotelTest #test09HotelCannotReserveANonexistentRoom stamp: 'i 4/29/2024 21:44:57'!
+PASSED!
+
+!testRun: #HotelTest #test10HotelCannotReserveANonexistentFloor stamp: 'i 4/29/2024 21:44:57'!
+PASSED!
+
+!testRun: #HotelTest #test11HotelCannotReceiveAtNonexistentRoom stamp: 'i 4/29/2024 21:44:57'!
+PASSED!
+
+!testRun: #HotelTest #test12HotelCannotReceiveAtNonexistentFloor stamp: 'i 4/29/2024 21:44:57'!
+PASSED!
+
+!testRun: #HotelTest #test13HotelCannotReceiveWithReservationAtNonexistentRoom stamp: 'i 4/29/2024 21:44:57'!
+FAILURE!
+
+!testRun: #FloorTest #test01CannotCreateFloorWithoutRooms stamp: 'i 4/29/2024 21:45:00'!
+PASSED!
+
+!testRun: #FloorTest #test02CannotCreateFloorWithNoIntergerNumberOfRooms stamp: 'i 4/29/2024 21:45:00'!
+PASSED!
+
+!testRun: #FloorTest #test03CannotCreateFloorWithoutPrices stamp: 'i 4/29/2024 21:45:00'!
+PASSED!
+
+!testRun: #FloorTest #test04WhenAFloorIsCreatedAllTheRoomsAreAvailable stamp: 'i 4/29/2024 21:45:00'!
+PASSED!
+
+!testRun: #FloorTest #test05WhenAFloorReceivesAGuestInARoomReducesTheAvailableRoomsByOneAndIncreaseOccupiedByOne stamp: 'i 4/29/2024 21:45:00'!
+PASSED!
+
+!testRun: #FloorTest #test06WhenAFloorReceivesOnReservationAGuestInARoomKeepsTheAvailableRoomsAndOccupiedAndReducesTheReservedByOne stamp: 'i 4/29/2024 21:45:00'!
+PASSED!
+
+!testRun: #FloorTest #test07WhenARoomIsReservedTheFloorAvailableRoomsReducesByOneAndIncreaseReservedAndOccupiedByOne stamp: 'i 4/29/2024 21:45:00'!
+PASSED!
+
+!testRun: #FloorTest #test08TotalProfitShouldBeTheSumOfOccupiedRoomsProfits stamp: 'i 4/29/2024 21:45:00'!
+PASSED!
+
+!testRun: #FloorTest #test09TotalLossesShouldBeTheSumOfAvailableRoomsLosses stamp: 'i 4/29/2024 21:45:00'!
+PASSED!
+
+!testRun: #RoomTest #test01NewRoomsAreAvailable stamp: 'i 4/29/2024 21:45:21'!
+PASSED!
+
+!testRun: #RoomTest #test02ReceivingAGuestMakesTheRoomOccupied stamp: 'i 4/29/2024 21:45:21'!
+PASSED!
+
+!testRun: #RoomTest #test03ReservingARoomMakesTheRoomReservedAndOccupied stamp: 'i 4/29/2024 21:45:21'!
+PASSED!
+
+!testRun: #RoomTest #test04CannotReceiveAGuestInAOccupiedRoom stamp: 'i 4/29/2024 21:45:21'!
+PASSED!
+
+!testRun: #RoomTest #test05CannotReceiveAGuestInAReservedRoom stamp: 'i 4/29/2024 21:45:21'!
+PASSED!
+
+!testRun: #RoomTest #test06ReceivingOnReservationMakesTheRoomOccupied stamp: 'i 4/29/2024 21:45:21'!
+PASSED!
+
+!testRun: #RoomTest #test07CannotReceiveOnReservationAnAvailableRoom stamp: 'i 4/29/2024 21:45:21'!
+PASSED!
+
+!testRun: #RoomTest #test08CannotReceiveOnReservationAnOccupiedRoom stamp: 'i 4/29/2024 21:45:21'!
+PASSED!
+
+!testRun: #RoomTest #test09ProfitOfAvailableRoomIsCeroPesos stamp: 'i 4/29/2024 21:45:21'!
+PASSED!
+
+!testRun: #RoomTest #test10ProfitOfReservedRoomIsHalfTheMinPriceInList stamp: 'i 4/29/2024 21:45:21'!
+PASSED!
+
+!testRun: #RoomTest #test11ProfitOfOccupiedRoomDependsOnGuestType stamp: 'i 4/29/2024 21:45:21'!
+PASSED!
+
+!testRun: #RoomTest #test12NoProfitOnOccupiedRoomByUnknownGuestType stamp: 'i 4/29/2024 21:45:21'!
+PASSED!
+
+!testRun: #RoomTest #test13LossesOfAvailableRoomIsHalfTheMaxPriceInList stamp: 'i 4/29/2024 21:45:21'!
+PASSED!
+
+!testRun: #RoomTest #test14LossesOfReservedRoomIsCeroPesos stamp: 'i 4/29/2024 21:45:21'!
+PASSED!
+
+!testRun: #RoomTest #test15LossesOfOccupiedRoomIsCeroPesos stamp: 'i 4/29/2024 21:45:21'!
+PASSED!
+
+!testRun: #RoomTest #test16CannotReserveWhenReserved stamp: 'i 4/29/2024 21:45:21'!
+PASSED!
+
+!testRun: #RoomTest #test17CannotReserveWhenOccupied stamp: 'i 4/29/2024 21:45:21'!
+PASSED!
+
+!testRun: #HotelTest #test01CannotCreateHotelWithoutFloors stamp: 'i 4/29/2024 21:45:24'!
+PASSED!
+
+!testRun: #HotelTest #test02NewHotelsAreEmpty stamp: 'i 4/29/2024 21:45:24'!
+FAILURE!
+
+!testRun: #HotelTest #test03HotelCanReceiveATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 21:45:24'!
+PASSED!
+
+!testRun: #HotelTest #test04HotelCanTakeAReservationForARoomAtFloor stamp: 'i 4/29/2024 21:45:24'!
+FAILURE!
+
+!testRun: #HotelTest #test05HotelCanReceiveWithReservationATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 21:45:24'!
+PASSED!
+
+!testRun: #HotelTest #test06HotelCannotReceiveWithReservationWithoutPreviousReservation stamp: 'i 4/29/2024 21:45:24'!
+PASSED!
+
+!testRun: #HotelTest #test07HotelProfitsAreTheSumOfEachFloorProfits stamp: 'i 4/29/2024 21:45:24'!
+PASSED!
+
+!testRun: #HotelTest #test08HotelLossesAreTheSumOfEachFloorLosses stamp: 'i 4/29/2024 21:45:24'!
+PASSED!
+
+!testRun: #HotelTest #test09HotelCannotReserveANonexistentRoom stamp: 'i 4/29/2024 21:45:24'!
+PASSED!
+
+!testRun: #HotelTest #test10HotelCannotReserveANonexistentFloor stamp: 'i 4/29/2024 21:45:24'!
+PASSED!
+
+!testRun: #HotelTest #test11HotelCannotReceiveAtNonexistentRoom stamp: 'i 4/29/2024 21:45:24'!
+PASSED!
+
+!testRun: #HotelTest #test12HotelCannotReceiveAtNonexistentFloor stamp: 'i 4/29/2024 21:45:24'!
+PASSED!
+
+!testRun: #HotelTest #test13HotelCannotReceiveWithReservationAtNonexistentRoom stamp: 'i 4/29/2024 21:45:24'!
+FAILURE!
+
+Integer superclass!
+!Floor methodsFor: 'totals' stamp: 'i 4/29/2024 21:47:55' prior: 50534953!
+totalRoomsThatAre: roomToVerify
+	
+	^rooms count: [ :room | room state class = roomToVerify class or:[((room state class) superclass )= ((roomToVerify class)superclass)]]
+		
+! !
+
+!testRun: #HotelTest #test01CannotCreateHotelWithoutFloors stamp: 'i 4/29/2024 21:47:57'!
+PASSED!
+
+!testRun: #HotelTest #test02NewHotelsAreEmpty stamp: 'i 4/29/2024 21:47:57'!
+FAILURE!
+
+!testRun: #HotelTest #test03HotelCanReceiveATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 21:47:57'!
+FAILURE!
+
+!testRun: #HotelTest #test04HotelCanTakeAReservationForARoomAtFloor stamp: 'i 4/29/2024 21:47:57'!
+PASSED!
+
+!testRun: #HotelTest #test05HotelCanReceiveWithReservationATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 21:47:57'!
+FAILURE!
+
+!testRun: #HotelTest #test06HotelCannotReceiveWithReservationWithoutPreviousReservation stamp: 'i 4/29/2024 21:47:57'!
+PASSED!
+
+!testRun: #HotelTest #test07HotelProfitsAreTheSumOfEachFloorProfits stamp: 'i 4/29/2024 21:47:57'!
+PASSED!
+
+!testRun: #HotelTest #test08HotelLossesAreTheSumOfEachFloorLosses stamp: 'i 4/29/2024 21:47:57'!
+PASSED!
+
+!testRun: #HotelTest #test09HotelCannotReserveANonexistentRoom stamp: 'i 4/29/2024 21:47:57'!
+PASSED!
+
+!testRun: #HotelTest #test10HotelCannotReserveANonexistentFloor stamp: 'i 4/29/2024 21:47:57'!
+PASSED!
+
+!testRun: #HotelTest #test11HotelCannotReceiveAtNonexistentRoom stamp: 'i 4/29/2024 21:47:57'!
+PASSED!
+
+!testRun: #HotelTest #test12HotelCannotReceiveAtNonexistentFloor stamp: 'i 4/29/2024 21:47:57'!
+PASSED!
+
+!testRun: #HotelTest #test13HotelCannotReceiveWithReservationAtNonexistentRoom stamp: 'i 4/29/2024 21:47:57'!
+PASSED!
+!Hotel methodsFor: 'testing' stamp: 'i 4/29/2024 21:49:15' prior: 50535479!
+isEmpty
+
+
+	^self totalRoomsAvailable = (self findThoseThatVerify: RoomIsAvailable new)
+	
+! !
+
+!testRun: #HotelTest #test01CannotCreateHotelWithoutFloors stamp: 'i 4/29/2024 21:49:16'!
+PASSED!
+
+!testRun: #HotelTest #test02NewHotelsAreEmpty stamp: 'i 4/29/2024 21:49:16'!
+FAILURE!
+
+!testRun: #HotelTest #test03HotelCanReceiveATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 21:49:16'!
+FAILURE!
+
+!testRun: #HotelTest #test04HotelCanTakeAReservationForARoomAtFloor stamp: 'i 4/29/2024 21:49:16'!
+PASSED!
+
+!testRun: #HotelTest #test05HotelCanReceiveWithReservationATypeOfGuestInRoomAtFloor stamp: 'i 4/29/2024 21:49:16'!
+FAILURE!
+
+!testRun: #HotelTest #test06HotelCannotReceiveWithReservationWithoutPreviousReservation stamp: 'i 4/29/2024 21:49:16'!
+PASSED!
+
+!testRun: #HotelTest #test07HotelProfitsAreTheSumOfEachFloorProfits stamp: 'i 4/29/2024 21:49:16'!
+PASSED!
+
+!testRun: #HotelTest #test08HotelLossesAreTheSumOfEachFloorLosses stamp: 'i 4/29/2024 21:49:16'!
+PASSED!
+
+!testRun: #HotelTest #test09HotelCannotReserveANonexistentRoom stamp: 'i 4/29/2024 21:49:16'!
+PASSED!
+
+!testRun: #HotelTest #test10HotelCannotReserveANonexistentFloor stamp: 'i 4/29/2024 21:49:16'!
+PASSED!
+
+!testRun: #HotelTest #test11HotelCannotReceiveAtNonexistentRoom stamp: 'i 4/29/2024 21:49:16'!
+PASSED!
+
+!testRun: #HotelTest #test12HotelCannotReceiveAtNonexistentFloor stamp: 'i 4/29/2024 21:49:16'!
+PASSED!
+
+!testRun: #HotelTest #test13HotelCannotReceiveWithReservationAtNonexistentRoom stamp: 'i 4/29/2024 21:49:16'!
+PASSED!
+!Hotel methodsFor: 'totals' stamp: 'i 4/29/2024 21:49:34' prior: 50534658!
+totalRoomsReserved
+
+	
+	^self findThoseThatVerify: RoomIsReserved new
+	! !
+!Hotel methodsFor: 'totals' stamp: 'i 4/29/2024 21:49:40' prior: 50534886!
+totalRoomsOccupied
+
+
+	^self findThoseThatVerify: RoomIsOcupied new . 
+
+! !
+!Hotel methodsFor: 'totals' stamp: 'i 4/29/2024 21:49:47' prior: 50534697!
+totalRooms
+
+
+	^self findThoseThatVerify: Room new.
+
+! !
+!Hotel methodsFor: 'setters' stamp: 'i 4/29/2024 21:49:55' prior: 50535717!
+setFloors: aFloorsCollection
+
+	^self class withFloors: aFloorsCollection.! !
+!Room methodsFor: 'guests' stamp: 'i 4/29/2024 21:50:10' prior: 50529000!
+receive: aGuestType
+
+	"Room Occupied"
+	state receive: aGuestType inRoom: self.
+	! !
+!Room methodsFor: 'guests' stamp: 'i 4/29/2024 21:50:13' prior: 50529336!
+receiveWithReservation: aGuestType
+	
+	"Room Reserved"
+	state receiveWithReservation: aGuestType inRoom:self.
+! !
+!Room methodsFor: 'guests' stamp: 'i 4/29/2024 21:50:16' prior: 50528954!
+reserve
+	state isReserveInRoom: self.
+! !
+!Room methodsFor: 'accounting' stamp: 'i 4/29/2024 21:50:29' prior: 50529629!
+profitUsing: aPriceList ifAbsentGuestType: unknownGuestTypeBlock
+
+	"Room Available"
+	^state profitUsing: aPriceList ifAbsentGuestType: unknownGuestTypeBlock inRoom: self.
+! !
+!Room methodsFor: 'accounting' stamp: 'i 4/29/2024 21:50:38' prior: 50536223!
+profitUsing: aPriceList ifAbsentGuestType: unknownGuestTypeBlock
+
+
+	^state profitUsing: aPriceList ifAbsentGuestType: unknownGuestTypeBlock inRoom: self.
+! !
+
+----SNAPSHOT----(29 April 2024 21:51:25) CuisUniversity-6169.image priorSource: 6536112!
